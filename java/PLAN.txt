@@ -1,0 +1,43 @@
+
+ * "explain design for the application in sufficient detail so that it can be
+   used for implementation by another team"
+
+ * "write instructions explaining how to run your client application. For each
+   function it is expected that the instructions should be at most 1 page. NO
+   screen dump is required"
+
+ * "marks will be awarded on quality of implementation, including the user interface"
+
+ * Acceptance Tests (testcases for each development step 1-4)
+
+
+1 business modeling & concept
+  - use cases & assumptions
+  - activities showing order of use cases (workflow)
+
+  - requirements
+      o domain model diagram & text description
+
+
+2 elaboration / system specification
+  - analysis & design
+      o class diagram
+      o ER diagram
+      o UI-design
+      o component diagram
+      o tiers
+      o J2EE technologies
+      o server-side interaction & integration
+
+
+3 construction / implementation
+  - source code
+
+
+4 transition / deployment
+  - manual
+  - install instructions
+
+
+
+$Id$

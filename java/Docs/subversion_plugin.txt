@@ -1,0 +1,11 @@
+$Id$
+
+Netbeans plug-in installation:
+- open menu Tools / Update Center
+- click Next
+- select Subversion
+- and so on...
+
+using Subversion module in NetBeans
+ http://www.netbeans.org/kb/articles/subversion-preview.html
+ 
