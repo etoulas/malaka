@@ -1,0 +1,200 @@
+/* 
+            Document   : purchase.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, 5742722
+                         Fernando Mendoza, 5746078
+                         Efthimios Toulas, 5744148
+
+            Description: CSS Stylesheet for orders.xml file.
+
+            Developed for and tested with: Mozilla Firefox 1.5.0.4
+                             (may not be showed correctly by MS IE)
+
+*/
+
+/* -------------------- Design of main document ----------------------------- */
+
+purchase {
+display: block;
+background-color: #CCCCCC;
+color: black;
+font-family: sans-serif;
+}
+
+/* -------------------- Design of general elements -------------------------- */
+
+address {
+display: block;
+}
+
+address suburb {
+display: block;
+}
+
+address postcode,
+address state,
+address country {
+text-transform: uppercase;
+}
+
+customers, products, orders {
+display: block;
+background-color: #FFFF66;
+border: solid thin black;
+color: #000000;
+display: block;
+width: 15em;
+padding-left: .8em;
+padding-right: .8em;
+margin: .5em;
+}
+
+
+/* -------------------- Design of costumers --------------------------------- */
+
+customers {
+float: right;
+width: 25%;
+}
+
+customers customer {
+display: block;
+margin-top: .7em;
+margin-bottom: .7em;
+background-color: #FFFF99;
+}
+
+customers customer name {
+display: block;
+font-size: larger;
+font-weight: bold;
+margin-bottom: .1em;
+}
+
+customers customer membership {
+display: block;
+font-size: smaller;
+font-style: italic;
+}
+
+customers customer phone,
+customers customer email {
+display: block;
+font-family: monospace;
+}
+
+
+
+/* -------------------- Design of products ---------------------------------- */
+
+products {
+float: right;
+width: 25%;
+}
+
+products product {
+display: block;
+margin-top: .7em;
+margin-bottom: .7em;
+background-color: #FFFF99;
+}
+
+products product name {
+display: block;
+font-size: larger;
+font-weight: bold;
+margin-bottom: .1em;
+}
+
+products product description {
+display: block;
+font-size: smaller;
+}
+
+products product unitprice {
+display: block;
+font-family: monospace;
+font-weight: bold;
+}
+
+products product manufacturer {
+display: block;
+}
+
+
+products product category {
+display: block;
+}
+
+products product locations location {
+display: block;
+margin-top: .2em;
+font-family: serif;
+font-size: smaller;
+margin-left: 1em;
+}
+
+products product locations location id{
+display: block;
+font-weight: bold;
+}
+
+products product locations quantity {
+display: block;
+}
+
+products product locations location address number,
+products product locations location address street,
+products product locations location address postcode,
+products product locations location address state,
+products product locations location address country {
+display: none;
+}
+
+/* -------------------- Design of orders ------------------------------------ */
+
+orders {
+float: right;
+width: 32%;
+}
+
+orders order {
+display: block;
+margin-top: .7em;
+margin-bottom: .7em;
+background-color: #FFFF99;
+}
+
+orders order date {
+display: block;
+font-size: larger;
+font-weight: bold;
+font-family: monospace;
+text-decoration: underline;
+margin-bottom: .1em;
+}
+
+orders order date {
+display: block;
+}
+
+orders order status {
+display: block;
+text-transform: uppercase;
+}
+
+orders order orderedproducts {
+display: none;
+}
+
+orders order orderedproducts {
+display: none;
+}
+
+orders order deliveryaddress {
+display: block;
+margin-left: 1em;
+font-size: smaller;
+font-style: italic;
+}           
+

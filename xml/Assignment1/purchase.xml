@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+            Document   : purchase.xml
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, 5742722
+                         Fernando Mendoza, 5746078
+                         Efthimios Toulas, 5744148
+
+-->
+
+<?xml-stylesheet type="text/css" href="purchase.css" title="Block Style" media="screen" ?>
+
+<purchase xmlns="http://swin.edu.au/theffe/purchase"
+    xmlns:c="http://swin.edu.au/theffe/customer"
+    xmlns:p="http://swin.edu.au/theffe/product"
+    xmlns:o="http://swin.edu.au/theffe/order"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://swin.edu.au/theffe/purchase purchase.xsd">
+    
+    <!-- ############################ CUSTOMERS ############################ -->
+    <c:customers>
+        <c:customer id="c01">
+            <c:name>
+                <c:title>Prof</c:title>
+                <c:firstname>John</c:firstname>
+                <c:firstname>Jack</c:firstname>
+                <c:lastname>Smith</c:lastname>
+            </c:name>
+            <c:membership>platinum</c:membership>
+            <c:address>
+                <c:number>23</c:number>
+                <c:street>Walfare St</c:street>
+                <c:suburb>Hawthorn</c:suburb>
+                <c:postcode>3838</c:postcode>
+                <c:state>VIC</c:state>
+                <c:country>Australia</c:country>
+            </c:address>
+            <c:phone type="mobile">12 345 6878</c:phone> 
+            <c:email type="home">bla@blub.haha</c:email>
+        </c:customer>
+        
+         <c:customer  id="c02">       
+            <c:name>
+                <c:title>Mr</c:title>
+                <c:firstname>Philip</c:firstname>
+                <c:lastname>Fumolo</c:lastname>
+            </c:name>
+            <c:membership>gold</c:membership>
+            <c:address>
+                <c:number>24</c:number>
+                <c:street>Turnerstrasse</c:street>
+                <c:suburb>Hawthorn</c:suburb>
+                <c:postcode>2345</c:postcode>
+                <c:state>NOE</c:state>
+                <c:country>Austria</c:country>
+            </c:address>
+            <c:phone type="mobile">069913645214</c:phone> 
+            <c:phone type="work">069343623214</c:phone> 
+            <c:email type="home">philip.f@aon.at</c:email>
+        </c:customer>
+        <c:customer id="c03">
+            <c:name>
+                <c:title>Mr</c:title>
+                <c:firstname>Thorsten</c:firstname>
+                <c:lastname>Kack</c:lastname>
+            </c:name>
+            <c:membership>bronze</c:membership>
+            <c:address>
+                <c:number>214</c:number>
+                <c:street>Rincon del chico</c:street>
+                <c:suburb>Hawthorn</c:suburb>
+                <c:postcode>3838</c:postcode>
+                <c:state>VIC</c:state>
+                <c:country>Ozzland</c:country>
+            </c:address>
+            <c:phone type="mobile">12 345 6878</c:phone> 
+                  </c:customer>
+        
+         <c:customer  id="c04">       
+            <c:name>
+                <c:title>Mr</c:title>
+                <c:firstname>Luis</c:firstname>
+                <c:firstname>Fernando</c:firstname>
+                <c:lastname>Mendoza</c:lastname>
+            </c:name>
+            <c:membership>no membership</c:membership>
+            <c:address>
+                <c:number>25</c:number>
+                <c:street>Argos</c:street>
+                <c:suburb>Coyoacan</c:suburb>
+                <c:postcode>04810</c:postcode>
+                <c:state>Mexico city</c:state>
+                <c:country>Mexico</c:country>
+            </c:address>
+            <c:phone type="mobile">0445513848729</c:phone> 
+            <c:email type="home">ferni.91@gmail.com</c:email>
+             <c:email type="work">ferni.91@gmail.com</c:email>
+            </c:customer>
+    </c:customers>
+    
+    <!-- ############################ PRODUCTS ############################ -->
+    <p:products>
+
+        <p:product id="p02">
+            <p:name>Nokia 6110</p:name>
+            <p:description>1.3 Megapixeles</p:description>
+            <p:unitprice currency="AUD">355.44</p:unitprice>
+            <p:manufacturer>Nokia</p:manufacturer>
+            <p:category>Cellphones</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l02</p:code>
+                    <p:quantity>10</p:quantity>  
+                    <p:address>
+                        <p:number>3444</p:number>
+                        <p:street>Swanston St</p:street>
+                        <p:suburb>Melbourne city</p:suburb>
+                        <p:postcode>04230</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+        <p:product id="p03">
+            <p:name>Motorola V3</p:name>
+            <p:description>Black Edition</p:description>
+            <p:unitprice>115.90</p:unitprice>
+            <p:manufacturer>Motorola</p:manufacturer>
+            <p:category>Cellphones</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l03</p:code>
+                    <p:quantity>23</p:quantity>  
+                </p:location>
+            </p:locations>
+        </p:product> 
+        <p:product id="p04">
+            <p:name>Ipod</p:name>
+            <p:description>MP3 player</p:description>
+            <p:unitprice>310.12</p:unitprice>
+            <p:manufacturer>Apple</p:manufacturer>
+            <p:category>widget</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>304</p:code>
+                    <p:quantity>22</p:quantity>  
+                    <p:address>
+                        <p:number>24</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Glenferrie</p:suburb>
+                        <p:postcode>3338</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+                <p:location>
+                    <p:code>l04-B</p:code>
+                    <p:quantity>13</p:quantity>  
+                    <p:address>
+                        <p:number>23</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+        
+        
+                <p:product id="p01">
+            <p:name>Gummis</p:name>
+            <p:description>Feucht</p:description>
+            <p:unitprice currency="AUD">10.12</p:unitprice>
+            <p:manufacturer>Beate Uhse</p:manufacturer>
+            <p:category>Sextoys</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l01</p:code>
+                    <p:quantity>100</p:quantity>  
+                    <p:address>
+                        <p:number>23</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Ozzland</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+        <p:product id="p05">
+            <p:name>MACBOOK 2.0</p:name>
+            <p:description>notebook</p:description>
+            <p:unitprice>2341</p:unitprice>
+            <p:manufacturer>APPLE</p:manufacturer>
+            <p:category>Computers</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l05</p:code>
+                    <p:quantity>43</p:quantity>  
+                    <p:address>
+                        <p:number>23</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product>         
+    </p:products>
+    
+    <!-- ############################ ORDERS ############################ -->
+    <o:orders>
+        <o:order id="o01">
+            <o:date>2006-10-11</o:date>
+            <o:customerid>c01</o:customerid>
+            <o:status>invoiced</o:status>
+            <o:orderedproducts>
+                <o:product>
+                    <o:id>p01</o:id>
+                    <o:quantity>1</o:quantity>
+                </o:product>
+                <o:product>
+                    <o:id>p02</o:id>
+                    <o:quantity>2</o:quantity>
+                </o:product>
+            </o:orderedproducts>
+            <o:deliveryaddress>
+                <o:name>
+                    <o:title>Mr</o:title>
+                    <o:firstname>Big</o:firstname>
+                    <o:lastname>Malaka</o:lastname>
+                </o:name>
+                <o:address>
+                    <o:number>24</o:number>
+                    <o:street>Greek St</o:street>
+                    <o:suburb>Kew</o:suburb>
+                    <o:postcode>3101</o:postcode>
+                    <o:state>VIC</o:state>
+                    <o:country></o:country>
+                </o:address>
+            </o:deliveryaddress>
+        </o:order>
+        <o:order id="o02">
+            <o:date>2006-10-14</o:date>
+            <o:customerid>c02</o:customerid>
+            <o:status>entered</o:status>
+            <o:orderedproducts>
+                <o:product>
+                    <o:id>p04</o:id>
+                    <o:quantity>50</o:quantity>
+                </o:product>
+            </o:orderedproducts>
+            <o:deliveryaddress>
+                <o:name>
+                    <o:title>Mr</o:title>
+                    <o:firstname>Fercho</o:firstname>
+                    <o:lastname>Jimenez</o:lastname>
+                </o:name>
+                <o:address>
+                    <o:number>324</o:number>
+                    <o:street>Cerro de Zacatepetl</o:street>
+                    <o:suburb>San Pedro Martir</o:suburb>
+                    <o:postcode>02223</o:postcode>
+                    <o:state>DF</o:state>
+                    <o:country>Mexico</o:country>
+                </o:address>
+            </o:deliveryaddress>
+        </o:order>
+        <o:order id="o03">
+            <o:date>2006-10-11</o:date>
+            <o:customerid>c01</o:customerid>
+            <o:status>dispatched</o:status>
+            <o:orderedproducts>
+                <o:product>
+                    <o:id>p03</o:id>
+                    <o:quantity>2</o:quantity>
+                </o:product>
+                <o:product>
+                    <o:id>p04</o:id>
+                    <o:quantity>2</o:quantity>
+                </o:product>
+                <o:product>
+                    <o:id>p05</o:id>
+                    <o:quantity>2</o:quantity>
+                </o:product>
+            </o:orderedproducts>
+        </o:order>
+    </o:orders>
+</purchase>
