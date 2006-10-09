@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+            Document   : product.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, 5742722
+                         Fernando Mendoza, 5746078
+                         Efthimios Toulas, 5744148
+
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://swin.edu.au/theffe/product"
+    xmlns="http://swin.edu.au/theffe/product"
+    xmlns:p="http://swin.edu.au/theffe/product"
+    elementFormDefault="qualified">
+    
+    <xsd:annotation>
+        <xsd:documentation>
+            Document   : product.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, Fernando Mendoza, Efthimios Toulas
+            Description: XML Schema for products.
+        </xsd:documentation>
+    </xsd:annotation>
+    
+    <xsd:include schemaLocation="address.xsd" />
+    
+    
+    <xsd:element name="products">
+        <xsd:complexType>
+            <xsd:sequence>
+                
+                <xsd:element name="product" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            
+                            <xsd:element name="name" type="xsd:normalizedString" />
+                            <xsd:element name="description" type="xsd:string" />   
+                            <xsd:element name="unitprice" type="unitPriceType" />
+                            <xsd:element name="manufacturer" type="xsd:string" />
+                            <xsd:element name="category" type="xsd:string" />
+                            <xsd:element name="locations">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="location" type="locationType" maxOccurs="unbounded" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            
+                        </xsd:sequence>
+                        <xsd:attribute name="id" type="idType" use="required"/>                
+                    </xsd:complexType>
+                </xsd:element>
+                
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <!-- Define key -->
+        <!-- Not needed, due to the use of ID/IDREF
+        <xsd:key name="PRODUCTKEY">
+        <xsd:selector xpath="./p:product" />
+        <xsd:field xpath="@id" />
+        </xsd:key>
+        -->
+    </xsd:element>
+    
+    
+    <!-- Type definitions:  -->
+    
+    <xsd:simpleType name="idType">
+        <xsd:restriction base="xsd:ID">
+            <xsd:maxLength value="20" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="idRefType">
+        <xsd:restriction base="xsd:IDREF">
+            <xsd:maxLength value="20" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="PriceType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d+(\.\d\d)?" />  
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    
+    <xsd:complexType name="unitPriceType">
+        <xsd:simpleContent>
+            <xsd:extension base="PriceType">
+                <xsd:attribute name="currency" type="xsd:string" fixed="AUD" />
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="locationType">
+        <xsd:sequence>
+            <xsd:element name="code" type="xsd:string" />
+            <xsd:element name="quantity" type="xsd:positiveInteger" />
+            <xsd:element name="address" type="address" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    </xsd:schema>
+
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+            Document   : address.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, 5742722
+                         Fernando Mendoza, 5746078
+                         Efthimios Toulas, 5744148
+
+-->
+
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+    
+    <xsd:annotation>
+        <xsd:documentation>
+            Document   : address.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, Fernando Mendoza, Efthimios Toulas
+            Description: XML Schema for a single address and a full name use. This file has no namespace.
+            Validated on: 13/09/2006
+        </xsd:documentation>
+    </xsd:annotation>
+    
+    <xsd:complexType name="address">
+        <xsd:sequence>
+            <xsd:element name="number" type="numberType" />
+            
+            <xsd:element name="street" type="xsd:string" />
+            <xsd:element name="suburb" type="xsd:string" />
+            <xsd:element name="postcode" type="postcodeType" />
+            <xsd:element name="state" type="xsd:string"/>
+            <xsd:element name="country" type="xsd:string" default="Australia" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <!-- Type definitions:  -->
+    
+    <xsd:simpleType name="numberType">
+        <xsd:restriction base="xsd:string">
+            <xsd:annotation>
+    <xsd:documentation>
+    Number is considered to be between 1 and 9999 + extra sympols, e.g.  66/5 33-4 12a or '14 a'
+    Postcode is a string, because it might contain letters or a leading zero, what an integer might cut off.
+
+    </xsd:documentation>
+        </xsd:annotation>
+ 
+            <xsd:pattern value="\d{1,4}\s?[\\\-/]?(\w{2})?" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="postcodeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="10" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="nameType">   
+        <xsd:sequence>
+            <xsd:element name="title" type="xsd:string" />  <!-- TODO attribute sex in title -->
+            <xsd:element name="firstname" type="xsd:string" maxOccurs="5"/>   <!-- calling firstName !! -->
+            <xsd:element name="lastname" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+    
+</xsd:schema>
+
