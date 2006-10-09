@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+            Document   : customer.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, 5742722
+                         Fernando Mendoza, 5746078
+                         Efthimios Toulas, 5744148
+
+-->
+
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://swin.edu.au/theffe/customer"
+    xmlns="http://swin.edu.au/theffe/customer"
+    xmlns:c="http://swin.edu.au/theffe/customer"
+    elementFormDefault="qualified">
+    
+    <xsd:annotation>
+        <xsd:documentation>
+            Document   : customer.xsd
+            Created on : 12. September 2006, 17:31
+            Authors    : Thorsten Keck, Fernando Mendoza, Efthimios Toulas
+            Description: XML Schema for customers.
+        </xsd:documentation>
+    </xsd:annotation>
+    
+    <xsd:include schemaLocation="address.xsd" />
+    
+    <xsd:element name="customers">
+        <xsd:complexType>
+            <xsd:sequence>
+                
+                <xsd:element name="customer" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            
+                            <xsd:element name="name" type="nameType" />
+                            <xsd:element name="membership" type="membershipType" default="no membership" />
+                            <xsd:element name="address" type="address" />
+                            <xsd:element name="phone" type="phoneType" minOccurs="1" maxOccurs="unbounded"/>
+                            <xsd:element name="email" type="emailType" minOccurs="0" maxOccurs="unbounded"/>
+                            
+                        </xsd:sequence>
+                        <xsd:attribute name="id" type="idType" use="required"/>  
+                    </xsd:complexType>
+                    
+                </xsd:element>
+                
+            </xsd:sequence>
+        </xsd:complexType>
+        
+        <!-- Define key -->
+        <!-- Not needed, due to the use of ID/IDREF
+        <xsd:key name="CUSTOMERKEY">
+        <xsd:selector xpath="./c:costumer" />
+        <xsd:field xpath="@id" />
+        </xsd:key>
+        -->        
+    </xsd:element>
+    
+    
+    
+    <!-- Type definitions:  -->
+    
+    <xsd:simpleType name="idType">
+        <xsd:restriction base="xsd:ID">
+            <xsd:maxLength value="20" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="idRefType">
+        <xsd:restriction base="xsd:IDREF">
+            <xsd:maxLength value="20" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    
+    <xsd:simpleType name="membershipType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="platinum" />
+            <xsd:enumeration value="gold" />
+            <xsd:enumeration value="silver" />
+            <xsd:enumeration value="bronze" />
+            <xsd:enumeration value="no membership" />  <!-- default -->
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="contactType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40" />
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="phoneType">
+        <xsd:simpleContent>
+            <xsd:extension base="contactType">
+                <xsd:attribute name="type" default="home">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="home" />
+                            <xsd:enumeration value="mobile" />
+                            <xsd:enumeration value="work" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="emailType">
+        <xsd:simpleContent>
+            <xsd:extension base="contactType">
+                <xsd:attribute name="type" default="home">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="home" />
+                            <xsd:enumeration value="work" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    
+</xsd:schema>
+
