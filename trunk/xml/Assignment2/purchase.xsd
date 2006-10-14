@@ -13,7 +13,6 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:c="http://swin.edu.au/theffe/customer"
     xmlns:p="http://swin.edu.au/theffe/product"
-    xmlns:o="http://swin.edu.au/theffe/order"
     targetNamespace="http://swin.edu.au/theffe/purchase"
     xmlns="http://swin.edu.au/theffe/purchase"
     elementFormDefault="qualified">
@@ -21,7 +20,6 @@
     <xsd:include schemaLocation="address.xsd"/>
     <xsd:import  namespace="http://swin.edu.au/theffe/customer" schemaLocation="customer.xsd" />
     <xsd:import  namespace="http://swin.edu.au/theffe/product" schemaLocation="product.xsd" />
-    <xsd:import  namespace="http://swin.edu.au/theffe/order" schemaLocation="order.xsd" />
     
     <xsd:element name="purchase">
         <xsd:complexType>
@@ -29,7 +27,6 @@
                 
                 <xsd:element ref="c:customers" />
                 <xsd:element ref="p:products" />
-                <xsd:element ref="o:orders" />
                 
             </xsd:sequence>
         </xsd:complexType>

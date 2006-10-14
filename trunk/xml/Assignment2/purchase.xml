@@ -2,19 +2,16 @@
 
 <!--
             Document   : purchase.xml
-            Created on : 12. September 2006, 17:31
+            Created on : 14. October 2006, 19:01
             Authors    : Thorsten Keck, 5742722
                          Fernando Mendoza, 5746078
                          Efthimios Toulas, 5744148
 
 -->
 
-<?xml-stylesheet type="text/css" href="purchase.css" title="Block Style" media="screen" ?>
-
 <purchase xmlns="http://swin.edu.au/theffe/purchase"
     xmlns:c="http://swin.edu.au/theffe/customer"
     xmlns:p="http://swin.edu.au/theffe/product"
-    xmlns:o="http://swin.edu.au/theffe/order"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://swin.edu.au/theffe/purchase purchase.xsd">
     
@@ -38,9 +35,65 @@
             </c:address>
             <c:phone type="mobile">12 345 6878</c:phone> 
             <c:email type="home">bla@blub.haha</c:email>
+            <c:orders>
+                <c:order id="o01">
+                    <c:date>2006-10-11</c:date>
+                    <c:status>invoiced</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p01</c:id>
+                            <c:quantity>1</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p02</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                    <c:deliveryaddress>
+                        <c:name>
+                            <c:title>Mr</c:title>
+                            <c:firstname>Big</c:firstname>
+                            <c:lastname>Malaka</c:lastname>
+                        </c:name>
+                        <c:address>
+                            <c:number>24</c:number>
+                            <c:street>Greek St</c:street>
+                            <c:suburb>Kew</c:suburb>
+                            <c:postcode>3101</c:postcode>
+                            <c:state>VIC</c:state>
+                            <c:country></c:country>
+                        </c:address>
+                    </c:deliveryaddress>
+                </c:order>
+                <c:order id="o02">
+                    <c:date>2006-10-14</c:date>
+                    <c:status>entered</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p04</c:id>
+                            <c:quantity>50</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                    <c:deliveryaddress>
+                        <c:name>
+                            <c:title>Mr</c:title>
+                            <c:firstname>Fercho</c:firstname>
+                            <c:lastname>Jimenez</c:lastname>
+                        </c:name>
+                        <c:address>
+                            <c:number>324</c:number>
+                            <c:street>Cerro de Zacatepetl</c:street>
+                            <c:suburb>San Pedro Martir</c:suburb>
+                            <c:postcode>02223</c:postcode>
+                            <c:state>DF</c:state>
+                            <c:country>Mexico</c:country>
+                        </c:address>
+                    </c:deliveryaddress>
+                </c:order>
+            </c:orders>
         </c:customer>
         
-         <c:customer  id="c02">       
+        <c:customer  id="c02">       
             <c:name>
                 <c:title>Mr</c:title>
                 <c:firstname>Philip</c:firstname>
@@ -58,6 +111,27 @@
             <c:phone type="mobile">069913645214</c:phone> 
             <c:phone type="work">069343623214</c:phone> 
             <c:email type="home">philip.f@aon.at</c:email>
+            <c:orders>
+                <c:order id="o08">
+                    <c:date>2006-10-11</c:date>
+                    <c:status>dispatched</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p03</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p04</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p05</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                </c:order>
+            </c:orders>
+            
         </c:customer>
         <c:customer id="c03">
             <c:name>
@@ -75,9 +149,30 @@
                 <c:country>Ozzland</c:country>
             </c:address>
             <c:phone type="mobile">12 345 6878</c:phone> 
-                  </c:customer>
+            <c:orders>
+                <c:order id="o07">
+                    <c:date>2006-10-11</c:date>
+                    <c:status>dispatched</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p03</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p04</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p05</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                </c:order>
+            </c:orders>
+            
+        </c:customer>
         
-         <c:customer  id="c04">       
+        <c:customer  id="c04">       
             <c:name>
                 <c:title>Mr</c:title>
                 <c:firstname>Luis</c:firstname>
@@ -95,13 +190,120 @@
             </c:address>
             <c:phone type="mobile">0445513848729</c:phone> 
             <c:email type="home">ferni.91@gmail.com</c:email>
-             <c:email type="work">ferni.91@gmail.com</c:email>
-            </c:customer>
+            <c:email type="work">ferni.91@gmail.com</c:email>
+            <c:orders>
+                <c:order id="o03">
+                    <c:date>2006-10-11</c:date>
+                    <c:status>dispatched</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p03</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p04</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p05</c:id>
+                            <c:quantity>2</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                </c:order>
+            </c:orders>
+            
+        </c:customer>
+        
+        <c:customer  id="c05">       
+            <c:name>
+                <c:title>Mrs</c:title>
+                <c:firstname>Dora</c:firstname>
+                <c:firstname>Maria</c:firstname>
+                <c:lastname>Hernandez</c:lastname>
+            </c:name>
+            <c:membership>gold</c:membership>
+            <c:address>
+                <c:number>44</c:number>
+                <c:street>Hauptstraße</c:street>
+                <c:suburb></c:suburb>
+                <c:postcode>90402</c:postcode>
+                <c:state>Nuernberg</c:state>
+                <c:country>Germany</c:country>
+            </c:address>
+            <c:phone type="mobile">01771234567</c:phone> 
+            <c:email type="home">dora@herni.de</c:email>
+            <c:email type="work">hernandez@work.de</c:email>
+            <c:orders>
+                <c:order id="o10">
+                    <c:date>2006-10-12</c:date>
+                    <c:status>paid</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p09</c:id>
+                            <c:quantity>5</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p10</c:id>
+                            <c:quantity>1</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p07</c:id>
+                            <c:quantity>8</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                </c:order>
+                                <c:order id="o09">
+                    <c:date>2006-10-01</c:date>
+                    <c:status>paid</c:status>
+                    <c:orderedproducts>
+                        <c:product>
+                            <c:id>p05</c:id>
+                            <c:quantity>3</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p04</c:id>
+                            <c:quantity>1</c:quantity>
+                        </c:product>
+                        <c:product>
+                            <c:id>p02</c:id>
+                            <c:quantity>12</c:quantity>
+                        </c:product>
+                    </c:orderedproducts>
+                </c:order>
+
+            </c:orders>
+            
+        </c:customer>
+        
+        
+        
     </c:customers>
     
     <!-- ############################ PRODUCTS ############################ -->
     <p:products>
-
+        
+        <p:product id="p01">
+            <p:name>K750i</p:name>
+            <p:description>2 Megapixels</p:description>
+            <p:unitprice currency="AUD">400.00</p:unitprice>
+            <p:manufacturer>Sony Ericsson</p:manufacturer>
+            <p:category>Cellphones</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l22</p:code>
+                    <p:quantity>50</p:quantity>  
+                    <p:address>
+                        <p:number>44</p:number>
+                        <p:street>La Trobe St</p:street>
+                        <p:suburb>Melbourne city</p:suburb>
+                        <p:postcode>04230</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+        
         <p:product id="p02">
             <p:name>Nokia 6110</p:name>
             <p:description>1.3 Megapixeles</p:description>
@@ -123,6 +325,7 @@
                 </p:location>
             </p:locations>
         </p:product> 
+        
         <p:product id="p03">
             <p:name>Motorola V3</p:name>
             <p:description>Black Edition</p:description>
@@ -136,12 +339,13 @@
                 </p:location>
             </p:locations>
         </p:product> 
+        
         <p:product id="p04">
             <p:name>Ipod</p:name>
             <p:description>MP3 player</p:description>
             <p:unitprice>310.12</p:unitprice>
             <p:manufacturer>Apple</p:manufacturer>
-            <p:category>widget</p:category>
+            <p:category>Widget</p:category>
             <p:locations>
                 <p:location>
                     <p:code>304</p:code>
@@ -171,7 +375,7 @@
         </p:product> 
         
         
-                <p:product id="p01">
+        <p:product id="p05">
             <p:name>Gummis</p:name>
             <p:description>Feucht</p:description>
             <p:unitprice currency="AUD">10.12</p:unitprice>
@@ -192,7 +396,31 @@
                 </p:location>
             </p:locations>
         </p:product> 
-        <p:product id="p05">
+        
+        <p:product id="p06">
+            <p:name>Vaseline</p:name>
+            <p:description>Slippery</p:description>
+            <p:unitprice currency="AUD">12.99</p:unitprice>
+            <p:manufacturer>Grease Inc.</p:manufacturer>
+            <p:category>Sextoys</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>222</p:code>
+                    <p:quantity>43</p:quantity>  
+                    <p:address>
+                        <p:number>11</p:number>
+                        <p:street>Glenferrie Rd</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+        
+        
+        <p:product id="p07">
             <p:name>MACBOOK 2.0</p:name>
             <p:description>notebook</p:description>
             <p:unitprice>2341</p:unitprice>
@@ -213,84 +441,59 @@
                 </p:location>
             </p:locations>
         </p:product>         
+        
+        <p:product id="p08">
+            <p:name>Topmodel V2.0</p:name>
+            <p:description>2.4 GHz Silver Edition, 1 GB RAM, CD/DVD Writer, 15,4" TFT Display</p:description>
+            <p:unitprice>2500.00</p:unitprice>
+            <p:manufacturer>ChiliGreen</p:manufacturer>
+            <p:category>Computers</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>888</p:code>
+                    <p:quantity>40</p:quantity>  
+                </p:location>
+            </p:locations>
+        </p:product> 
+        
+        <p:product id="p09">
+            <p:name>Topmodel V2.1</p:name>
+            <p:description>2.8 GHz Silver Edition, 2 GB RAM, CD/DVD Writer, 15,4" TFT Display</p:description>
+            <p:unitprice>2750.00</p:unitprice>
+            <p:manufacturer>ChiliGreen</p:manufacturer>
+            <p:category>Computers</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>888</p:code>
+                    <p:quantity>34</p:quantity>  
+                </p:location>
+            </p:locations>
+        </p:product> 
+        
+        <p:product id="p10">
+            <p:name>MACBOOK PRO</p:name>
+            <p:description>Notebook</p:description>
+            <p:unitprice>2999.99</p:unitprice>
+            <p:manufacturer>APPLE</p:manufacturer>
+            <p:category>Computers</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l05</p:code>
+                    <p:quantity>89</p:quantity>  
+                    <p:address>
+                        <p:number>23</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Australia</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product>         
+        
     </p:products>
     
-    <!-- ############################ ORDERS ############################ -->
-    <o:orders>
-        <o:order id="o01">
-            <o:date>2006-10-11</o:date>
-            <o:customerid>c01</o:customerid>
-            <o:status>invoiced</o:status>
-            <o:orderedproducts>
-                <o:product>
-                    <o:id>p01</o:id>
-                    <o:quantity>1</o:quantity>
-                </o:product>
-                <o:product>
-                    <o:id>p02</o:id>
-                    <o:quantity>2</o:quantity>
-                </o:product>
-            </o:orderedproducts>
-            <o:deliveryaddress>
-                <o:name>
-                    <o:title>Mr</o:title>
-                    <o:firstname>Big</o:firstname>
-                    <o:lastname>Malaka</o:lastname>
-                </o:name>
-                <o:address>
-                    <o:number>24</o:number>
-                    <o:street>Greek St</o:street>
-                    <o:suburb>Kew</o:suburb>
-                    <o:postcode>3101</o:postcode>
-                    <o:state>VIC</o:state>
-                    <o:country></o:country>
-                </o:address>
-            </o:deliveryaddress>
-        </o:order>
-        <o:order id="o02">
-            <o:date>2006-10-14</o:date>
-            <o:customerid>c02</o:customerid>
-            <o:status>entered</o:status>
-            <o:orderedproducts>
-                <o:product>
-                    <o:id>p04</o:id>
-                    <o:quantity>50</o:quantity>
-                </o:product>
-            </o:orderedproducts>
-            <o:deliveryaddress>
-                <o:name>
-                    <o:title>Mr</o:title>
-                    <o:firstname>Fercho</o:firstname>
-                    <o:lastname>Jimenez</o:lastname>
-                </o:name>
-                <o:address>
-                    <o:number>324</o:number>
-                    <o:street>Cerro de Zacatepetl</o:street>
-                    <o:suburb>San Pedro Martir</o:suburb>
-                    <o:postcode>02223</o:postcode>
-                    <o:state>DF</o:state>
-                    <o:country>Mexico</o:country>
-                </o:address>
-            </o:deliveryaddress>
-        </o:order>
-        <o:order id="o03">
-            <o:date>2006-10-11</o:date>
-            <o:customerid>c01</o:customerid>
-            <o:status>dispatched</o:status>
-            <o:orderedproducts>
-                <o:product>
-                    <o:id>p03</o:id>
-                    <o:quantity>2</o:quantity>
-                </o:product>
-                <o:product>
-                    <o:id>p04</o:id>
-                    <o:quantity>2</o:quantity>
-                </o:product>
-                <o:product>
-                    <o:id>p05</o:id>
-                    <o:quantity>2</o:quantity>
-                </o:product>
-            </o:orderedproducts>
-        </o:order>
-    </o:orders>
+    
+    
 </purchase>
