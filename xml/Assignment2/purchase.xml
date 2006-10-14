@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
+<?xml-stylesheet type="text/xsl" href="product.xsl"?>
 <!--
             Document   : purchase.xml
             Created on : 14. October 2006, 19:01
@@ -8,6 +8,9 @@
                          Efthimios Toulas, 5744148
 
 -->
+
+
+
 
 <purchase xmlns="http://swin.edu.au/theffe/purchase"
     xmlns:c="http://swin.edu.au/theffe/customer"
