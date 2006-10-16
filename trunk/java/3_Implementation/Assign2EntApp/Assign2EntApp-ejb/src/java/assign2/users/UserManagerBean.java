@@ -30,7 +30,10 @@ private EntityManager em;
     }
     
     public String testEm()
-    {
-        return em.toString();
+    {        
+        Corporate um = new Corporate("ggotti","test");
+        um.setCompanyName("Limited");
+        em.persist(um);
+        return um.getusername();
     }
 }
