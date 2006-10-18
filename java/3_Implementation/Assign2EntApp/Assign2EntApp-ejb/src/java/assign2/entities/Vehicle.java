@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package assign2.vehicles;
+package assign2.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -37,6 +37,9 @@ public class Vehicle implements Serializable
     @ManyToOne()
     @JoinColumn(name="VehicleType")
     private VehicleType type;
+    @ManyToOne()
+    @JoinColumn(name="VehicleLicense")
+    private VehicleLicense license;
     @Column(name="VYear")
     private Integer year;
     
@@ -145,6 +148,16 @@ public class Vehicle implements Serializable
     public void setYear(Integer year)
     {
         this.year = year;
+    }
+
+    public VehicleLicense getLicense()
+    {
+        return license;
+    }
+
+    public void setLicense(VehicleLicense license)
+    {
+        this.license = license;
     }
     
 }

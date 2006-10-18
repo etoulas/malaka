@@ -9,6 +9,7 @@
 
 package assign2.users;
 
+import assign2.entities.Corporate;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

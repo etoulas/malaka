@@ -1,13 +1,13 @@
 /*
- * Address.java
+ * BookingType.java
  *
- * Created on 16 October 2006, 20:53
+ * Created on 18 October 2006, 17:02
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
 
-package assign2.users;
+package assign2.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,40 +17,27 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 
 /**
- * Entity class Address
+ * Entity class BookingType
  * 
  * @author Gerard Gigliotti
  */
 @Entity
-public class Address implements Serializable
+public class BookingType implements Serializable
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length=4)
-    private Integer postCode;
-    @Column(length=20)
-    private String countryState;
-    @Column(length=20)
-    private String city;
-    @Column(length=50)
-    private String country;
-    @Column(length=5)
-    private Integer streetNumber;
-    @Column(length=100)
-    private String street;
-    @Column(length=100)
-    private String suburb;
+    @Column(length=200)
+    private String description;
     
-    
-    /** Creates a new instance of Address */
-    public Address()
+    /** Creates a new instance of BookingType */
+    public BookingType()
     {
     }
 
     /**
-     * Gets the id of this Address.
+     * Gets the id of this BookingType.
      * @return the id
      */
     public Long getId()
@@ -59,7 +46,7 @@ public class Address implements Serializable
     }
 
     /**
-     * Sets the id of this Address to the specified value.
+     * Sets the id of this BookingType to the specified value.
      * @param id the new id
      */
     public void setId(Long id)
@@ -81,8 +68,8 @@ public class Address implements Serializable
     }
 
     /**
-     * Determines whether another object is equal to this Address.  The result is 
-     * <code>true</code> if and only if the argument is not null and is a Address object that 
+     * Determines whether another object is equal to this BookingType.  The result is 
+     * <code>true</code> if and only if the argument is not null and is a BookingType object that 
      * has the same id field values as this object.
      * @param object the reference object with which to compare
      * @return <code>true</code> if this object is the same as the argument;
@@ -92,10 +79,10 @@ public class Address implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Address)) {
+        if (!(object instanceof BookingType)) {
             return false;
         }
-        Address other = (Address)object;
+        BookingType other = (BookingType)object;
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) return false;
         return true;
     }
@@ -108,7 +95,17 @@ public class Address implements Serializable
     @Override
     public String toString()
     {
-        return "assign2.users.Address[id=" + id + "]";
+        return "assign2.bookings.BookingType[id=" + id + "]";
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
     
 }
