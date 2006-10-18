@@ -28,40 +28,40 @@
                 <title>Product Homepage</title>
             </head>
             <body>
-                <h1>All Our Products By Category</h1>
-                
-                
-                <table border="1">
-                    <TR>
-                        <TH>Manufacturer</TH> 
-                        <TH>Number</TH> 
-                        <TH>Name</TH> 
-                        <TH>Description</TH>
-                        <TH>Unit Price</TH> 
-                    </TR>
-                    <xsl:for-each select="/pu:purchase/p:products/p:product">
-                        <TR>
-                            <TD>
-                                <xsl:value-of select="p:manufacturer" /> 
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="@id" /> 
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="p:name" /> 
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="p:description" /> 
-                            </TD>
-                            <TD>
-                                <xsl:value-of select="p:unitprice" />
-                                <xsl:text> </xsl:text>
-                                <xsl:value-of select="p:unitprice/@currency" />
-                            </TD>
-                            
-                        </TR>
-                    </xsl:for-each>
+                <h1>All Our Products By Manufacturer</h1>
+                <h2>Categories</h2> 
+                <xsl:for-each select= "/pu:purchase/p:products/p:product/p:category[not(.=preceding::p:category)]">
+                <xsl:sort select="(.)"/>
+                <h3><xsl:value-of select="(.)"/></h3>
+                <table border="3">
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                </tr>
+                <xsl:variable name="theCategory" select="(.)"/>
+                <xsl:for-each select="/pu:purchase/p:products/p:product">
+                <xsl:sort select="p:manufacturer"/>
+                <xsl:sort select="@id"/>
+                <xsl:if test="p:category = $theCategory">
+                 <tr>
+                    <td><xsl:value-of select="p:manufacturer"/></td>
+                    <td><xsl:value-of select="@id"/></td>
+                    <td><xsl:value-of select="p:name"/></td>
+                    <td><xsl:value-of select="p:description"/></td>
+                    <td><xsl:value-of select="p:unitprice"/></td>
+                 </tr>
+                </xsl:if>
+                </xsl:for-each>
+                <tr>
+                    <td>The number of products is</td>
+                    <td><xsl:value-of select="count(//p:product[p:category = $theCategory])"/></td>
+                </tr>
                 </table>
+                </xsl:for-each>
+           
             </body>
         </html>
     </xsl:template>
