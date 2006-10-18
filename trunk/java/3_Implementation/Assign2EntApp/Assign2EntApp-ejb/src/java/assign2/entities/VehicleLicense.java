@@ -1,13 +1,13 @@
 /*
- * DriversLicense.java
+ * VehicleLicense.java
  *
- * Created on 16 October 2006, 23:33
+ * Created on 18 October 2006, 13:03
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
 
-package assign2.users;
+package assign2.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,29 +17,26 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 
 /**
- * Entity class DriversLicense
+ * Entity class VehicleLicense
  * 
  * @author Gerard Gigliotti
  */
 @Entity
-public class DriversLicense implements Serializable
+public class VehicleLicense implements Serializable
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name="LicenseType")
-    private String type;
-    @Column()
+    @Column(length=100)
     private String description;
-    
-    /** Creates a new instance of DriversLicense */
-    public DriversLicense()
+    /** Creates a new instance of VehicleLicense */
+    public VehicleLicense()
     {
     }
 
     /**
-     * Gets the id of this DriversLicense.
+     * Gets the id of this VehicleLicense.
      * @return the id
      */
     public Long getId()
@@ -48,7 +45,7 @@ public class DriversLicense implements Serializable
     }
 
     /**
-     * Sets the id of this DriversLicense to the specified value.
+     * Sets the id of this VehicleLicense to the specified value.
      * @param id the new id
      */
     public void setId(Long id)
@@ -70,8 +67,8 @@ public class DriversLicense implements Serializable
     }
 
     /**
-     * Determines whether another object is equal to this DriversLicense.  The result is 
-     * <code>true</code> if and only if the argument is not null and is a DriversLicense object that 
+     * Determines whether another object is equal to this VehicleLicense.  The result is 
+     * <code>true</code> if and only if the argument is not null and is a VehicleLicense object that 
      * has the same id field values as this object.
      * @param object the reference object with which to compare
      * @return <code>true</code> if this object is the same as the argument;
@@ -81,10 +78,10 @@ public class DriversLicense implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DriversLicense)) {
+        if (!(object instanceof VehicleLicense)) {
             return false;
         }
-        DriversLicense other = (DriversLicense)object;
+        VehicleLicense other = (VehicleLicense)object;
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) return false;
         return true;
     }
@@ -97,17 +94,7 @@ public class DriversLicense implements Serializable
     @Override
     public String toString()
     {
-        return "assign2.users.DriversLicense[id=" + id + "]";
-    }
-
-    public String getType()
-    {
-        return type;
-    }
-
-    public void setType(String type)
-    {
-        this.type = type;
+        return "assign2.vehicles.VehicleLicense[id=" + id + "]";
     }
 
     public String getDescription()
