@@ -19,9 +19,6 @@
     
     <xsl:output method="html"/>
     
-    <!-- TODO customize transformation rules 
-    syntax recommendation http://www.w3.org/TR/xslt 
-    -->
     <xsl:template match="/">
         <html>
             <head>
@@ -29,11 +26,12 @@
             </head>
             <body>
                 <h1>All Our Products By Manufacturer</h1>
-                <h2>Categories</h2> 
+                <h2>Grouped by Categories</h2>
                 <xsl:for-each select= "/pu:purchase/p:products/p:product/p:category[not(.=preceding::p:category)]">
                 <xsl:sort select="(.)"/>
-                <h3><xsl:value-of select="(.)"/></h3>
-                <table border="3">
+                <xsl:variable name="theCategory" select="(.)"/>
+                <h3><xsl:value-of select="(.)"/><small> (containing <xsl:value-of select="count(//p:product[p:category = $theCategory])"/> products)</small></h3>
+                <table border="1" cellspacing="0" cellpadding="2">
                 <tr>
                     <th>Manufacturer</th>
                     <th>ID</th>
@@ -41,7 +39,6 @@
                     <th>Description</th>
                     <th>Unit Price</th>
                 </tr>
-                <xsl:variable name="theCategory" select="(.)"/>
                 <xsl:for-each select="/pu:purchase/p:products/p:product">
                 <xsl:sort select="p:manufacturer"/>
                 <xsl:sort select="@id"/>
@@ -55,15 +52,9 @@
                  </tr>
                 </xsl:if>
                 </xsl:for-each>
-                <tr>
-                    <td>The number of products is</td>
-                    <td><xsl:value-of select="count(//p:product[p:category = $theCategory])"/></td>
-                </tr>
-                </table>
+               </table>
                 </xsl:for-each>
-           
             </body>
         </html>
     </xsl:template>
-    
 </xsl:stylesheet>
