@@ -139,8 +139,8 @@
         <c:customer id="c03">
             <c:name>
                 <c:title>Mr</c:title>
-                <c:firstname>Thorsten</c:firstname>
-                <c:lastname>Kack</c:lastname>
+                <c:firstname>Daniel</c:firstname>
+                <c:lastname>Kübelböck</c:lastname>
             </c:name>
             <c:membership>bronze</c:membership>
             <c:address>
@@ -219,21 +219,21 @@
         
         <c:customer  id="c05">       
             <c:name>
-                <c:title>Mrs</c:title>
-                <c:firstname>Dora</c:firstname>
-                <c:firstname>Maria</c:firstname>
-                <c:lastname>Hernandez</c:lastname>
+                <c:title>Herr</c:title>
+                <c:firstname>Hans</c:firstname>
+                <c:firstname>Jürgen</c:firstname>
+                <c:lastname>Döhler</c:lastname>
             </c:name>
             <c:membership>gold</c:membership>
             <c:address>
                 <c:number>44</c:number>
                 <c:street>Hauptstraße</c:street>
-                <c:suburb></c:suburb>
+                <c:suburb>Nürnberg</c:suburb>
                 <c:postcode>90402</c:postcode>
-                <c:state>Nuernberg</c:state>
+                <c:state>Bayern</c:state>
                 <c:country>Germany</c:country>
             </c:address>
-            <c:phone type="mobile">01771234567</c:phone> 
+            <c:phone type="mobile">01771234567</c:phone>
             <c:email type="home">dora@herni.de</c:email>
             <c:email type="work">hernandez@work.de</c:email>
             <c:orders>
