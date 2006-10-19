@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import assign2.entities.to.*;
 
 /**
  * Entity class Driver
@@ -42,5 +43,11 @@ public class Driver extends Users implements Serializable
     public void setLicense(DriversLicense license)
     {
         this.license = license;
+    }
+    
+    public UsersDetailedTO getDetailedData()
+    {
+        UsersDetailedTO to = new DriverDetailedTO(username,password,firstName,lastName,phoneNumber,address.getData(),license.getData());
+        return to;
     }
 }

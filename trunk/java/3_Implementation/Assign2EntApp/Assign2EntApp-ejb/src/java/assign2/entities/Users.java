@@ -26,21 +26,21 @@ import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
  * @author Gerard Gigliotti
  */
 @Entity
-public class Users implements Serializable
+public abstract class Users implements Serializable
 {
     
     @Id
-    private String username;
+    protected String username;
     @Column(length=60)
-    private String password;
+    protected String password;
     @Column(length=60)
-    private String firstName;
+    protected String firstName;
     @Column(length=60)
-    private String lastName;
+    protected String lastName;
     @Column(length=10)
-    private String phoneNumber;
+    protected String phoneNumber;
     @OneToOne()
-    private Address address;
+    protected Address address;
     
     
     /** Creates a new instance of Users */
@@ -167,8 +167,5 @@ public class Users implements Serializable
         return to;
     }
     
-    public UsersDetailedTO getDetailedData()
-    {
-        return null;
-    }
+    public abstract UsersDetailedTO getDetailedData();
 }
