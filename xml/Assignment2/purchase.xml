@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="invoice.xsl"?>
+
 <!--
             Document   : purchase.xml
-            Created on : 14. October 2006, 19:01
-            Authors    : Thorsten Keck, 5742722
+    		Created on : 12. Oktober 2006
+		Last modified: 19. Oktober 2006
+	      Authors    : Thorsten Keck, 5742722
                          Fernando Mendoza, 5746078
                          Efthimios Toulas, 5744148
+    Description:
+        Updated XML file from Assignment 1 that contains online purchase database.
 
 -->
 

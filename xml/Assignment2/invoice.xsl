@@ -2,13 +2,14 @@
 
 <!--
     Document   : invoice.xsl
-    Created on : 14. Oktober 2006, 22:54
-    Author     : Thorsten
+    Created on : 12. Oktober 2006
+    Last modified: 19. Oktober 2006
+    Authors    : Thorsten Keck, 5742722
+                 Fernando Mendoza, 5746078
+                 Efthimios Toulas, 5744148
     Description:
-        Purpose of transformation follows.
+        Style sheet that can be used to generate tax invoices for all purchase orders.
         
-        
-        ToDo: Restrict Description String to 25 characters !!!
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
