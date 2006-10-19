@@ -1,9 +1,4 @@
-Invoice - Template 'date':
+Invoice.xsl:
 
-- get current date and set it as invoice date
-- set due date to invoice date + 2 weeks
+Remove fucking chunk at the end of the document !!!
 
-
-Invoice - Table:
-
-- Restrict no of characters in description to 25

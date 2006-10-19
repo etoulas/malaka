@@ -204,7 +204,7 @@
                 <tr>
                     <td><xsl:value-of select="$id"/></td>
                     <td><xsl:value-of select="/pu:purchase/p:products/p:product[@id = $id]/p:name"/></td>
-                    <td><xsl:value-of select="/pu:purchase/p:products/p:product[@id = $id]/p:description"/></td>
+                    <td><xsl:value-of select="substring(/pu:purchase/p:products/p:product[@id = $id]/p:description,0,25)"/></td>
                     <td><xsl:value-of select="$quantity"/></td>
                     <td><xsl:value-of select="format-number(/pu:purchase/p:products/p:product[@id = $id]/p:unitprice, '##.##')"/></td>
                     <td><xsl:value-of select="format-number($quantity * $price, '##.##')"/></td>
