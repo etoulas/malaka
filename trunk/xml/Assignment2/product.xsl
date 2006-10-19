@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
-            Document   : product.xsl
-            Created on : 14. October 2006, 22:55
-            Authors    : Thorsten Keck, 5742722
-                         Fernando Mendoza, 5746078
-                         Efthimios Toulas, 5744148
-
+    Document   : product.xsl
+    Created on : 12. Oktober 2006
+    Last modified: 19. Oktober 2006
+    Authors    : Thorsten Keck, 5742722
+                 Fernando Mendoza, 5746078
+                 Efthimios Toulas, 5744148
+    Description:
+        Style sheet that can be used to generate the home page for products.
 -->
 
 

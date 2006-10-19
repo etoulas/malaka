@@ -2,11 +2,14 @@
 
 
 <!--
-            Document   : product.xsd
-            Created on : 12. September 2006, 17:31
-            Authors    : Thorsten Keck, 5742722
-                         Fernando Mendoza, 5746078
-                         Efthimios Toulas, 5744148
+    Document   : product.xsl
+    Created on : 12. Oktober 2006
+    Last modified: 19. Oktober 2006
+    Authors    : Thorsten Keck, 5742722
+                 Fernando Mendoza, 5746078
+                 Efthimios Toulas, 5744148
+    Description:
+        Style sheet that can be used to generate the home page for products.
 
 -->
 
