@@ -9,7 +9,8 @@
 
 package assign2.entities;
 
-import assign2.entities.Address;
+import assign2.entities.to.*;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 
 /**
  * Entity class Users
@@ -56,7 +58,7 @@ public class Users implements Serializable
      * Gets the username of this Users.
      * @return the username
      */
-    public String getusername()
+    public String getUsername()
     {
         return this.username;
     }
@@ -65,7 +67,7 @@ public class Users implements Serializable
      * Sets the username of this Users to the specified value.
      * @param username the new username
      */
-    public void setusername(String username)
+    public void setUsername(String username)
     {
         this.username = username;
     }
@@ -159,4 +161,14 @@ public class Users implements Serializable
         this.address = address;
     }
     
+    public UsersTO getData()    
+    {
+        UsersTO to = new UsersTO(getUsername(),getPassword(),getFirstName() + " " + getLastName());
+        return to;
+    }
+    
+    public UsersDetailedTO getDetailedData()
+    {
+        return null;
+    }
 }
