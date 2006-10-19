@@ -25,12 +25,11 @@
                 <title>Product Homepage</title>
             </head>
             <body>
-                <h1>All Our Products By Manufacturer</h1>
-                <h2>Grouped by Categories</h2>
+                <h1>All Our Products By Category</h1>
                 <xsl:for-each select= "/pu:purchase/p:products/p:product/p:category[not(.=preceding::p:category)]">
                 <xsl:sort select="(.)"/>
                 <xsl:variable name="theCategory" select="(.)"/>
-                <h3><xsl:value-of select="(.)"/><small> (containing <xsl:value-of select="count(//p:product[p:category = $theCategory])"/> products)</small></h3>
+                <h3><xsl:value-of select="(.)"/><small> (<xsl:value-of select="count(//p:product[p:category = $theCategory])"/> products)</small></h3>
                 <table border="1" cellspacing="0" cellpadding="2">
                 <tr>
                     <th>Manufacturer</th>
