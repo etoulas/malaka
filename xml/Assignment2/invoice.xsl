@@ -16,7 +16,8 @@
     xmlns:c="http://swin.edu.au/theffe/customer"
     xmlns:p="http://swin.edu.au/theffe/product"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://swin.edu.au/theffe/purchase purchase.xsd">
+    xsi:schemaLocation="http://swin.edu.au/theffe/purchase purchase.xsd"
+    xmlns:date="java.util.Date">
     
     <xsl:output method="html"/>
     
@@ -173,9 +174,16 @@
     <xsl:template name="date">
         <xsl:param name="orderId" />
         <!--    <xsl:variable name="date" select="19/10/2006"/> -->
-        <xsl:text>Invoice date: </xsl:text><xsl:value-of select="c:date"/><br/>
+        <xsl:text>Invoice date: </xsl:text>
+        <xsl:value-of select="date:getDate()"/><xsl:text>/</xsl:text>
+        <xsl:value-of select="date:getMonth() +1"/><xsl:text>/</xsl:text>
+        <xsl:value-of select="date:getYear() + 1900"/><br/>
         <xsl:text>Invoice number: i</xsl:text><xsl:value-of select="$orderId"/><br/>
-        <xsl:text>Payment due: </xsl:text><xsl:value-of select="c:date"/><br/>
+        <xsl:text>Payment due: </xsl:text>
+        <xsl:variable name="chunk" select="date:setDate(date:getDate()+14)" />
+        <xsl:value-of select="date:getDate()"/><xsl:text>/</xsl:text>
+        <xsl:value-of select="date:getMonth() + 1"/><xsl:text>/</xsl:text>
+        <xsl:value-of select="date:getYear() + 1900"/><br/>
     </xsl:template>    
     
     
