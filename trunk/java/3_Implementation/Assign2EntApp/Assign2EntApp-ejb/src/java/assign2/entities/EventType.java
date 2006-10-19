@@ -31,8 +31,7 @@ public class EventType implements Serializable
     private Long id;
     @Column
     private String description;
-    //@ManyToMany
-    //private VehicleLicense vehicleLicense;
+
     
     /** Creates a new instance of EventType */
     public EventType()
