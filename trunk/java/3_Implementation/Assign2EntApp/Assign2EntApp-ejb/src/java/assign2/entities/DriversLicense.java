@@ -121,9 +121,9 @@ public class DriversLicense implements Serializable
         this.description = description;
     }
     
-    public DrivesLicenseTO getData()
+    public DriversLicenseTO getData()
     {
-        DrivesLicenseTO to = new DriversLicenseTO();
+        DriversLicenseTO to = new DriversLicenseTO();
         return to;
     }
     
