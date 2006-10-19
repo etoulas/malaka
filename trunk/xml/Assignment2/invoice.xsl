@@ -15,8 +15,6 @@
     xmlns:pu="http://swin.edu.au/theffe/purchase"
     xmlns:c="http://swin.edu.au/theffe/customer"
     xmlns:p="http://swin.edu.au/theffe/product"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://swin.edu.au/theffe/purchase purchase.xsd"
     xmlns:date="java.util.Date">
     
     <xsl:output method="html"/>
@@ -24,39 +22,17 @@
     <!-- TODO customize transformation rules 
     syntax recommendation http://www.w3.org/TR/xslt 
     -->
-    <xsl:template match="/pu:purchase/c:customers">
+    <xsl:template match="/">
         
         <html>
             <head>
                 <title>INVOICES</title>
-                
-                <!--       
-                <script type="text/javascript" src="scripts.js">
-                <xsl:text>  
-                function produceDate() {
-                var now = new Date(); // here i get the actual date
-                var day = now.getDate();
-                var month = now.getMonth();
-                var year = now.getFullYear();
-                var iDate = "" + day + "/" + month + "/" + year;
-                return iDate;
-                }
-                
-                function addDue(iDate) {
-                
-                return dueDate;
-                }
-                
-                </xsl:text>
-                </script>
-                -->   
-                
             </head>
             <body>
                 
                 <h1>INVOICES</h1>
                 
-                <xsl:for-each select="c:customer">
+                <xsl:for-each select="pu:purchase/c:customers/c:customer">
                     
                     <hr />
                     

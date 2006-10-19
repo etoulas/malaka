@@ -1,4 +1,0 @@
-Invoice.xsl:
-
-Remove fucking chunk at the end of the document !!!
-
