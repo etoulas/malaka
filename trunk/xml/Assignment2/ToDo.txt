@@ -1,0 +1,9 @@
+Invoice - Template 'date':
+
+- get current date and set it as invoice date
+- set due date to invoice date + 2 weeks
+
+
+Invoice - Table:
+
+- Restrict no of characters in description to 25

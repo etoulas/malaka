@@ -75,17 +75,24 @@
     </xsl:template>
     
     
-    
-    
     <xsl:template name="customer">
         <xsl:param name="custId" />
-        <xsl:for-each select=".[@id = $custId]/c:orders/c:order">
+        
+        <xsl:variable name="discount">
+            <xsl:call-template name="calcDiscount">
+                <xsl:with-param name="custId" select="$custId"/>
+            </xsl:call-template>
+        </xsl:variable>
+        
+        <xsl:variable name="discountFac" select="1 - $discount"/>
+        
+        <xsl:for-each select="self::node()[@id = $custId]/c:orders/c:order">
             
             <xsl:variable name="orderId" select="@id" />
             
             <h3><xsl:text>Order ID: </xsl:text><xsl:value-of select="$orderId"/></h3>
             
-            <xsl:variable name="pAmount" select="count(.[@id = $orderId]/c:orderedproducts/c:product)"/> 
+            <xsl:variable name="pAmount" select="count(self::node()[@id = $orderId]/c:orderedproducts/c:product)"/> 
             
             <xsl:variable name="totalIncl">
                 <xsl:call-template name="total">
@@ -94,13 +101,6 @@
                 </xsl:call-template>
             </xsl:variable>
             
-            <xsl:variable name="discount">
-                <xsl:call-template name="calcDiscount">
-                    <xsl:with-param name="custId" select="$custId"/>
-                </xsl:call-template>
-            </xsl:variable>
-            
-            <xsl:variable name="discountFac" select="1 - $discount"/>
             
             
             <table border="1">
@@ -122,6 +122,9 @@
                     <td colspan="3"><br/><br/><br/></td>
                 </tr>
                 <tr>
+                    
+                    <xsl:variable name="discountTotal" select="format-number($totalIncl * $discountFac, '##.##')" />
+                    
                     <td colspan="3">
                         <table border="0">
                             <tr>
@@ -130,15 +133,15 @@
                             </tr>
                             <tr>
                                 <td><xsl:text>- Membership Discount (</xsl:text><xsl:value-of select="$discount * 100" /><xsl:text>%):</xsl:text></td>
-                                <td><xsl:value-of select="format-number($totalIncl * $discountFac, '##.##')"/></td>
+                                <td><xsl:value-of select="$discountTotal"/></td>
                             </tr>
                             <tr>
                                 <td><xsl:text>Total (GST exclusive):</xsl:text></td>
-                                <td><xsl:value-of select="format-number($totalIncl div 11 * 10, '##.##')"/></td>
+                                <td><xsl:value-of select="format-number($discountTotal div 11 * 10, '##.##')"/></td>
                             </tr>
                             <tr>
                                 <td><xsl:text>Total GST amount:</xsl:text></td>
-                                <td><xsl:value-of select="format-number($totalIncl div 11, '##.##')"/></td>
+                                <td><xsl:value-of select="format-number($discountTotal div 11, '##.##')"/></td>
                             </tr>
                             
                         </table>
@@ -147,10 +150,6 @@
                 </tr>    
                 
             </table>              
-            
-            
-            
-            
             
             
         </xsl:for-each>
@@ -219,10 +218,12 @@
                         <xsl:with-param name="pAmount" select="$pAmount - 1" />
                     </xsl:call-template>
                 </xsl:variable>
-                <xsl:value-of select="$sum + /pu:purchase/p:products/p:product[position() = $pAmount]/p:unitprice * c:orderedproducts/c:product[position() = $pAmount]/c:quantity"/> 
+                <xsl:variable name="prodId" select="c:orderedproducts/c:product[position() = $pAmount]/c:id" />
+                <xsl:value-of select="$sum + /pu:purchase/p:products/p:product[@id = $prodId]/p:unitprice * c:orderedproducts/c:product[position() = $pAmount]/c:quantity"/> 
             </xsl:when>
             <xsl:when test="$pAmount = 1">
-                <xsl:value-of select="/pu:purchase/p:products/p:product[position() = $pAmount]/p:unitprice * c:orderedproducts/c:product[position() = $pAmount]/c:quantity"/>
+                <xsl:variable name="prodId" select="c:orderedproducts/c:product[position() = $pAmount]/c:id" />
+                <xsl:value-of select="/pu:purchase/p:products/p:product[@id = $prodId]/p:unitprice * c:orderedproducts/c:product[position() = $pAmount]/c:quantity"/>
             </xsl:when>
             <xsl:otherwise>0</xsl:otherwise>
         </xsl:choose> 
@@ -230,7 +231,7 @@
     
     <xsl:template name="calcDiscount">
         <xsl:param name="custId" />
-        <xsl:variable name="membership" select = ".[@id = $custId]/c:membership" />
+        <xsl:variable name="membership" select = "self::node()[@id = $custId]/c:membership" />
         <xsl:choose>
             <xsl:when test="$membership = 'platinum'">
                 0.1

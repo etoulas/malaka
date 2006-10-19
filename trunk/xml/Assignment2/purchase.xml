@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="product.xsl"?>
+<?xml-stylesheet type="text/xsl" href="invoice.xsl"?>
 <!--
             Document   : purchase.xml
             Created on : 14. October 2006, 19:01
@@ -379,11 +379,11 @@
         
         
         <p:product id="p05">
-            <p:name>Gummis</p:name>
-            <p:description>Feucht</p:description>
-            <p:unitprice currency="AUD">10.12</p:unitprice>
-            <p:manufacturer>Beate Uhse</p:manufacturer>
-            <p:category>Sextoys</p:category>
+            <p:name>USB Flash Memory V1.5</p:name>
+            <p:description>1024 MB</p:description>
+            <p:unitprice currency="AUD">45.00</p:unitprice>
+            <p:manufacturer>Grease Inc.</p:manufacturer>
+            <p:category>Memory</p:category>
             <p:locations>
                 <p:location>
                     <p:code>l01</p:code>
@@ -401,11 +401,11 @@
         </p:product> 
         
         <p:product id="p06">
-            <p:name>Vaseline</p:name>
-            <p:description>Slippery</p:description>
-            <p:unitprice currency="AUD">12.99</p:unitprice>
+            <p:name>USB Flash Memory V1.0</p:name>
+            <p:description>512 MB</p:description>
+            <p:unitprice currency="AUD">29.90</p:unitprice>
             <p:manufacturer>Grease Inc.</p:manufacturer>
-            <p:category>Sextoys</p:category>
+            <p:category>Memory</p:category>
             <p:locations>
                 <p:location>
                     <p:code>222</p:code>
@@ -493,7 +493,30 @@
                     </p:address>
                 </p:location>
             </p:locations>
-        </p:product>         
+        </p:product>
+
+        <p:product id="p11">
+            <p:name>HDD Platinum</p:name>
+            <p:description>120 GB</p:description>
+            <p:unitprice currency="AUD">200.00</p:unitprice>
+            <p:manufacturer>Hitachi</p:manufacturer>
+            <p:category>Memory</p:category>
+            <p:locations>
+                <p:location>
+                    <p:code>l01</p:code>
+                    <p:quantity>100</p:quantity>  
+                    <p:address>
+                        <p:number>23</p:number>
+                        <p:street>Walfare St</p:street>
+                        <p:suburb>Hawthorn</p:suburb>
+                        <p:postcode>3838</p:postcode>
+                        <p:state>VIC</p:state>
+                        <p:country>Ozzland</p:country>
+                    </p:address>
+                </p:location>
+            </p:locations>
+        </p:product> 
+       
         
     </p:products>
     
