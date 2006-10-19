@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import assign2.entities.to.*;
 
 /**
  * Entity class DriversLicense
@@ -118,6 +119,12 @@ public class DriversLicense implements Serializable
     public void setDescription(String description)
     {
         this.description = description;
+    }
+    
+    public DrivesLicenseTO getData()
+    {
+        DrivesLicenseTO to = new DriversLicenseTO();
+        return to;
     }
     
 }

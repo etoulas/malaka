@@ -15,7 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
-
+import assign2.entities.to.*;
 /**
  * Entity class Address
  * 
@@ -111,4 +111,8 @@ public class Address implements Serializable
         return "assign2.users.Address[id=" + id + "]";
     }
     
+    public AddressTO getData()
+    {
+        return null;
+    }
 }
