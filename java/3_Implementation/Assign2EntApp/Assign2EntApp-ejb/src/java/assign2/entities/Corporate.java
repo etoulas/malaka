@@ -9,7 +9,7 @@
 
 package assign2.entities;
 
-import assign2.users.*;
+import assign2.entities.to.UsersDetailedTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,5 +45,9 @@ public class Corporate extends Users implements Serializable
     public void setCompanyName(String companyName)
     {
         this.companyName = companyName;
+    }
+
+    public UsersDetailedTO getDetailedData() {
+        return null;
     }
 }
