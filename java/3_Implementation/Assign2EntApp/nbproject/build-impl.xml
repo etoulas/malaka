@@ -104,6 +104,12 @@ is divided into following sections:
         <ant target="dist-ear" inheritall="false" antfile="${project.Assign2EntApp-ejb}/build.xml">
             <property name="dist.ear.dir" location="${build.dir}"/>
         </ant>
+        <ant target="dist-ear" inheritall="false" antfile="${project.Assign2ManagerWebApp}/build.xml">
+            <property name="dist.ear.dir" location="${build.dir}"/>
+        </ant>
+        <ant target="dist-ear" inheritall="false" antfile="${project.Assign2UserWebApp}/build.xml">
+            <property name="dist.ear.dir" location="${build.dir}"/>
+        </ant>
     </target>
     <target name="pre-pre-compile" depends="init,deps-jar,deps-j2ee-archive">
         <mkdir dir="${build.classes.dir}"/>
@@ -116,6 +122,8 @@ is divided into following sections:
         <copy todir="${build.dir}/META-INF">
             <fileset dir="${meta.inf}"/>
         </copy>
+        <copy file="${reference.Assign2ManagerWebApp.dist-ear}" todir="${build.dir}//"/>
+        <copy file="${reference.Assign2UserWebApp.dist-ear}" todir="${build.dir}//"/>
         <copy file="${reference.Assign2EntApp-ejb.dist-ear}" todir="${build.dir}//"/>
     </target>
     <target name="post-compile">
@@ -172,6 +180,8 @@ is divided into following sections:
     <target name="-run-deploy-am" unless="no.deps">
         <!-- Task to deploy to the Access Manager runtime. -->
         <ant target="-run-deploy-am" inheritall="false" antfile="${project.Assign2EntApp-ejb}/build.xml"/>
+        <ant target="-run-deploy-am" inheritall="false" antfile="${project.Assign2ManagerWebApp}/build.xml"/>
+        <ant target="-run-deploy-am" inheritall="false" antfile="${project.Assign2UserWebApp}/build.xml"/>
     </target>
     <target name="run-deploy" depends="dist,pre-run-deploy,-pre-nbmodule-run-deploy,-run-deploy-nb,-init-deploy-ant,-deploy-ant,-run-deploy-am,-post-nbmodule-run-deploy,post-run-deploy"/>
     <target name="-run-deploy-nb" if="netbeans.home">
@@ -325,6 +335,12 @@ is divided into following sections:
     -->
     <target name="deps-clean" depends="init" unless="no.deps">
         <ant target="clean-ear" inheritall="false" antfile="${project.Assign2EntApp-ejb}/build.xml">
+            <property name="dist.ear.dir" location="${build.dir}"/>
+        </ant>
+        <ant target="clean-ear" inheritall="false" antfile="${project.Assign2ManagerWebApp}/build.xml">
+            <property name="dist.ear.dir" location="${build.dir}"/>
+        </ant>
+        <ant target="clean-ear" inheritall="false" antfile="${project.Assign2UserWebApp}/build.xml">
             <property name="dist.ear.dir" location="${build.dir}"/>
         </ant>
     </target>

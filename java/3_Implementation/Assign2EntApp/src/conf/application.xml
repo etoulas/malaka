@@ -4,4 +4,16 @@
   <module>
     <ejb>Assign2EntApp-ejb.jar</ejb>
   </module>
+  <module>
+    <web>
+      <web-uri>Assign2UserWebApp.war</web-uri>
+      <context-root>/Assign2UserWebApp</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>Assign2ManagerWebApp.war</web-uri>
+      <context-root>/Assign2ManagerWebApp</context-root>
+    </web>
+  </module>
 </application>
