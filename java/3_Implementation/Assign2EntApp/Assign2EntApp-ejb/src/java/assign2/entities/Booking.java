@@ -9,7 +9,7 @@
 
 package assign2.entities;
 
-import com.sun.xml.rpc.processor.generator.nodes.JavaXmlTypeMappingNode;
+import assign2.entities.to.BookingDetailsTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 import java.util.Date;
 import javax.persistence.Temporal;
-import assign2.users.*;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
 /**
@@ -39,6 +38,8 @@ public class Booking implements Serializable
     private String customerName;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
+    @Column
+    private Boolean processed;
     @OneToOne()
     private Address pickupAddress;
     @OneToOne()
@@ -61,6 +62,11 @@ public class Booking implements Serializable
     {
     }
 
+    public Booking(BookingDetailsTO bookingTO) {
+        this.contactName = bookingTO.getContactName();
+        this.customerName = bookingTO.getCustomerName();
+        this.pickupDate = bookingTO.getPickupDate();
+    }
     /**
      * Gets the id of this Booking.
      * @return the id
