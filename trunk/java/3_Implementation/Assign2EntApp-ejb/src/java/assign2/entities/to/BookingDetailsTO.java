@@ -19,6 +19,7 @@ public class BookingDetailsTO {
     private String contactName;
     private String customerName;
     private Date pickupDate;
+    private AddressTO pickupAddress;
     
     /** Creates a new instance of BookingDetailsTO */
     public BookingDetailsTO() {
@@ -47,6 +48,14 @@ public class BookingDetailsTO {
 
     public void setPickupDate(Date pickupDate) {
         this.pickupDate = pickupDate;
+    }
+
+    public AddressTO getPickupAddress() {
+        return pickupAddress;
+    }
+
+    public void setPickupAddress(AddressTO pickupAddress) {
+        this.pickupAddress = pickupAddress;
     }
     
 }
