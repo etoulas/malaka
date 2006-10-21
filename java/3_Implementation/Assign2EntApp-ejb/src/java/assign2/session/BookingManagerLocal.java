@@ -10,6 +10,6 @@ import javax.ejb.Local;
  */
 @Local
 public interface BookingManagerLocal {
-    void createBooking(BookingDetailsTO bookingTO);
+    void createNewBooking(BookingDetailsTO bookingTO);
     
 }

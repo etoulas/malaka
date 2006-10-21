@@ -30,7 +30,7 @@ public class BookingManager implements assign2.session.BookingManagerRemote, ass
         
     }
     
-    public void createBooking(BookingDetailsTO bookingTO) {
+    public void createNewBooking(BookingDetailsTO bookingTO) {
         Booking booking = new Booking(bookingTO);
         em.persist(booking);
     }
