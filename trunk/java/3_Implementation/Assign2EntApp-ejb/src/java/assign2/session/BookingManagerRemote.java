@@ -10,6 +10,6 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface BookingManagerRemote {
-    void createBooking(BookingDetailsTO bookingTO);
+    void createNewBooking(BookingDetailsTO bookingTO);
     
 }
