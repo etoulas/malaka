@@ -1,26 +1,35 @@
-<?xml version='1.0' encoding='UTF-8'?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- =========== FULL CONFIGURATION FILE ================================== -->
-
-<faces-config version="1.2" 
-              xmlns="http://java.sun.com/xml/ns/javaee" 
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
     <managed-bean>
-        <managed-bean-name>CreateBookingManagedBean</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.CreateBookingManagedBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-name>BookingBean</managed-bean-name>
+        <managed-bean-class>assign2.webapp.mbean.BookingBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-    <navigation-rule> 
-        <from-view-id>/createBooking.jsp</from-view-id> 
-        <navigation-case> 
-            <from-outcome>success</from-outcome> 
-            <to-view-id>/createBooking.jsp</to-view-id> 
-        </navigation-case> 
-        <navigation-case> 
-            <from-outcome>fail</from-outcome> 
-            <to-view-id>/error.jsp</to-view-id> 
-        </navigation-case>  
+    <navigation-rule>
+        <from-view-id>/bookingForm.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>confirmCasual</from-outcome>
+            <to-view-id>/paymentBooking.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>confirm</from-outcome>
+            <to-view-id>/confirmBooking.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>fail</from-outcome>
+            <to-view-id>/error.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
-    
+    <navigation-rule>
+        <from-view-id>/confirmBooking.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>confirmBack</from-outcome>
+            <to-view-id>/bookingForm.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/bookingSuccess.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
