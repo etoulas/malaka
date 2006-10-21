@@ -17,15 +17,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Temporal;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 /**
  * Entity class Booking
  * 
  * @author Gerard Gigliotti
  */
 @Entity
+
+@Table(name="BOOKING")
 public class Booking implements Serializable
 {
 
@@ -40,7 +44,7 @@ public class Booking implements Serializable
     private Date pickupDate;
     @Column
     private Boolean processed;
-    @OneToOne()
+    @OneToOne(cascade=CascadeType.PERSIST)
     private Address pickupAddress;
     @OneToOne()
     private Address dropoffAddress;
@@ -63,9 +67,11 @@ public class Booking implements Serializable
     }
 
     public Booking(BookingDetailsTO bookingTO) {
-        this.contactName = bookingTO.getContactName();
-        this.customerName = bookingTO.getCustomerName();
-        this.pickupDate = bookingTO.getPickupDate();
+        this.setContactName(bookingTO.getContactName());
+        this.setCustomerName(bookingTO.getCustomerName());
+        this.setPickupDate(bookingTO.getPickupDate());
+        this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
+        this.setProcessed(false);
     }
     /**
      * Gets the id of this Booking.
@@ -237,6 +243,14 @@ public class Booking implements Serializable
     public void setBookingType(BookingType bookingType)
     {
         this.bookingType = bookingType;
+    }
+
+    public Boolean getProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(Boolean processed) {
+        this.processed = processed;
     }
     
 }

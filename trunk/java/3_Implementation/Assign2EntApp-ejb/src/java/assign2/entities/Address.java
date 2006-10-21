@@ -37,7 +37,7 @@ public class Address implements Serializable
     @Column(length=50)
     private String country;
     @Column(length=5)
-    private Integer streetNumber;
+    private String streetNumber;
     @Column(length=100)
     private String street;
     @Column(length=100)
@@ -47,6 +47,16 @@ public class Address implements Serializable
     /** Creates a new instance of Address */
     public Address()
     {
+    }
+    
+    public Address(AddressTO to) {
+        this.setPostCode(to.getPostCode());
+        this.setCity(to.getCity());
+        this.setCountry(to.getCountry());
+        this.setCountryState(to.getCountryState());
+        this.setStreet(to.getStreet());
+        this.setStreetNumber(to.getStreetNumber());
+        this.setSuburb(to.getSuburb());
     }
 
     /**
@@ -114,5 +124,61 @@ public class Address implements Serializable
     public AddressTO getData()
     {
         return null;
+    }
+
+    public Integer getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(Integer postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCountryState() {
+        return countryState;
+    }
+
+    public void setCountryState(String countryState) {
+        this.countryState = countryState;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
     }
 }
