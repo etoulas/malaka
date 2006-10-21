@@ -21,18 +21,7 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
 
     <h1>JSP Page</h1>
     <br/>
-    <a href="./faces/welcomeJSF.jsp">JavaServer Faces Welcome Page</a>
-    
-    <%--
-    This example uses JSTL, uncomment the taglib directive above.
-    To test, display the page like this: index.jsp?sayHello=true&name=Murphy
-    --%>
-    <%--
-    <c:if test="${param.sayHello}">
-        <!-- Let's welcome the user ${param.name} -->
-        Hello ${param.name}!
-    </c:if>
-    --%>
+    <a href="./faces/bookingForm.jsp">Create a booking</a>
     
     </body>
 </html>
