@@ -9,22 +9,30 @@
 
 package assign2.entities;
 
+import assign2.entities.to.VehicleTypeTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity class VehicleType
- * 
+ *
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(
+    name="findAllVehicleTypes",
+            query="SELECT v FROM VehicleType v"
+            )
+})
 public class VehicleType implements Serializable
 {
-
+    
     @Id
     private String code;
     @Column()
@@ -36,31 +44,31 @@ public class VehicleType implements Serializable
     public VehicleType()
     {
     }
-
+    
     /**
      * Gets the code of this VehicleType.
-     * 
+     *
      * @return the code
      */
     public String getId()
     {
         return this.code;
     }
-
+    
     /**
      * Sets the code of this VehicleType to the specified value.
-     * 
+     *
      * @param code the new code
      */
     public void setId(String id)
     {
         this.code = id;
     }
-
+    
     /**
-     * Returns a hash code value for the object.  This implementation computes 
+     * Returns a hash code value for the object.  This implementation computes
      * a hash code value based on the code fields in this object.
-     * 
+     *
      * @return a hash code value for this object.
      */
     @Override
@@ -70,12 +78,12 @@ public class VehicleType implements Serializable
         hash += (this.code != null ? this.code.hashCode() : 0);
         return hash;
     }
-
+    
     /**
-     * Determines whether another object is equal to this VehicleType.  The result is 
-     * <code>true</code> if and only if the argument is not null and is a VehicleType object that 
+     * Determines whether another object is equal to this VehicleType.  The result is
+     * <code>true</code> if and only if the argument is not null and is a VehicleType object that
      * has the same code field values as this object.
-     * 
+     *
      * @param object the reference object with which to compare
      * @return <code>true</code> if this object is the same as the argument;
      * <code>false</code> otherwise.
@@ -84,18 +92,19 @@ public class VehicleType implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the code fields are not set
-        if (!(object instanceof VehicleType)) {
+        if (!(object instanceof VehicleType))
+        {
             return false;
         }
         VehicleType other = (VehicleType)object;
         if (this.code != other.code && (this.code == null || !this.code.equals(other.code))) return false;
         return true;
     }
-
+    
     /**
-     * Returns a string representation of the object.  This implementation constructs 
+     * Returns a string representation of the object.  This implementation constructs
      * that representation based on the code fields.
-     * 
+     *
      * @return a string representation of the object.
      */
     @Override
@@ -103,25 +112,31 @@ public class VehicleType implements Serializable
     {
         return "assign2.vehicles.VehicleType[id=" + code + "]";
     }
-
+    
     public String getDescription()
     {
         return description;
     }
-
+    
     public void setDescription(String description)
     {
         this.description = description;
     }
-
+    
     public Integer getSeats()
     {
         return seats;
     }
-
+    
     public void setSeats(Integer seats)
     {
         this.seats = seats;
+    }
+    
+    public VehicleTypeTO getData()
+    {
+        VehicleTypeTO to = new VehicleTypeTO(code,description,seats);
+        return to;
     }
     
 }

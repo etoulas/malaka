@@ -9,6 +9,7 @@
 
 package assign2.entities;
 
+import assign2.entities.to.VehicleTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,17 +18,26 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 /**
  * Entity class Vehicle
- * 
+ *
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(
+    name="findAllVehicles",
+            query="SELECT v FROM Vehicle v"
+            )
+})
 public class Vehicle implements Serializable
 {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -47,7 +57,15 @@ public class Vehicle implements Serializable
     public Vehicle()
     {
     }
-
+    
+    public Vehicle(String colour, String name, VehicleType type, VehicleLicense license,Integer year)
+    {
+        this.colour = colour;
+        this.name = name;
+        this.type = type;
+        this.license = license;
+        this.year = year;
+    }
     /**
      * Gets the id of this Vehicle.
      * @return the id
@@ -56,7 +74,7 @@ public class Vehicle implements Serializable
     {
         return this.id;
     }
-
+    
     /**
      * Sets the id of this Vehicle to the specified value.
      * @param id the new id
@@ -65,9 +83,9 @@ public class Vehicle implements Serializable
     {
         this.id = id;
     }
-
+    
     /**
-     * Returns a hash code value for the object.  This implementation computes 
+     * Returns a hash code value for the object.  This implementation computes
      * a hash code value based on the id fields in this object.
      * @return a hash code value for this object.
      */
@@ -78,10 +96,10 @@ public class Vehicle implements Serializable
         hash += (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
-
+    
     /**
-     * Determines whether another object is equal to this Vehicle.  The result is 
-     * <code>true</code> if and only if the argument is not null and is a Vehicle object that 
+     * Determines whether another object is equal to this Vehicle.  The result is
+     * <code>true</code> if and only if the argument is not null and is a Vehicle object that
      * has the same id field values as this object.
      * @param object the reference object with which to compare
      * @return <code>true</code> if this object is the same as the argument;
@@ -91,16 +109,17 @@ public class Vehicle implements Serializable
     public boolean equals(Object object)
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vehicle)) {
+        if (!(object instanceof Vehicle))
+        {
             return false;
         }
         Vehicle other = (Vehicle)object;
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) return false;
         return true;
     }
-
+    
     /**
-     * Returns a string representation of the object.  This implementation constructs 
+     * Returns a string representation of the object.  This implementation constructs
      * that representation based on the id fields.
      * @return a string representation of the object.
      */
@@ -109,55 +128,65 @@ public class Vehicle implements Serializable
     {
         return "assign2.vehicles.Vehicle[id=" + id + "]";
     }
-
+    
     public String getColour()
     {
         return colour;
     }
-
+    
     public void setColour(String colour)
     {
         this.colour = colour;
     }
-
+    
     public String getName()
     {
         return name;
     }
-
+    
     public void setName(String name)
     {
         this.name = name;
     }
-
+    
     public VehicleType getType()
     {
         return type;
     }
-
+    
     public void setType(VehicleType type)
     {
         this.type = type;
     }
-
+    
     public Integer getYear()
     {
         return year;
     }
-
+    
     public void setYear(Integer year)
     {
         this.year = year;
     }
-
+    
     public VehicleLicense getLicense()
     {
         return license;
     }
-
+    
     public void setLicense(VehicleLicense license)
     {
         this.license = license;
     }
     
+    public VehicleTO getData()
+    {
+        VehicleTO to = new VehicleTO();
+        to.setColour(colour);
+        to.setName(name);
+        to.setLicense(license.getData());
+        to.setType(type.getData());
+        to.setYear(year);
+        return to;
+    }
 }
