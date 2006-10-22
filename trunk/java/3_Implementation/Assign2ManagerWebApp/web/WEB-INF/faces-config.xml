@@ -6,6 +6,30 @@
     xmlns="http://java.sun.com/xml/ns/javaee" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
-
-
-</faces-config>
+        <managed-bean>
+            <managed-bean-name>createVehicle</managed-bean-name>
+            <managed-bean-class>assign2.webapp.mbean.createVehicle</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <managed-bean-name>listVehicles</managed-bean-name>
+            <managed-bean-class>assign2.webapp.mbean.listVehicles</managed-bean-class>
+            <managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+        <managed-bean>
+            <managed-bean-name>editVehicle</managed-bean-name>
+            <managed-bean-class>assign2.webapp.mbean.editVehicle</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        <navigation-rule> 
+        <from-view-id>/createVehicle.jsp</from-view-id> 
+        <navigation-case> 
+            <from-outcome>success</from-outcome> 
+            <to-view-id>/createVehicle.jsp</to-view-id> 
+        </navigation-case> 
+        <navigation-case> 
+            <from-outcome>fail</from-outcome> 
+            <to-view-id>/error.jsp</to-view-id> 
+        </navigation-case>  
+    </navigation-rule>
+    </faces-config>

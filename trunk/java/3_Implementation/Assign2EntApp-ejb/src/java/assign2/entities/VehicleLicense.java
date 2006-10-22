@@ -9,12 +9,16 @@
 
 package assign2.entities;
 
+import assign2.entities.to.VehicleLicenseTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 
 /**
  * Entity class VehicleLicense
@@ -22,6 +26,13 @@ import javax.persistence.Column;
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(
+    name="findAllVehicleLicenses",
+            query="SELECT v FROM VehicleLicense v"
+            )
+})
 public class VehicleLicense implements Serializable
 {
 
@@ -105,6 +116,12 @@ public class VehicleLicense implements Serializable
     public void setDescription(String description)
     {
         this.description = description;
+    }
+    
+    public VehicleLicenseTO getData()
+    {
+        VehicleLicenseTO to = new VehicleLicenseTO(id,description);
+        return to;
     }
     
 }
