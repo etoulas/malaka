@@ -138,5 +138,5 @@ public class VehicleType implements Serializable
         VehicleTypeTO to = new VehicleTypeTO(code,description,seats);
         return to;
     }
-    
+
 }

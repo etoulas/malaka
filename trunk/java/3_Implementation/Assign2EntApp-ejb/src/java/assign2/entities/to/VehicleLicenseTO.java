@@ -9,11 +9,13 @@
 
 package assign2.entities.to;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gerard Gigliotti
  */
-public class VehicleLicenseTO
+public class VehicleLicenseTO implements Serializable
 {
     private Long id;
     private String description;
@@ -48,4 +50,8 @@ public class VehicleLicenseTO
         this.description = description;
     }
     
+    public String toString()
+    {
+        return description;
+    }
 }

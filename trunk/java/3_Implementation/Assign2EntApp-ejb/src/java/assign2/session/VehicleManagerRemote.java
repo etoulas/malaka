@@ -25,4 +25,6 @@ public interface VehicleManagerRemote
     assign2.entities.to.VehicleLicenseTO getVehicleLicenseTO(Long id);    
 
     java.util.List<assign2.entities.to.VehicleTO> getAllVehicleTOs();
+
+    void modifyVehicle(VehicleTO to);
 }

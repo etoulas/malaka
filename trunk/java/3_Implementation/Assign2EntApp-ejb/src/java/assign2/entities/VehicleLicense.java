@@ -123,5 +123,6 @@ public class VehicleLicense implements Serializable
         VehicleLicenseTO to = new VehicleLicenseTO(id,description);
         return to;
     }
+   
     
 }

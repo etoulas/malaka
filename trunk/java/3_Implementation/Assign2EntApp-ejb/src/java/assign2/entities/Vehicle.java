@@ -32,11 +32,14 @@ import javax.persistence.NamedQuery;
 {
     @NamedQuery(
     name="findAllVehicles",
-            query="SELECT v FROM Vehicle v"
+            query="SELECT v FROM Vehicle v WHERE v.enabled = true"
+            ),
+            @NamedQuery(
+    name="findVehicleById",
+            query="SELECT v FROM Vehicle v WHERE v.id = :vehicleID"
             )
 })
-public class Vehicle implements Serializable
-{
+public class Vehicle implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,26 +55,26 @@ public class Vehicle implements Serializable
     private VehicleLicense license;
     @Column(name="VYear")
     private Integer year;
+    @Column(name="Status")
+    private Boolean enabled;
     
     /** Creates a new instance of Vehicle */
-    public Vehicle()
-    {
+    public Vehicle() {
     }
     
-    public Vehicle(String colour, String name, VehicleType type, VehicleLicense license,Integer year)
-    {
+    public Vehicle(String colour, String name, VehicleType type, VehicleLicense license,Integer year) {
         this.colour = colour;
         this.name = name;
         this.type = type;
         this.license = license;
         this.year = year;
+        this.setEnabled(true);
     }
     /**
      * Gets the id of this Vehicle.
      * @return the id
      */
-    public Long getId()
-    {
+    public Long getId() {
         return this.id;
     }
     
@@ -79,8 +82,7 @@ public class Vehicle implements Serializable
      * Sets the id of this Vehicle to the specified value.
      * @param id the new id
      */
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
     
@@ -90,8 +92,7 @@ public class Vehicle implements Serializable
      * @return a hash code value for this object.
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (this.id != null ? this.id.hashCode() : 0);
         return hash;
@@ -106,11 +107,9 @@ public class Vehicle implements Serializable
      * <code>false</code> otherwise.
      */
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vehicle))
-        {
+        if (!(object instanceof Vehicle)) {
             return false;
         }
         Vehicle other = (Vehicle)object;
@@ -124,69 +123,67 @@ public class Vehicle implements Serializable
      * @return a string representation of the object.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "assign2.vehicles.Vehicle[id=" + id + "]";
     }
     
-    public String getColour()
-    {
+    public String getColour() {
         return colour;
     }
     
-    public void setColour(String colour)
-    {
+    public void setColour(String colour) {
         this.colour = colour;
     }
     
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
     
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
     
-    public VehicleType getType()
-    {
+    public VehicleType getType() {
         return type;
     }
     
-    public void setType(VehicleType type)
-    {
+    public void setType(VehicleType type) {
         this.type = type;
     }
     
-    public Integer getYear()
-    {
+    public Integer getYear() {
         return year;
     }
     
-    public void setYear(Integer year)
-    {
+    public void setYear(Integer year) {
         this.year = year;
     }
     
-    public VehicleLicense getLicense()
-    {
+    public VehicleLicense getLicense() {
         return license;
     }
     
-    public void setLicense(VehicleLicense license)
-    {
+    public void setLicense(VehicleLicense license) {
         this.license = license;
     }
     
-    public VehicleTO getData()
-    {
+    public VehicleTO getData() {
         VehicleTO to = new VehicleTO();
         to.setColour(colour);
         to.setName(name);
         to.setLicense(license.getData());
         to.setType(type.getData());
         to.setYear(year);
+        to.setEnabled(getEnabled());
+        to.setId(id);
         return to;
+    }
+    
+    public Boolean getEnabled() {
+        return enabled;
+    }
+    
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
