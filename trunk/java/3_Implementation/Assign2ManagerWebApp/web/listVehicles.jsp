@@ -25,7 +25,7 @@
                         <f:facet name="header">
                             <h:outputText value="Edit"/>
                         </f:facet>
-                        <h:commandLink action="#{listVehicles.selectEditVehicle}" value="Edit" ></h:commandLink>
+                        <h:commandLink action="#{listVehicles.selectEditVehicle}" value="Edit"  ></h:commandLink>
                     </h:column>
                 </h:dataTable>
             </h:form>
