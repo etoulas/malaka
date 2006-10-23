@@ -38,6 +38,10 @@
                         </h:inputText>
                         <h:outputText value=" (dd/mm/yyyy hh:mm)"/>
                     </h:panelGroup>
+                    <h:outputLabel for="type" value="Booking type"/>
+                    <h:selectOneMenu id="type" value="#{BookingBean.selectedBookingType}">
+                        <f:selectItems value="#{BookingBean.bookingTypes}"/>
+                    </h:selectOneMenu>
                     <h:outputText value="Pickup address: "/>
                     <h:panelGroup>
                         <h:panelGrid columns="1">
