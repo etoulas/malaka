@@ -11,5 +11,9 @@ import javax.ejb.Local;
 @Local
 public interface BookingManagerLocal {
     void createNewBooking(BookingDetailsTO bookingTO);
+
+    java.util.List<assign2.entities.to.BookingTypeTO> getAllBookingTypes();
+
+    assign2.entities.to.BookingTypeTO getBookingTypeById(Long id);
     
 }
