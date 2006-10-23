@@ -11,5 +11,9 @@ import javax.ejb.Remote;
 @Remote
 public interface BookingManagerRemote {
     void createNewBooking(BookingDetailsTO bookingTO);
+
+    java.util.List<assign2.entities.to.BookingTypeTO> getAllBookingTypes();
+
+    assign2.entities.to.BookingTypeTO getBookingTypeById(Long id);
     
 }
