@@ -44,9 +44,9 @@ public class Booking implements Serializable
     private Date pickupDate;
     @Column
     private Boolean processed;
-    @OneToOne(cascade=CascadeType.PERSIST)
+    @OneToOne(cascade=CascadeType.ALL)
     private Address pickupAddress;
-    @OneToOne()
+    @OneToOne(cascade=CascadeType.ALL)
     private Address dropoffAddress;
     @ManyToOne()
     private VehicleType vehicleType;
@@ -70,8 +70,9 @@ public class Booking implements Serializable
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
         this.setPickupDate(bookingTO.getPickupDate());
+        this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
-        this.setProcessed(false);
+        this.setProcessed(bookingTO.getProcessed());
     }
     /**
      * Gets the id of this Booking.
