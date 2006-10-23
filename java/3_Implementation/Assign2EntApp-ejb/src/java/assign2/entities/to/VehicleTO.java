@@ -21,18 +21,20 @@ public class VehicleTO
     private VehicleTypeTO type;
     private VehicleLicenseTO license;
     private Integer year;
+    private Boolean enabled;
     /** Creates a new instance of VehicleTO */
     public VehicleTO()
     {
     }
     
-    public VehicleTO(Long id,String colour,VehicleTypeTO type,VehicleLicenseTO license, Integer year)
+    public VehicleTO(Long id,String colour,VehicleTypeTO type,VehicleLicenseTO license, Integer year,Boolean enabled)
     {
        this.setId(id);
        this.setColour(colour);
        this.setType(type);
        this.setLicense(license);
        this.setYear(year);
+       this.setEnabled(enabled);
     }
 
     public Long getId()
@@ -93,6 +95,14 @@ public class VehicleTO
     public void setYear(Integer year)
     {
         this.year = year;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
     
 }

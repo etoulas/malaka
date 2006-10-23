@@ -45,6 +45,7 @@ public class VehicleManagerBean implements assign2.session.VehicleManagerRemote,
         v.setYear(to.getYear());
         v.setType( getVehicleType(to.getType().getCode()));
         v.setLicense(getVehicleLicense(to.getLicense().getId()));  
+           v.setEnabled(to.getEnabled());
         em.persist(v);
     }
     
@@ -57,6 +58,9 @@ public class VehicleManagerBean implements assign2.session.VehicleManagerRemote,
     public VehicleTypeTO getVehicleTypeTO(String code)
     {
         VehicleType vt = getVehicleType(code);
+        if (vt == null)
+                return null;
+        
         return vt.getData();
     }
        
@@ -75,13 +79,15 @@ public class VehicleManagerBean implements assign2.session.VehicleManagerRemote,
     public List<VehicleTO> getAllVehicleTOs()
     {
         List<VehicleTO> results = new ArrayList<VehicleTO>();
+        
         Query allVehicleTypesQuery = em.createNamedQuery("findAllVehicles");
-         List dbResults = allVehicleTypesQuery.getResultList();
+        List dbResults = allVehicleTypesQuery.getResultList();
         for (int i = 0; i < dbResults.size(); i++)
         {
             Vehicle v = (Vehicle)dbResults.get(i);
             results.add(v.getData());
         }
+
         return results;
     }
     /*This method cycles through the getVehicle Methods and returns the tranfer objects for all vehicle types.*/
@@ -113,5 +119,29 @@ public class VehicleManagerBean implements assign2.session.VehicleManagerRemote,
             results.add(vl.getData());
         }
         return results;
+    }
+    
+    private Vehicle getVehicle(VehicleTO to)
+    {
+        Vehicle v;
+        Query VehicleByIDQuery = em.createNamedQuery("findVehicleById");
+        VehicleByIDQuery.setParameter("vehicleID",to.getId());
+        List <Vehicle>dbResults = VehicleByIDQuery.getResultList();
+        v = dbResults.get(0);
+        return v;
+    }
+    
+    public void modifyVehicle(VehicleTO to)
+    {
+        System.out.println("Persist Vehicle");
+        Vehicle v = getVehicle(to);
+        //Copy values to Vehicle
+        v.setColour(to.getColour());
+        v.setName(to.getName());
+        v.setYear(to.getYear());
+        v.setType( getVehicleType(to.getType().getCode()));
+        v.setLicense(getVehicleLicense(to.getLicense().getId()));
+        v.setEnabled(to.getEnabled());
+        em.persist(v);
     }
 }

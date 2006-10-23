@@ -23,4 +23,6 @@ public interface VehicleManagerLocal
 
     java.util.List<assign2.entities.to.VehicleTO> getAllVehicleTOs();
 
+    void modifyVehicle(VehicleTO to);
+
 }
