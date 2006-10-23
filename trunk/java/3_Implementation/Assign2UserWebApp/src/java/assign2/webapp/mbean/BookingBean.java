@@ -11,9 +11,13 @@ package assign2.webapp.mbean;
 
 import assign2.entities.to.AddressTO;
 import assign2.entities.to.BookingDetailsTO;
+import assign2.entities.to.BookingTypeTO;
 import assign2.session.BookingManagerRemote;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -27,6 +31,8 @@ public class BookingBean {
     private String contactName;
     private String customerName;
     private Date pickupDate;
+    private Long selectedBookingType;
+    private List<SelectItem> bookingTypes;
     // address data
     private Integer postCode;
     private String countryState;
@@ -51,15 +57,30 @@ public class BookingBean {
         ato.setStreetNumber(this.getStreetNumber());
         ato.setSuburb(this.getSuburb());
         
+        BookingTypeTO btto = bm.getBookingTypeById(this.selectedBookingType);
+        
         BookingDetailsTO bto = new BookingDetailsTO();
         bto.setContactName(this.getContactName());
         bto.setCustomerName(this.getCustomerName());
         bto.setPickupDate(this.getPickupDate());
+        bto.setBookingType(btto);
         bto.setPickupAddress(ato);
         
         bm.createNewBooking(bto);
         
         return "success";
+    }
+    
+    public List getBookingTypes() {
+        if (this.bookingTypes == null) {
+            this.bookingTypes = new ArrayList<SelectItem>();
+            List<BookingTypeTO> types = bm.getAllBookingTypes();
+            for (BookingTypeTO to : types) {
+                this.bookingTypes.add(new SelectItem(to.getId().toString(), to.getDescription()));
+            }
+        }
+        
+        return this.bookingTypes;
     }
     
     public String confirmBack() {
@@ -148,5 +169,13 @@ public class BookingBean {
 
     public void setSuburb(String suburb) {
         this.suburb = suburb;
+    }
+
+    public Long getSelectedBookingType() {
+        return selectedBookingType;
+    }
+
+    public void setSelectedBookingType(Long selectedBookingType) {
+        this.selectedBookingType = selectedBookingType;
     }
 }
