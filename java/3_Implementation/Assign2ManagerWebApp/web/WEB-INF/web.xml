@@ -39,4 +39,9 @@
             index.jsp
         </welcome-file>
     </welcome-file-list>
-</web-app>
+    <ejb-ref>
+        <ejb-ref-name>ejb/VehicleManagerBean</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>assign2.session.VehicleManagerRemote</remote>
+    </ejb-ref>
+    </web-app>

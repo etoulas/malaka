@@ -48,7 +48,7 @@ public class listVehicles {
     {
         VehicleTO vto = (VehicleTO)model.getRowData();
         System.out.println("Adding Vehicle To Session. Variable editVehicleTO");
-        //Add VTO TO session\
+        //Add VTO TO session
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("VehicleEditSession",vto);
         System.out.println("Session Test");
         System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("VehicleEditSession"));
