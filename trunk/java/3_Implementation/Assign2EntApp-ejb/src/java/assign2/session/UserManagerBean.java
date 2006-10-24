@@ -12,7 +12,7 @@ package assign2.session;
 import assign2.entities.Driver;
 import assign2.entities.Manager;
 import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTO;
+import assign2.entities.to.ManagerDetailedTo;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,7 +34,7 @@ public class UserManagerBean implements assign2.session.UserManagerRemote, assig
     }
     
     
-public void createManager(ManagerDetailedTO to)    
+public void createManager(ManagerDetailedTo to)    
 {
     Manager m = new Manager(to);
     em.persist(m);

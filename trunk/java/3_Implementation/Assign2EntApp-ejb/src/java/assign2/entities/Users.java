@@ -12,6 +12,7 @@ package assign2.entities;
 import assign2.entities.to.*;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ public abstract class Users implements Serializable {
     protected String lastName;
     @Column(length=10)
     protected String phoneNumber;
-    @OneToOne()
+    @OneToOne(cascade=CascadeType.ALL)
     protected Address address;
     
     
