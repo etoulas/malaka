@@ -11,6 +11,7 @@ package assign2.entities;
 
 import assign2.entities.to.BookingDetailsTO;
 import java.io.Serializable;
+import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -42,6 +43,12 @@ public class Booking implements Serializable
     private String customerName;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
+    @Column()
+    private Time pickupTime;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dropoffDate;
+    @Column()
+    private Time dropoffTime;
     @Column
     private Boolean processed;
     @OneToOne(cascade=CascadeType.ALL)
@@ -70,6 +77,9 @@ public class Booking implements Serializable
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
         this.setPickupDate(bookingTO.getPickupDate());
+        this.setPickupTime(bookingTO.getPickupTime());
+        this.setDropoffDate(bookingTO.getDropoffDate());
+        this.setDropoffTime(bookingTO.getDropoffTime());
         this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
         this.setProcessed(bookingTO.getProcessed());
@@ -252,6 +262,30 @@ public class Booking implements Serializable
 
     public void setProcessed(Boolean processed) {
         this.processed = processed;
+    }
+
+    public Time getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(Time pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public Date getDropoffDate() {
+        return dropoffDate;
+    }
+
+    public void setDropoffDate(Date dropoffDate) {
+        this.dropoffDate = dropoffDate;
+    }
+
+    public Time getDropoffTime() {
+        return dropoffTime;
+    }
+
+    public void setDropoffTime(Time dropoffTime) {
+        this.dropoffTime = dropoffTime;
     }
     
 }

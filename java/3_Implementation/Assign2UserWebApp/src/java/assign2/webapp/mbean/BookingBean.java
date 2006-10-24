@@ -13,6 +13,7 @@ import assign2.entities.to.AddressTO;
 import assign2.entities.to.BookingDetailsTO;
 import assign2.entities.to.BookingTypeTO;
 import assign2.session.BookingManagerRemote;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,9 @@ public class BookingBean {
     private String contactName;
     private String customerName;
     private Date pickupDate;
+    private Time pickupTime;
+    private Date dropoffDate;
+    private Time dropoffTime;
     private Long selectedBookingType;
     private List<SelectItem> bookingTypes;
     // address data
@@ -177,5 +181,29 @@ public class BookingBean {
 
     public void setSelectedBookingType(Long selectedBookingType) {
         this.selectedBookingType = selectedBookingType;
+    }
+
+    public Time getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(Time pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public Date getDropoffDate() {
+        return dropoffDate;
+    }
+
+    public void setDropoffDate(Date dropoffDate) {
+        this.dropoffDate = dropoffDate;
+    }
+
+    public Time getDropoffTime() {
+        return dropoffTime;
+    }
+
+    public void setDropoffTime(Time dropoffTime) {
+        this.dropoffTime = dropoffTime;
     }
 }

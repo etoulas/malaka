@@ -9,6 +9,7 @@
 
 package assign2.entities.to;
 
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -21,6 +22,9 @@ public class BookingDetailsTO {
     private String contactName;
     private String customerName;
     private Date pickupDate;
+    private Time pickupTime;
+    private Date dropoffDate;
+    private Time dropoffTime;
     private BookingTypeTO bookingType;
     private AddressTO pickupAddress;
     private AddressTO dropoffAddress;
@@ -30,69 +34,93 @@ public class BookingDetailsTO {
     public BookingDetailsTO() {
         
     }
-
+    
     public String getContactName() {
         return contactName;
     }
-
+    
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
-
+    
     public String getCustomerName() {
         return customerName;
     }
-
+    
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
-
+    
     public Date getPickupDate() {
         return pickupDate;
     }
-
+    
     public void setPickupDate(Date pickupDate) {
         this.pickupDate = pickupDate;
     }
-
+    
     public AddressTO getPickupAddress() {
         return pickupAddress;
     }
-
+    
     public void setPickupAddress(AddressTO pickupAddress) {
         this.pickupAddress = pickupAddress;
     }
-
+    
     public AddressTO getDropoffAddress() {
         return dropoffAddress;
     }
-
+    
     public void setDropoffAddress(AddressTO dropoffAddress) {
         this.dropoffAddress = dropoffAddress;
     }
-
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public BookingTypeTO getBookingType() {
         return bookingType;
     }
-
+    
     public void setBookingType(BookingTypeTO bookingType) {
         this.bookingType = bookingType;
     }
-
+    
     public Boolean getProcessed() {
         return processed;
     }
-
+    
     public void setProcessed(Boolean processed) {
         this.processed = processed;
+    }
+
+    public Time getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(Time pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public Date getDropoffDate() {
+        return dropoffDate;
+    }
+
+    public void setDropoffDate(Date dropoffDate) {
+        this.dropoffDate = dropoffDate;
+    }
+
+    public Time getDropoffTime() {
+        return dropoffTime;
+    }
+
+    public void setDropoffTime(Time dropoffTime) {
+        this.dropoffTime = dropoffTime;
     }
     
 }

@@ -19,9 +19,9 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     </head>
     <body>
 
-    <h1>JSP Page</h1>
+    <h1>Assign2 Manager Web Application</h1>
     <br/>
-    <a href="./faces/welcomeJSF.jsp">JavaServer Faces Welcome Page</a>
+    <a href="./faces/listVehicles.jsp">View a list ov Vehicles</a>
     
     <%--
     This example uses JSTL, uncomment the taglib directive above.
