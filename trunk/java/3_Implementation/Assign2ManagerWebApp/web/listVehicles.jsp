@@ -8,11 +8,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>New Vehicle</title>
+         <jsp:include page="includes/header.html" />
     </head>
     <body>
+        <jsp:include page="includes/topPage.html" />
+        <h2>List All Vehicles</h2>
         <f:view>
             <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            <h1>List all Vehicles</h1>
             <h:form>
                 <h:dataTable id="vehicleList" value="#{listVehicles.listAllVehicles}" var="rowItem">
                      <h:column>
@@ -30,5 +32,6 @@
                 </h:dataTable>
             </h:form>
         </f:view>
+        <jsp:include page="includes/bottomPage.html" />
     </body>
 </html>
