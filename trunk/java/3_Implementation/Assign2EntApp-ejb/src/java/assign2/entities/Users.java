@@ -13,12 +13,9 @@ import assign2.entities.to.*;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
-import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
 
 /**
  * Entity class Users
@@ -26,8 +23,7 @@ import org.apache.taglibs.standard.tag.common.core.NullAttributeException;
  * @author Gerard Gigliotti
  */
 @Entity
-public abstract class Users implements Serializable
-{
+public abstract class Users implements Serializable {
     
     @Id
     protected String username;
@@ -44,12 +40,21 @@ public abstract class Users implements Serializable
     
     
     /** Creates a new instance of Users */
-    public Users()
-    {
+    public Users() {
     }
     
-    public Users(String username,String password)
-    {
+    public Users(UsersDetailedTO to) {
+        
+        this.setFirstName(to.getFirstName());
+        this.setLastName(to.getLastName());
+        this.setPassword(to.getPassword());
+        this.setPhoneNumber(to.getPhoneNumber());
+        this.setUsername(to.getUsername());
+        this.setAddress(new Address(to.getAddress()));
+    }
+    
+    
+    public Users(String username,String password) {
         this.username = username;
         this.setPassword(password);
     }
@@ -58,8 +63,7 @@ public abstract class Users implements Serializable
      * Gets the username of this Users.
      * @return the username
      */
-    public String getUsername()
-    {
+    public String getUsername() {
         return this.username;
     }
     
@@ -67,13 +71,11 @@ public abstract class Users implements Serializable
      * Sets the username of this Users to the specified value.
      * @param username the new username
      */
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username;
     }
     
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (this.username != null ? this.username.hashCode() : 0);
         return hash;
@@ -88,11 +90,9 @@ public abstract class Users implements Serializable
      * <code>false</code> otherwise.
      */
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the username fields are not set
-        if (!(object instanceof Users))
-        {
+        if (!(object instanceof Users)) {
             return false;
         }
         Users other = (Users)object;
@@ -106,63 +106,51 @@ public abstract class Users implements Serializable
      * @return a string representation of the object.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "assign2.users.Users[username=" + username + "]";
     }
     
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
     
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
     
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return firstName;
     }
     
-    public void setFirstName(String firstName)
-    {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
     
-    public String getLastName()
-    {
+    public String getLastName() {
         return lastName;
     }
     
-    public void setLastName(String lastName)
-    {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
     
-    public String getPhoneNumber()
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
     
-    public void setPhoneNumber(String phoneNumber)
-    {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public Address getAddress()
-    {
+    
+    public Address getAddress() {
         return address;
     }
-
-    public void setAddress(Address address)
-    {
+    
+    public void setAddress(Address address) {
         this.address = address;
     }
     
-    public UsersTO getData()    
-    {
+    public UsersTO getData() {
         UsersTO to = new UsersTO(getUsername(),getPassword(),getFirstName() + " " + getLastName());
         return to;
     }

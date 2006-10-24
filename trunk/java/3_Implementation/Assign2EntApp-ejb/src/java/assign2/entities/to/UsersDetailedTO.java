@@ -13,6 +13,7 @@ package assign2.entities.to;
  *
  * @author Gerard Gigliotti
  */
+
 public class UsersDetailedTO
 {
     private String username;
@@ -23,6 +24,11 @@ public class UsersDetailedTO
     private AddressTO address;
     
     /** Creates a new instance of UsersDetailedTO */
+
+    public UsersDetailedTO() {
+        
+    }
+    
     public UsersDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
     {
         this.username = username;

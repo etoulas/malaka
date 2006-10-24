@@ -38,6 +38,11 @@ public class DriversLicense implements Serializable
     public DriversLicense()
     {
     }
+    
+    public DriversLicense(DriversLicenseTO to) {
+        this.type = to.getType();
+        this.description = to.getDescription();
+    }
 
     /**
      * Gets the id of this DriversLicense.

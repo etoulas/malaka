@@ -16,18 +16,10 @@
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
-        </servlet>
-    <servlet>
-        <servlet-name>UserTest</servlet-name>
-        <servlet-class>assign2.pages.UserTest</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserTest</servlet-name>
-        <url-pattern>/UserTest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -35,13 +27,8 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-	<welcome-file>
+        <welcome-file>
             index.jsp
         </welcome-file>
     </welcome-file-list>
-    <ejb-ref>
-        <ejb-ref-name>ejb/VehicleManagerBean</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <remote>assign2.session.VehicleManagerRemote</remote>
-    </ejb-ref>
-    </web-app>
+</web-app>

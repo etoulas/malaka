@@ -10,11 +10,9 @@
 package assign2.entities;
 
 import assign2.entities.to.UsersDetailedTO;
+import assign2.entities.to.UsersTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Entity class Manager
@@ -32,6 +30,10 @@ public class Manager extends Users implements Serializable
     public Manager(String username,String password)
     {
        super(username,password);
+    }
+    
+    public Manager(UsersDetailedTO to) {
+        super(to);
     }
 
     public UsersDetailedTO getDetailedData() {

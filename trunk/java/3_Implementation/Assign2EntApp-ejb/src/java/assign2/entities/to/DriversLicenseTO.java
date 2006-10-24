@@ -16,9 +16,28 @@ package assign2.entities.to;
 public class DriversLicenseTO
 {
     
+    private String type;
+    private String description;
+    
     /** Creates a new instance of DriversLicenseTO */
     public DriversLicenseTO()
     {
+    }
+    
+    public void setType(String type) {
+       this.type = type; 
+    }
+
+    public String getType () {
+        return this.type;
+    }
+    
+    public void setDescription(String descr) {
+        this.description = descr;
+    }
+
+    public String getDescription () {
+        return this.description;
     }
     
 }

@@ -33,5 +33,5 @@ INSERT INTO VehicleLicense VALUES (1, 'SV License');
 INSERT INTO VehicleLicense VALUES (2, 'VH License');
 
 -- insert drivers licenses
-INSERT INTO DriversLicense VALUES (1, 'HV License', 'Heavy Vehicle License');
-INSERT INTO DriversLicense VALUES (2, 'Taxi License', 'For pick ups and drop offs as well as special events');
+INSERT INTO DriversLicense VALUES (1, 'HV License', '');
+INSERT INTO DriversLicense VALUES (2, 'Taxi License', '');
