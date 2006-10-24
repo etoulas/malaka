@@ -11,7 +11,7 @@ package assign2.webapp.mbean;
 
 import assign2.entities.to.AddressTO;
 // import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTO;
+import assign2.entities.to.ManagerDetailedTo;
 
 
 import assign2.session.UserManagerRemote;
@@ -61,7 +61,7 @@ public class UserManagedBean {
         ato.setStreetNumber(this.getStreetNumber());
         ato.setSuburb(this.getSuburb());
         
-        ManagerDetailedTO mto = new ManagerDetailedTO();
+        ManagerDetailedTo mto = new ManagerDetailedTo();
         mto.setFirstName(this.firstName);
         mto.setLastName(this.lastName);
         mto.setUsername(this.username);

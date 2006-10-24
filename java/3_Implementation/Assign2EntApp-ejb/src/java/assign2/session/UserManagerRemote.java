@@ -2,7 +2,7 @@
 package assign2.session;
 
 import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTO;
+import assign2.entities.to.ManagerDetailedTo;
 import javax.ejb.Remote;
 
 
@@ -12,7 +12,7 @@ import javax.ejb.Remote;
 @Remote
 public interface UserManagerRemote {
     
-    public void createManager(ManagerDetailedTO to);
+    public void createManager(ManagerDetailedTo to);
     
     public void createDriver(DriverDetailedTO to);
 }
