@@ -1,5 +1,5 @@
 /*
- * ManagerDetailedTo.java
+ * ManagerDetailedTO.java
  *
  * Created on 19 October 2006, 16:06
  *
@@ -13,13 +13,19 @@ package assign2.entities.to;
  *
  * @author Gerard Gigliotti
  */
-public class ManagerDetailedTo extends UsersDetailedTO
+
+public class ManagerDetailedTO extends UsersDetailedTO
 {
     
+    public ManagerDetailedTO()
+    {
+        super();
+    }
+    
     /**
-     * Creates a new instance of ManagerDetailedTo
+     * Creates a new instance of ManagerDetailedTOold
      */
-    public ManagerDetailedTo(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
+    public ManagerDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
     {
          super(username,password,firstName,lastName,phoneNumber,address);
     }

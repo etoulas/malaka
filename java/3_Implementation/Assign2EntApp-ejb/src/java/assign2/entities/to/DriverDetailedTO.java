@@ -19,10 +19,19 @@ public class DriverDetailedTO extends UsersDetailedTO
     /**
      * Creates a new instance of DriverDetailedTO
      */
+    
+    public DriverDetailedTO() {
+        super();
+    }
+    
     public DriverDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address,DriversLicenseTO license)
     {
         super(username,password,firstName,lastName,phoneNumber,address);
         this.license = license;
+    }
+    
+    public DriversLicenseTO getLicense() {
+        return this.license;
     }
     
 }

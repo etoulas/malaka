@@ -57,6 +57,7 @@ public class Address implements Serializable
         this.setStreet(to.getStreet());
         this.setStreetNumber(to.getStreetNumber());
         this.setSuburb(to.getSuburb());
+        
     }
 
     /**

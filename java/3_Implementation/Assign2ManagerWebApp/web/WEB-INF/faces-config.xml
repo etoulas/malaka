@@ -21,6 +21,13 @@
         <managed-bean-class>assign2.webapp.mbean.editVehicle</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>UserManagedBean</managed-bean-name>
+        <managed-bean-class>assign2.webapp.mbean.UserManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    
     <!-- Navigation rules -->
     <navigation-rule> 
         <from-view-id>/createVehicle.jsp</from-view-id> 
@@ -57,10 +64,18 @@
             <to-view-id>/editVehicle.jsp</to-view-id>
             <redirect/>
         </navigation-case>
-         <navigation-case>
+        <navigation-case>
             <from-outcome>delete</from-outcome>
             <to-view-id>/listVehicles.jsp</to-view-id>
             <redirect/>
+        </navigation-case>
+        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/createManager.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createManager.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
