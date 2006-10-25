@@ -59,4 +59,29 @@ public class BookingManager implements assign2.session.BookingManagerRemote, ass
         
         return bookingTypes;
     }
+    
+    public BookingDetailsTO getBookingDetailsById(Long id) {
+        Query q = em.createNamedQuery("findBookingDetailsByID");
+        q.setParameter("id", id);
+        Booking b = (Booking) q.getSingleResult();
+        return b.getData();
+    }
+
+    public List<BookingDetailsTO> getAllRequestedBookings() {
+        List<BookingDetailsTO> requestedBookings = new ArrayList<BookingDetailsTO>();
+        
+        Query q = em.createNamedQuery("findRequestedBookings");
+        List results = q.getResultList();
+        
+        if (results.isEmpty()) {
+            System.out.println("DIE SCHEISSE GEHT NET!!");
+        }
+        
+        for (Object item : results) {
+            requestedBookings.add( ((Booking) item).getData() );
+        }
+
+        return results;
+    }
+    
 }

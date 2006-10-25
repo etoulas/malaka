@@ -32,9 +32,27 @@ public class BookingDetailsTO {
     
     /** Creates a new instance of BookingDetailsTO */
     public BookingDetailsTO() {
-        
     }
     
+    public BookingDetailsTO(Long id, 
+                            String contactName,
+                            String customerName,
+                            Date pickupDate,
+                            BookingTypeTO bookingType,
+                            AddressTO pickupAddress,
+                            AddressTO dropoffAddress,
+                            Boolean processed)
+    {
+        this.setId(id);
+        this.setContactName(contactName);
+        this.setCustomerName(customerName);
+        this.setPickupDate(pickupDate);
+        this.setBookingType(bookingType);
+        this.setPickupAddress(pickupAddress);
+        this.setDropoffAddress(dropoffAddress);
+        this.setProcessed(processed);
+    }
+
     public String getContactName() {
         return contactName;
     }

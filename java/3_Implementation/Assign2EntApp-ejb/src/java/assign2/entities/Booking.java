@@ -11,7 +11,6 @@ package assign2.entities;
 
 import assign2.entities.to.BookingDetailsTO;
 import java.io.Serializable;
-import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +21,24 @@ import javax.persistence.CascadeType;
 import javax.persistence.Temporal;
 import javax.persistence.OneToOne;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 /**
  * Entity class Booking
  * 
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+    name="findBookingDetailsByID",
+            query="SELECT b FROM Booking b WHERE b.id = :id"),
+    @NamedQuery(
+    name="findRequestedBookings",
+            query="SELECT rb FROM Booking rb")
+})
 
 @Table(name="BOOKING")
 public class Booking implements Serializable
@@ -43,13 +53,11 @@ public class Booking implements Serializable
     private String customerName;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dropoffDate;
     @Column
     private Boolean processed;
     @OneToOne(cascade=CascadeType.ALL)
     private Address pickupAddress;
-    @OneToOne()
+    @OneToOne(cascade=CascadeType.ALL)
     private Address dropoffAddress;
     @ManyToOne()
     private VehicleType vehicleType;
@@ -73,8 +81,9 @@ public class Booking implements Serializable
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
         this.setPickupDate(bookingTO.getPickupDate());
+        this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
-        this.setProcessed(false);
+        this.setProcessed(bookingTO.getProcessed());
     }
     /**
      * Gets the id of this Booking.
@@ -256,28 +265,25 @@ public class Booking implements Serializable
         this.processed = processed;
     }
 
-    public Time getPickupTime() {
-        return pickupTime;
-    }
-
-    public void setPickupTime(Time pickupTime) {
-        this.pickupTime = pickupTime;
-    }
-
-    public Date getDropoffDate() {
-        return dropoffDate;
-    }
-
-    public void setDropoffDate(Date dropoffDate) {
-        this.dropoffDate = dropoffDate;
-    }
-
-    public Time getDropoffTime() {
-        return dropoffTime;
-    }
-
-    public void setDropoffTime(Time dropoffTime) {
-        this.dropoffTime = dropoffTime;
+    public BookingDetailsTO getData() {
+         BookingDetailsTO bdto = new BookingDetailsTO();
+         
+         bdto.setId(this.getId());
+         bdto.setContactName(this.getContactName());
+         bdto.setCustomerName(this.getCustomerName());
+         bdto.setPickupDate(this.getPickupDate());
+         if (this.getBookingType() != null) {
+             bdto.setBookingType(this.getBookingType().getData());
+         }
+         if (this.getPickupAddress() != null) {
+             bdto.setPickupAddress(this.getPickupAddress().getData());
+         }
+         if (this.getDropoffAddress() != null) {
+             bdto.setDropoffAddress(this.getDropoffAddress().getData());
+         }
+         bdto.setProcessed(this.getProcessed());
+         
+         return bdto;
     }
     
 }
