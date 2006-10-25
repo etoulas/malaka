@@ -22,6 +22,11 @@ public class BookingTypeTO {
     /** Creates a new instance of BookingTypeTO */
     public BookingTypeTO() {
     }
+    
+    public BookingTypeTO(Long id, String description) {
+        this.setId(id);
+        this.setDescription(description);
+    }
 
     public Long getId() {
         return id;
@@ -39,4 +44,7 @@ public class BookingTypeTO {
         this.description = description;
     }
     
+    public BookingTypeTO getData() {
+        return new BookingTypeTO(this.id, this.description);
+    }
 }
