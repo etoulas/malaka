@@ -13,14 +13,11 @@ import assign2.entities.to.AddressTO;
 import assign2.entities.to.BookingDetailsTO;
 import assign2.entities.to.BookingTypeTO;
 import assign2.session.BookingManagerRemote;
-import assign2.webapp.bean.Address;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
