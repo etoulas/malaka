@@ -32,6 +32,13 @@
                                      value="#{UserManagedBean.lastName}" 
                                      required="true" />
                     </h:panelGroup>
+                    <h:panelGroup>
+                    <h:outputLabel for="type" value="Drivers License: "/>
+                    <h:selectOneMenu id="type" value="#{UserManagedBean.selectedLicenseType}">
+                        <f:selectItems value="#{UserManagedBean.licenseTypes}"/>
+                    </h:selectOneMenu>
+                    </h:panelGroup>
+                    <h:outputText value=""/>
                     <h:outputText value="Address: "/>
                     <h:panelGrid columns="2">
                         <h:outputLabel for="street" value="Street: "/>
@@ -83,16 +90,12 @@
                                      required="true" />
                     </h:panelGroup>
                     <h:commandButton id="submit" value="Continue" 
-                                     action="#{UserManagedBean.CreateManager}"/>
+                                     action="#{UserManagedBean.CreateDriver}"/>
                     
                 </h:panelGrid>
                 
             </h:form>
         </f:view>
-        
-        
-        
-        
         
     </body>
 </html>

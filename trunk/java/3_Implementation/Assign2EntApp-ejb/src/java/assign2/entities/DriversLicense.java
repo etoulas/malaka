@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import assign2.entities.to.*;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity class DriversLicense
@@ -23,6 +25,15 @@ import assign2.entities.to.*;
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+    name="findAllDriversLicenseTypes",
+            query="SELECT dl FROM DriversLicense dl"),
+    @NamedQuery(
+    name="findLicenseTypeByID",
+            query="SELECT dl FROM DriversLicense dl WHERE dl.id = :id")
+})
+
 public class DriversLicense implements Serializable
 {
 
@@ -40,6 +51,8 @@ public class DriversLicense implements Serializable
     }
     
     public DriversLicense(DriversLicenseTO to) {
+        //this.setId(to.getId());
+        this.id = to.getId();
         this.type = to.getType();
         this.description = to.getDescription();
     }
@@ -129,6 +142,9 @@ public class DriversLicense implements Serializable
     public DriversLicenseTO getData()
     {
         DriversLicenseTO to = new DriversLicenseTO();
+        to.setId(this.id);
+        to.setType(this.type);
+        to.setDescription(this.description);
         return to;
     }
     

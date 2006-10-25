@@ -10,10 +10,12 @@
 package assign2.webapp.mbean;
 
 import assign2.entities.to.AddressTO;
-// import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTo;
-
-
+import assign2.entities.to.DriverDetailedTO;
+import assign2.entities.to.DriversLicenseTO;
+import assign2.entities.to.ManagerDetailedTO;
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.model.SelectItem;
 import assign2.session.UserManagerRemote;
 import javax.ejb.EJB;
 
@@ -34,6 +36,9 @@ public class UserManagedBean {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    //private DriversLicenseTO licenseTO;
+    private Long selectedLicenseType;
+    private List<SelectItem> licenseTypes;
     // address data
     private Integer postCode;
     private String countryState;
@@ -61,7 +66,7 @@ public class UserManagedBean {
         ato.setStreetNumber(this.getStreetNumber());
         ato.setSuburb(this.getSuburb());
         
-        ManagerDetailedTo mto = new ManagerDetailedTo();
+        ManagerDetailedTO mto = new ManagerDetailedTO();
         mto.setFirstName(this.firstName);
         mto.setLastName(this.lastName);
         mto.setUsername(this.username);
@@ -73,6 +78,54 @@ public class UserManagedBean {
         
         return "success";
     }
+
+    public String CreateDriver() {
+        
+        AddressTO ato = new AddressTO();
+        ato.setCity(this.getCity());
+        ato.setCountry(this.getCountry());
+        ato.setCountryState(this.getCountryState());
+        ato.setPostCode(this.getPostCode());
+        ato.setStreet(this.getStreet());
+        ato.setStreetNumber(this.getStreetNumber());
+        ato.setSuburb(this.getSuburb());
+        
+        DriverDetailedTO dto = new DriverDetailedTO();
+        dto.setFirstName(this.firstName);
+        dto.setLastName(this.lastName);
+        dto.setUsername(this.username);
+        dto.setPassword(this.password);
+        dto.setPhoneNumber(this.phoneNumber);
+        
+        DriversLicenseTO dlto = um.getLicenseTypeById(this.selectedLicenseType);
+        
+        dto.setLicense(dlto);
+        dto.setAddress(ato);
+        
+        um.createDriver(dto);
+        
+        return "success";
+    }
+    
+  
+    public List getLicenseTypes() {
+        
+        if (this.licenseTypes == null) {
+
+            this.licenseTypes = new ArrayList<SelectItem>();
+
+            List<DriversLicenseTO> types = um.getAllLicenseTypes();
+
+            for (DriversLicenseTO to : types) {
+                this.licenseTypes.add(new SelectItem(to.getId().toString(), to.getType() ));
+            }
+        }
+        return licenseTypes;
+    }
+    
+    
+    
+    
     
     public String getUsername() {
         return username;
@@ -176,6 +229,14 @@ public class UserManagedBean {
 
     public void setRepPassword(String repPassword) {
         this.repPassword = repPassword;
+    }
+
+    public Long getSelectedLicenseType() {
+        return selectedLicenseType;
+    }
+
+    public void setSelectedLicenseType(Long selectedLicenseType) {
+        this.selectedLicenseType = selectedLicenseType;
     }
     
     

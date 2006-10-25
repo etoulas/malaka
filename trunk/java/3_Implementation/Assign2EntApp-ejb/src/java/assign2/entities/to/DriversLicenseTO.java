@@ -15,7 +15,7 @@ package assign2.entities.to;
  */
 public class DriversLicenseTO
 {
-    
+    private Long id;
     private String type;
     private String description;
     
@@ -38,6 +38,14 @@ public class DriversLicenseTO
 
     public String getDescription () {
         return this.description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
 }
