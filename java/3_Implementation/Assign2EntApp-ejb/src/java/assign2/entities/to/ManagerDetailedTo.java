@@ -14,10 +14,10 @@ package assign2.entities.to;
  * @author Gerard Gigliotti
  */
 
-public class ManagerDetailedTo extends UsersDetailedTO
+public class ManagerDetailedTO extends UsersDetailedTO
 {
     
-    public ManagerDetailedTo()
+    public ManagerDetailedTO()
     {
         super();
     }
@@ -25,7 +25,7 @@ public class ManagerDetailedTo extends UsersDetailedTO
     /**
      * Creates a new instance of ManagerDetailedTOold
      */
-    public ManagerDetailedTo(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
+    public ManagerDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
     {
          super(username,password,firstName,lastName,phoneNumber,address);
     }

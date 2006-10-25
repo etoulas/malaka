@@ -677,7 +677,7 @@
                 CLEANUP SECTION
             -->
     <target name="deps-clean" depends="init" if="no.dist.ear.dir" unless="no.deps">
-        <ant target="clean" inheritall="false" antfile="${project.Assign2EntApp-ejb-1}/build.xml"/>
+        <ant target="clean" inheritall="false" antfile="${project.Assign2EntApp-ejb}/build.xml"/>
     </target>
     <target name="do-clean" depends="init">
         <condition value="${build.web.dir.real}" property="build.dir.to.clean">

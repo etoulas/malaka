@@ -10,12 +10,17 @@
 package assign2.session;
 
 import assign2.entities.Driver;
+import assign2.entities.DriversLicense;
 import assign2.entities.Manager;
 import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTo;
+import assign2.entities.to.DriversLicenseTO;
+import assign2.entities.to.ManagerDetailedTO;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
         
 
@@ -34,7 +39,7 @@ public class UserManagerBean implements assign2.session.UserManagerRemote, assig
     }
     
     
-public void createManager(ManagerDetailedTo to)    
+public void createManager(ManagerDetailedTO to)    
 {
     Manager m = new Manager(to);
     em.persist(m);
@@ -45,7 +50,27 @@ public void createDriver(DriverDetailedTO to) {
     em.persist(d);
 }
 
+public List<DriversLicenseTO> getAllLicenseTypes() {
+ 
+    List<DriversLicenseTO> licenseTypes = new ArrayList<DriversLicenseTO>();
     
+    Query q = em.createNamedQuery("findAllDriversLicenseTypes");
+    List results = q.getResultList();
     
+    for (Object item : results) {
+        licenseTypes.add( ((DriversLicense) item).getData());
+    }
+    
+    return licenseTypes;
+}    
+
+ public DriversLicenseTO getLicenseTypeById(long id) {
+
+        Query q = em.createNamedQuery("findLicenseTypeByID");
+        q.setParameter("id", id);
+        DriversLicense dl = (DriversLicense) q.getSingleResult();
+        return dl.getData();
+     
+ }
     
 }

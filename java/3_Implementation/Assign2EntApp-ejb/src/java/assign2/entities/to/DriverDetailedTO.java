@@ -33,5 +33,10 @@ public class DriverDetailedTO extends UsersDetailedTO
     public DriversLicenseTO getLicense() {
         return this.license;
     }
+
+    public void setLicense(DriversLicenseTO lto) {
+       this.license = lto;
+    }
+
     
 }

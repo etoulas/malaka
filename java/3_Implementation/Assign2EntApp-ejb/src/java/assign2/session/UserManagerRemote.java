@@ -2,7 +2,9 @@
 package assign2.session;
 
 import assign2.entities.to.DriverDetailedTO;
-import assign2.entities.to.ManagerDetailedTo;
+import assign2.entities.to.DriversLicenseTO;
+import assign2.entities.to.ManagerDetailedTO;
+import java.util.List;
 import javax.ejb.Remote;
 
 
@@ -12,7 +14,11 @@ import javax.ejb.Remote;
 @Remote
 public interface UserManagerRemote {
     
-    public void createManager(ManagerDetailedTo to);
+    public void createManager(ManagerDetailedTO to);
     
     public void createDriver(DriverDetailedTO to);
+    
+    public List<DriversLicenseTO> getAllLicenseTypes();
+    
+    public DriversLicenseTO getLicenseTypeById(long id);
 }
