@@ -38,7 +38,7 @@ import javax.persistence.Table;
             query="SELECT b FROM Booking b WHERE b.id = :id"),
             @NamedQuery(
     name="findRequestedBookings",
-            query="SELECT rb FROM Booking rb"),
+            query="SELECT rb FROM Booking rb WHERE rb.processed = :proc"),
             @NamedQuery(
     name="findBookingByDates",
             query="SELECT b FROM Booking b WHERE b.pickupDate >= :pickupDate1 AND b.dropoffDate <= :dropoffDate1 OR :pickupDate2 BETWEEN b.pickupDate AND b.dropoffDate OR :dropoffDate2 BETWEEN b.pickupDate AND b.dropoffDate" )
