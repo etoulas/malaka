@@ -25,35 +25,37 @@
                                   value="#{BookingBean.pickupDate}">
                         <f:convertDateTime type="date" pattern="dd/MM/yyyy HH:mm"/>
                     </h:outputText>
+                    <h:outputLabel for="type" value="Booking type: "/>
+                    <h:outputText id="type" value="#{BookingBean.selectedBookingTypeName}"/>
                     <h:outputText value="Pickup address: "/>
                     <h:panelGroup>
                         <h:panelGrid columns="1">
-                            <h:outputLabel for="street" value="Street number and name: "/>
+                            <h:outputLabel for="pickupStreet" value="Street number and name: "/>
                             <h:panelGroup>
-                                <h:outputText id="streetNumber"
-                                             value="#{BookingBean.streetNumber}"/>
+                                <h:outputText id="pickupStreetNumber"
+                                             value="#{BookingBean.pickupStreetNumber}"/>
                                 &nbsp;&nbsp;
-                                <h:outputText id="street"
-                                             value="#{BookingBean.street}"/>
+                                <h:outputText id="pickupStreet"
+                                             value="#{BookingBean.pickupStreet}"/>
                             </h:panelGroup>
-                            <h:outputLabel for="postCode" value="Post code and suburb: "/>
+                            <h:outputLabel for="pickupPostCode" value="Post code and suburb: "/>
                             <h:panelGroup>
-                                <h:outputText id="postCode"
-                                             value="#{BookingBean.postCode}"/>
+                                <h:outputText id="PickupPostCode"
+                                             value="#{BookingBean.pickupPostCode}"/>
                                 &nbsp;&nbsp;     
-                                <h:outputText id="suburb"
-                                             value="#{BookingBean.suburb}"/>
+                                <h:outputText id="pickupSuburb"
+                                             value="#{BookingBean.pickupSuburb}"/>
                             </h:panelGroup>
-                            <h:outputLabel for="city" value="City:"/>
-                            <h:outputText id="city"
-                                         value="#{BookingBean.city}"/>
-                            <h:outputLabel for="countryState" value="State and Country:"/>
+                            <h:outputLabel for="pickupCity" value="City:"/>
+                            <h:outputText id="pickupCity"
+                                         value="#{BookingBean.pickupCity}"/>
+                            <h:outputLabel for="pickupCountryState" value="State and Country:"/>
                             <h:panelGroup>
-                                <h:outputText id="countryState"
-                                             value="#{BookingBean.countryState}"/>
+                                <h:outputText id="pickupCountryState"
+                                             value="#{BookingBean.pickupCountryState}"/>
                                 &nbsp;&nbsp;
-                                <h:outputText id="country"
-                                             value="#{BookingBean.country}"/>
+                                <h:outputText id="pickupCountry"
+                                             value="#{BookingBean.pickupCountry}"/>
                             </h:panelGroup>
                         </h:panelGrid>
                     </h:panelGroup>
