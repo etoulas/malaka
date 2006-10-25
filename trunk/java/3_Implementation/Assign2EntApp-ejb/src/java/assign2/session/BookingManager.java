@@ -77,17 +77,14 @@ public class BookingManager implements assign2.session.BookingManagerRemote, ass
         List<BookingDetailsTO> requestedBookings = new ArrayList<BookingDetailsTO>();
         
         Query q = em.createNamedQuery("findRequestedBookings");
+        q.setParameter("proc", Boolean.FALSE);
         List results = q.getResultList();
-        
-        if (results.isEmpty()) {
-            System.out.println("DIE SCHEISSE GEHT NET!!");
-        }
         
         for (Object item : results) {
             requestedBookings.add( ((Booking) item).getData() );
         }
         
-        return results;
+        return requestedBookings;
     }
     
     /*This method will retrieve all bookings that occur within a timeframe */

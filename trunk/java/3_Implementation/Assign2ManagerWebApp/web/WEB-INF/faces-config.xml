@@ -29,7 +29,7 @@
     <managed-bean>
         <managed-bean-name>listRequestedBookingsBean</managed-bean-name>
         <managed-bean-class>assign2.webapp.mbean.listRequestedBookingsBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>processBookingBean</managed-bean-name>
@@ -108,15 +108,15 @@
     <navigation-rule>
         <from-view-id>/listRequestedBookings.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>process</from-outcome>
-            <to-view-id>/processBooking.jsp</to-view-id>
+            <from-outcome>process_booking</from-outcome>
+            <to-view-id>/processBookingForm.jsp</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/processBooking.jsp</from-view-id>
+        <from-view-id>/processBookingForm.jsp</from-view-id>
         <navigation-case>
-            <from-outcome>assignDriverVehicle</from-outcome>
+            <from-outcome>success</from-outcome>
             <to-view-id>/listRequestedBookings.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>

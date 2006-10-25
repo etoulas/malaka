@@ -50,7 +50,7 @@
                         <f:facet name="header">
                             <h:outputText value="Pickup Time"/>
                         </f:facet>
-                        <h:outputText value="#{rowItem.pickupTime}"/>
+                        h:outputText value="#-bracket-rowItem.pickupTime-bracket-"/
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -61,9 +61,10 @@
 
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="process booking"/>
+                            <h:outputText value="action"/>
                         </f:facet>
-                        <h:commandLink action="#{processBookingBean}" value="process"/>
+                        <h:commandButton id="submit" value="process"
+                                       action="#{listRequestedBookingsBean.selectProcessBooking}"/>
                     </h:column>
 
                 </h:dataTable>
