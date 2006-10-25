@@ -11,6 +11,7 @@ package assign2.entities;
 
 import assign2.entities.to.BookingDetailsTO;
 import java.io.Serializable;
+import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,7 @@ import javax.persistence.Table;
 
 /**
  * Entity class Booking
- * 
+ *
  * @author Gerard Gigliotti
  */
 @Entity
@@ -35,15 +36,14 @@ import javax.persistence.Table;
     @NamedQuery(
     name="findBookingDetailsByID",
             query="SELECT b FROM Booking b WHERE b.id = :id"),
-    @NamedQuery(
+            @NamedQuery(
     name="findRequestedBookings",
             query="SELECT rb FROM Booking rb")
 })
 
 @Table(name="BOOKING")
-public class Booking implements Serializable
-{
-
+public class Booking implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -53,6 +53,12 @@ public class Booking implements Serializable
     private String customerName;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
+    @Column()
+    private Time pickupTime;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dropoffDate;
+    @Column()
+    private Time dropoffTime;
     @Column
     private Boolean processed;
     @OneToOne(cascade=CascadeType.ALL)
@@ -73,10 +79,9 @@ public class Booking implements Serializable
     private BookingType bookingType;
     
     /** Creates a new instance of Booking */
-    public Booking()
-    {
+    public Booking() {
     }
-
+    
     public Booking(BookingDetailsTO bookingTO) {
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
@@ -89,44 +94,40 @@ public class Booking implements Serializable
      * Gets the id of this Booking.
      * @return the id
      */
-    public Long getId()
-    {
+    public Long getId() {
         return this.id;
     }
-
+    
     /**
      * Sets the id of this Booking to the specified value.
      * @param id the new id
      */
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
-
+    
     /**
-     * Returns a hash code value for the object.  This implementation computes 
+     * Returns a hash code value for the object.  This implementation computes
      * a hash code value based on the id fields in this object.
      * @return a hash code value for this object.
      */
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
-
+    
     /**
-     * Determines whether another object is equal to this Booking.  The result is 
-     * <code>true</code> if and only if the argument is not null and is a Booking object that 
+     * Determines whether another object is equal to this Booking.  The result is
+     * <code>true</code> if and only if the argument is not null and is a Booking object that
      * has the same id field values as this object.
      * @param object the reference object with which to compare
      * @return <code>true</code> if this object is the same as the argument;
      * <code>false</code> otherwise.
      */
     @Override
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Booking)) {
             return false;
@@ -135,155 +136,156 @@ public class Booking implements Serializable
         if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) return false;
         return true;
     }
-
+    
     /**
-     * Returns a string representation of the object.  This implementation constructs 
+     * Returns a string representation of the object.  This implementation constructs
      * that representation based on the id fields.
      * @return a string representation of the object.
      */
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "assign2.bookings.Booking[id=" + id + "]";
     }
-
-    public String getContactName()
-    {
+    
+    public String getContactName() {
         return contactName;
     }
-
-    public void setContactName(String contactName)
-    {
+    
+    public void setContactName(String contactName) {
         this.contactName = contactName;
     }
-
-    public String getCustomerName()
-    {
+    
+    public String getCustomerName() {
         return customerName;
     }
-
-    public void setCustomerName(String customerName)
-    {
+    
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
-
-    public Date getPickupDate()
-    {
+    
+    public Date getPickupDate() {
         return pickupDate;
     }
-
-    public void setPickupDate(Date pickupDate)
-    {
+    
+    public void setPickupDate(Date pickupDate) {
         this.pickupDate = pickupDate;
     }
-
-    public Address getPickupAddress()
-    {
+    
+    public Address getPickupAddress() {
         return pickupAddress;
     }
-
-    public void setPickupAddress(Address pickupAddress)
-    {
+    
+    public void setPickupAddress(Address pickupAddress) {
         this.pickupAddress = pickupAddress;
     }
-
-    public Address getDropoffAddress()
-    {
+    
+    public Address getDropoffAddress() {
         return dropoffAddress;
     }
-
-    public void setDropoffAddress(Address dropoffAddress)
-    {
+    
+    public void setDropoffAddress(Address dropoffAddress) {
         this.dropoffAddress = dropoffAddress;
     }
-
-    public VehicleType getVehicleType()
-    {
+    
+    public VehicleType getVehicleType() {
         return vehicleType;
     }
-
-    public void setVehicleType(VehicleType vehicleType)
-    {
+    
+    public void setVehicleType(VehicleType vehicleType) {
         this.vehicleType = vehicleType;
     }
-
-    public Driver getDriver()
-    {
+    
+    public Driver getDriver() {
         return driver;
     }
-
-    public void setDriver(Driver driver)
-    {
+    
+    public void setDriver(Driver driver) {
         this.driver = driver;
     }
-
-    public Users getCustomer()
-    {
+    
+    public Users getCustomer() {
         return customer;
     }
-
-    public void setCustomer(Users customer)
-    {
+    
+    public void setCustomer(Users customer) {
         this.customer = customer;
     }
-
-    public String getSpecialRequirements()
-    {
+    
+    public String getSpecialRequirements() {
         return specialRequirements;
     }
-
-    public void setSpecialRequirements(String specialRequirements)
-    {
+    
+    public void setSpecialRequirements(String specialRequirements) {
         this.specialRequirements = specialRequirements;
     }
-
-    public String getFreeField()
-    {
+    
+    public String getFreeField() {
         return freeField;
     }
-
-    public void setFreeField(String freeField)
-    {
+    
+    public void setFreeField(String freeField) {
         this.freeField = freeField;
     }
-
-    public BookingType getBookingType()
-    {
+    
+    public BookingType getBookingType() {
         return bookingType;
     }
-
-    public void setBookingType(BookingType bookingType)
-    {
+    
+    public void setBookingType(BookingType bookingType) {
         this.bookingType = bookingType;
     }
-
+    
     public Boolean getProcessed() {
         return processed;
     }
-
+    
     public void setProcessed(Boolean processed) {
         this.processed = processed;
     }
-
+    
     public BookingDetailsTO getData() {
-         BookingDetailsTO bdto = new BookingDetailsTO();
-         
-         bdto.setId(this.getId());
-         bdto.setContactName(this.getContactName());
-         bdto.setCustomerName(this.getCustomerName());
-         bdto.setPickupDate(this.getPickupDate());
-         if (this.getBookingType() != null) {
-             bdto.setBookingType(this.getBookingType().getData());
-         }
-         if (this.getPickupAddress() != null) {
-             bdto.setPickupAddress(this.getPickupAddress().getData());
-         }
-         if (this.getDropoffAddress() != null) {
-             bdto.setDropoffAddress(this.getDropoffAddress().getData());
-         }
-         bdto.setProcessed(this.getProcessed());
-         
-         return bdto;
+        BookingDetailsTO bdto = new BookingDetailsTO();
+        
+        bdto.setId(this.getId());
+        bdto.setContactName(this.getContactName());
+        bdto.setCustomerName(this.getCustomerName());
+        bdto.setPickupDate(this.getPickupDate());
+        if (this.getBookingType() != null) {
+            bdto.setBookingType(this.getBookingType().getData());
+        }
+        if (this.getPickupAddress() != null) {
+            bdto.setPickupAddress(this.getPickupAddress().getData());
+        }
+        if (this.getDropoffAddress() != null) {
+            bdto.setDropoffAddress(this.getDropoffAddress().getData());
+        }
+        bdto.setProcessed(this.getProcessed());
+        
+        return bdto;
+    }
+
+    public Time getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(Time pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public Date getDropoffDate() {
+        return dropoffDate;
+    }
+
+    public void setDropoffDate(Date dropoffDate) {
+        this.dropoffDate = dropoffDate;
+    }
+
+    public Time getDropoffTime() {
+        return dropoffTime;
+    }
+
+    public void setDropoffTime(Time dropoffTime) {
+        this.dropoffTime = dropoffTime;
     }
     
 }
