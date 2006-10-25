@@ -22,9 +22,7 @@ public class BookingDetailsTO {
     private String contactName;
     private String customerName;
     private Date pickupDate;
-    private Time pickupTime;
     private Date dropoffDate;
-    private Time dropoffTime;
     private BookingTypeTO bookingType;
     private AddressTO pickupAddress;
     private AddressTO dropoffAddress;
@@ -117,14 +115,6 @@ public class BookingDetailsTO {
         this.processed = processed;
     }
 
-    public Time getPickupTime() {
-        return pickupTime;
-    }
-
-    public void setPickupTime(Time pickupTime) {
-        this.pickupTime = pickupTime;
-    }
-
     public Date getDropoffDate() {
         return dropoffDate;
     }
@@ -132,13 +122,4 @@ public class BookingDetailsTO {
     public void setDropoffDate(Date dropoffDate) {
         this.dropoffDate = dropoffDate;
     }
-
-    public Time getDropoffTime() {
-        return dropoffTime;
-    }
-
-    public void setDropoffTime(Time dropoffTime) {
-        this.dropoffTime = dropoffTime;
-    }
-    
 }
