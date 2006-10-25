@@ -1,5 +1,4 @@
 -- drop tables from sample db
-DROP TABLE Sequence;
 DROP TABLE Micro_Markets;
 DROP TABLE Orders;
 DROP TABLE Product;
