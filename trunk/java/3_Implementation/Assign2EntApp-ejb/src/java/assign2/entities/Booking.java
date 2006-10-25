@@ -11,7 +11,6 @@ package assign2.entities;
 
 import assign2.entities.to.BookingDetailsTO;
 import java.io.Serializable;
-import java.sql.Time;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -51,11 +50,9 @@ public class Booking implements Serializable {
     private String contactName;
     @Column(length=60)
     private String customerName;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date pickupDate;
-    @Column()
-    private Time pickupTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dropoffDate;
     @Column()
     private Time dropoffTime;
@@ -264,28 +261,12 @@ public class Booking implements Serializable {
         return bdto;
     }
 
-    public Time getPickupTime() {
-        return pickupTime;
-    }
-
-    public void setPickupTime(Time pickupTime) {
-        this.pickupTime = pickupTime;
-    }
-
     public Date getDropoffDate() {
         return dropoffDate;
     }
 
     public void setDropoffDate(Date dropoffDate) {
         this.dropoffDate = dropoffDate;
-    }
-
-    public Time getDropoffTime() {
-        return dropoffTime;
-    }
-
-    public void setDropoffTime(Time dropoffTime) {
-        this.dropoffTime = dropoffTime;
     }
     
 }
