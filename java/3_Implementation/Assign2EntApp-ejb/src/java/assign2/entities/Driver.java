@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import assign2.entities.to.*;
 import java.util.Collection;
-import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 /**
