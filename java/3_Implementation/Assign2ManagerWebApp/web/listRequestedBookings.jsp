@@ -34,14 +34,38 @@
                         </f:facet>
                         <h:outputText value="#{rowItem.contactName}"/>
                     </h:column>
-                    <!--
                     <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Edit"/>
+                            <h:outputText value="Customer Name"/>
                         </f:facet>
-                        <h:commandLink action="#{listVehicles.selectEditVehicle}" value="Edit"  ></h:commandLink>
+                        <h:outputText value="#{rowItem.customerName}"/>
                     </h:column>
-                    -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pickup Date"/>
+                        </f:facet>
+                        <h:outputText value="#{rowItem.pickupDate}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pickup Time"/>
+                        </f:facet>
+                        <h:outputText value="#{rowItem.pickupTime}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Booking Type"/>
+                        </f:facet>
+                        <h:outputText value="#{rowItem.bookingType.description}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="process booking"/>
+                        </f:facet>
+                        <h:commandLink action="#{processBookingBean}" value="process"/>
+                    </h:column>
+
                 </h:dataTable>
             </h:form>
         </f:view>
