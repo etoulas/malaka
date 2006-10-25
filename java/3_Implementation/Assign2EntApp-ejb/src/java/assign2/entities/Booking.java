@@ -43,17 +43,13 @@ public class Booking implements Serializable
     private String customerName;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
-    @Column()
-    private Time pickupTime;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dropoffDate;
-    @Column()
-    private Time dropoffTime;
     @Column
     private Boolean processed;
     @OneToOne(cascade=CascadeType.ALL)
     private Address pickupAddress;
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne()
     private Address dropoffAddress;
     @ManyToOne()
     private VehicleType vehicleType;
@@ -77,12 +73,8 @@ public class Booking implements Serializable
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
         this.setPickupDate(bookingTO.getPickupDate());
-        this.setPickupTime(bookingTO.getPickupTime());
-        this.setDropoffDate(bookingTO.getDropoffDate());
-        this.setDropoffTime(bookingTO.getDropoffTime());
-        this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
-        this.setProcessed(bookingTO.getProcessed());
+        this.setProcessed(false);
     }
     /**
      * Gets the id of this Booking.
