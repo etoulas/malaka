@@ -12,9 +12,10 @@ package assign2.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
 import assign2.entities.to.*;
+import java.util.Collection;
 import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 /**
  * Entity class Driver
@@ -24,8 +25,10 @@ import javax.persistence.CascadeType;
 @Entity
 public class Driver extends Users implements Serializable
 {   
+    @OneToMany(mappedBy="driver")
+    private Collection<Booking> assignedBookings;
     @ManyToOne  //(cascade=CascadeType.ALL)
-//    @JoinColumn
+    //@JoinColumn
     private DriversLicense license;
     
     /** Creates a new instance of Driver */
