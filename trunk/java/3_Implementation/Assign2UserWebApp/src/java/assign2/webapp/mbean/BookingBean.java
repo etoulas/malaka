@@ -76,7 +76,7 @@ public class BookingBean {
     }
     
     public List getBookingTypes() {
-        if (this.bookingTypes == null) {
+        if (this.bookingTypes == null || this.bookingTypes.size() == 0) {
             this.bookingTypes = new ArrayList<SelectItem>();
             List<BookingTypeTO> types = bm.getAllBookingTypes();
             for (BookingTypeTO to : types) {
