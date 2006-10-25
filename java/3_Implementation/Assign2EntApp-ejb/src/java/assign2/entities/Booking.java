@@ -54,9 +54,9 @@ public class Booking implements Serializable {
     private String contactName;
     @Column(length=60)
     private String customerName;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date pickupDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dropoffDate;
     @Column
     private Boolean processed;
