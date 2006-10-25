@@ -80,9 +80,11 @@ public class Booking implements Serializable {
     public Booking(BookingDetailsTO bookingTO) {
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
+        this.setDropoffDate(bookingTO.getDropoffDate());
         this.setPickupDate(bookingTO.getPickupDate());
         this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
+        this.setDropoffAddress(new Address(bookingTO.getDropoffAddress()));
         this.setProcessed(bookingTO.getProcessed());
     }
     /**
