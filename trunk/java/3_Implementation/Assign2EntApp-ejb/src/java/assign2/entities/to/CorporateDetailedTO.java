@@ -15,12 +15,27 @@ package assign2.entities.to;
  */
 public class CorporateDetailedTO extends UsersDetailedTO
 {
+    
     private String companyName; 
     /** Creates a new instance of CorporateDetailedTO */
-    public CorporateDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address, String companyName)
+
+    public CorporateDetailedTO() {
+        
+    }
+    
+ /*   public CorporateDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address, String companyName)
     {
          super(username,password,firstName,lastName,phoneNumber,address);
-         this.companyName = companyName;
+         this.setCompanyName(companyName);
+    }
+*/
+    
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
     
 }

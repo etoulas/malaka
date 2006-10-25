@@ -72,13 +72,13 @@
                     <h:outputText value=""/>
                     <h:panelGroup>
                         <h:outputLabel for="password" value="Password: "/>                
-                        <h:inputText id="password" 
+                        <h:inputSecret id="password" 
                                      value="#{UserManagedBean.password}" 
                                      required="true" />
                     </h:panelGroup>
                     <h:panelGroup>
                         <h:outputLabel for="repPassword" value="Repeat Password: "/>                
-                        <h:inputText id="repPassword" 
+                        <h:inputSecret id="repPassword" 
                                      value="#{UserManagedBean.repPassword}" 
                                      required="true" />
                     </h:panelGroup>

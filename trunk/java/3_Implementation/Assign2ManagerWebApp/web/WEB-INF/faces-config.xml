@@ -87,6 +87,23 @@
             <to-view-id>/createManager.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/createDriver.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createDriver.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+        <navigation-rule>
+        <from-view-id>/createCustomer.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/createCustomer.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
     
     <navigation-rule>
         <from-view-id>/listRequestedBookings.jsp</from-view-id>

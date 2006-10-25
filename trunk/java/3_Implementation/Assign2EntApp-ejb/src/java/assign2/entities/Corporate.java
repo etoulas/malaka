@@ -9,12 +9,10 @@
 
 package assign2.entities;
 
+import assign2.entities.to.CorporateDetailedTO;
 import assign2.entities.to.UsersDetailedTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Column;
 
 /**
@@ -27,11 +25,17 @@ public class Corporate extends Users implements Serializable
 {   
     @Column(length=100)
     private String companyName;
+    
     /** Creates a new instance of Corporate */
     public Corporate()
     {
     }
  
+    public Corporate(CorporateDetailedTO to) {
+        super(to);
+        this.companyName = to.getCompanyName();
+    }
+    
     public Corporate(String username,String password)
     {
        super(username,password);
