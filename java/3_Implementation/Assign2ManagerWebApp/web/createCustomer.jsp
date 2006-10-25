@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsf/core" prefix="f" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsf/html" prefix="h" %>
-<c:set var="title" value="Create Driver" scope="page"/> 
+<c:set var="title" value="Create Customer" scope="page"/> 
 <html> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
@@ -18,8 +18,15 @@
                         font-style: oblique" 
                         id="errors"/> 
             
-            <h:form id="enterDriverDetails">
+            <h:form id="enterCustomerDetails">
                 <h:panelGrid columns="2">
+                    <h:panelGroup>
+                        <h:outputLabel for="company" value="Company: "/>
+                        <h:inputText id="company" 
+                                     value="#{UserManagedBean.company}" 
+                                     required="true" />
+                    </h:panelGroup> 
+                    <h:outputText value=""/>
                     <h:panelGroup>
                         <h:outputLabel for="firstName" value="First Name: "/>
                         <h:inputText id="firstName" 
@@ -32,13 +39,6 @@
                                      value="#{UserManagedBean.lastName}" 
                                      required="true" />
                     </h:panelGroup>
-                    <h:panelGroup>
-                    <h:outputLabel for="type" value="Drivers License: "/>
-                    <h:selectOneMenu id="type" value="#{UserManagedBean.selectedLicenseType}">
-                        <f:selectItems value="#{UserManagedBean.licenseTypes}"/>
-                    </h:selectOneMenu>
-                    </h:panelGroup>
-                    <h:outputText value=""/>
                     <h:outputText value="Address: "/>
                     <h:panelGrid columns="2">
                         <h:outputLabel for="street" value="Street: "/>
@@ -88,14 +88,19 @@
                         <h:inputSecret id="repPassword" 
                                      value="#{UserManagedBean.repPassword}" 
                                      required="true" />
+                        
                     </h:panelGroup>
                     <h:commandButton id="submit" value="Continue" 
-                                     action="#{UserManagedBean.CreateDriver}"/>
+                                     action="#{UserManagedBean.CreateCustomer}"/>
                     
                 </h:panelGrid>
                 
             </h:form>
         </f:view>
+        
+        
+        
+        
         
     </body>
 </html>

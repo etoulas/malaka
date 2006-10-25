@@ -9,9 +9,11 @@
 
 package assign2.session;
 
+import assign2.entities.Corporate;
 import assign2.entities.Driver;
 import assign2.entities.DriversLicense;
 import assign2.entities.Manager;
+import assign2.entities.to.CorporateDetailedTO;
 import assign2.entities.to.DriverDetailedTO;
 import assign2.entities.to.DriversLicenseTO;
 import assign2.entities.to.ManagerDetailedTO;
@@ -72,5 +74,11 @@ public List<DriversLicenseTO> getAllLicenseTypes() {
         return dl.getData();
      
  }
+ 
+     public void createCustomer(CorporateDetailedTO to) {
+             Corporate c = new Corporate(to);
+             em.persist(c);
+     }
+ 
     
 }

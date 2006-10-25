@@ -10,9 +10,11 @@
 package assign2.webapp.mbean;
 
 import assign2.entities.to.AddressTO;
+import assign2.entities.to.CorporateDetailedTO;
 import assign2.entities.to.DriverDetailedTO;
 import assign2.entities.to.DriversLicenseTO;
 import assign2.entities.to.ManagerDetailedTO;
+import assign2.entities.to.UsersDetailedTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.model.SelectItem;
@@ -36,9 +38,10 @@ public class UserManagedBean {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    //private DriversLicenseTO licenseTO;
+    private String company;
     private Long selectedLicenseType;
     private List<SelectItem> licenseTypes;
+
     // address data
     private Integer postCode;
     private String countryState;
@@ -57,74 +60,82 @@ public class UserManagedBean {
     
     public String CreateManager() {
         
-        AddressTO ato = new AddressTO();
-        ato.setCity(this.getCity());
-        ato.setCountry(this.getCountry());
-        ato.setCountryState(this.getCountryState());
-        ato.setPostCode(this.getPostCode());
-        ato.setStreet(this.getStreet());
-        ato.setStreetNumber(this.getStreetNumber());
-        ato.setSuburb(this.getSuburb());
-        
+        AddressTO ato = createAddress();
         ManagerDetailedTO mto = new ManagerDetailedTO();
-        mto.setFirstName(this.firstName);
-        mto.setLastName(this.lastName);
-        mto.setUsername(this.username);
-        mto.setPassword(this.password);
-        mto.setPhoneNumber(this.phoneNumber);
+        createUser(mto);
         mto.setAddress(ato);
-        
         um.createManager(mto);
         
         return "success";
     }
+    
 
     public String CreateDriver() {
         
-        AddressTO ato = new AddressTO();
-        ato.setCity(this.getCity());
-        ato.setCountry(this.getCountry());
-        ato.setCountryState(this.getCountryState());
-        ato.setPostCode(this.getPostCode());
-        ato.setStreet(this.getStreet());
-        ato.setStreetNumber(this.getStreetNumber());
-        ato.setSuburb(this.getSuburb());
-        
+        AddressTO ato = createAddress();
+        //DriverDetailedTO dto = (DriverDetailedTO)createUser();
         DriverDetailedTO dto = new DriverDetailedTO();
-        dto.setFirstName(this.firstName);
-        dto.setLastName(this.lastName);
-        dto.setUsername(this.username);
-        dto.setPassword(this.password);
-        dto.setPhoneNumber(this.phoneNumber);
-        
+        createUser(dto);
         DriversLicenseTO dlto = um.getLicenseTypeById(this.selectedLicenseType);
-        
         dto.setLicense(dlto);
         dto.setAddress(ato);
-        
         um.createDriver(dto);
         
         return "success";
     }
     
+        public String CreateCustomer() {
+        
+        AddressTO ato = createAddress();
+        //CorporateDetailedTO cto = (CorporateDetailedTO)createUser();
+        CorporateDetailedTO cto = new CorporateDetailedTO();
+        createUser(cto);
+        cto.setAddress(ato);
+        cto.setCompanyName(this.company);
+        um.createCustomer(cto);
+
+        
+        return "success";
+    }
+
   
     public List getLicenseTypes() {
         
         if (this.licenseTypes == null) {
-
             this.licenseTypes = new ArrayList<SelectItem>();
-
             List<DriversLicenseTO> types = um.getAllLicenseTypes();
-
             for (DriversLicenseTO to : types) {
                 this.licenseTypes.add(new SelectItem(to.getId().toString(), to.getType() ));
             }
         }
         return licenseTypes;
     }
+  
     
+    private AddressTO createAddress() {
+        
+        AddressTO ato = new AddressTO();
+        
+        ato.setCity(this.getCity());
+        ato.setCountry(this.getCountry());
+        ato.setCountryState(this.getCountryState());
+        ato.setPostCode(this.getPostCode());
+        ato.setStreet(this.getStreet());
+        ato.setStreetNumber(this.getStreetNumber());
+        ato.setSuburb(this.getSuburb());
+
+        return ato;
+    }
     
-    
+    private void createUser(UsersDetailedTO uto) {
+        
+        uto.setFirstName(this.firstName);
+        uto.setLastName(this.lastName);
+        uto.setUsername(this.username);
+        uto.setPassword(this.password);
+        uto.setPhoneNumber(this.phoneNumber);
+        
+    }
     
     
     public String getUsername() {
@@ -237,6 +248,14 @@ public class UserManagedBean {
 
     public void setSelectedLicenseType(Long selectedLicenseType) {
         this.selectedLicenseType = selectedLicenseType;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
     
     
