@@ -54,8 +54,6 @@ public class Booking implements Serializable {
     private Date pickupDate;
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date dropoffDate;
-    @Column()
-    private Time dropoffTime;
     @Column
     private Boolean processed;
     @OneToOne(cascade=CascadeType.ALL)
