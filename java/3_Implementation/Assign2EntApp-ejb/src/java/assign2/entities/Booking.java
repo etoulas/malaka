@@ -10,6 +10,7 @@
 package assign2.entities;
 
 import assign2.entities.to.BookingDetailsTO;
+import assign2.entities.to.BookingTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,10 @@ import javax.persistence.Table;
             query="SELECT b FROM Booking b WHERE b.id = :id"),
             @NamedQuery(
     name="findRequestedBookings",
-            query="SELECT rb FROM Booking rb")
+            query="SELECT rb FROM Booking rb"),
+            @NamedQuery(
+    name="findBookingByDates",
+            query="SELECT b FROM Booking b WHERE b.pickupDate >= :pickupDate1 AND b.dropoffDate <= :dropoffDate1 OR :pickupDate2 BETWEEN b.pickupDate AND b.dropoffDate OR :dropoffDate2 BETWEEN b.pickupDate AND b.dropoffDate" )
 })
 
 @Table(name="BOOKING")
@@ -50,9 +54,9 @@ public class Booking implements Serializable {
     private String contactName;
     @Column(length=60)
     private String customerName;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date pickupDate;
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dropoffDate;
     @Column
     private Boolean processed;
@@ -72,6 +76,8 @@ public class Booking implements Serializable {
     private String freeField;
     @ManyToOne
     private BookingType bookingType;
+    @ManyToOne
+    private Vehicle vehicle;
     
     /** Creates a new instance of Booking */
     public Booking() {
@@ -80,11 +86,9 @@ public class Booking implements Serializable {
     public Booking(BookingDetailsTO bookingTO) {
         this.setContactName(bookingTO.getContactName());
         this.setCustomerName(bookingTO.getCustomerName());
-        this.setDropoffDate(bookingTO.getDropoffDate());
         this.setPickupDate(bookingTO.getPickupDate());
         this.setBookingType(new BookingType(bookingTO.getBookingType()));
         this.setPickupAddress(new Address(bookingTO.getPickupAddress()));
-        this.setDropoffAddress(new Address(bookingTO.getDropoffAddress()));
         this.setProcessed(bookingTO.getProcessed());
     }
     /**
@@ -260,13 +264,31 @@ public class Booking implements Serializable {
         
         return bdto;
     }
-
+   
+    
     public Date getDropoffDate() {
         return dropoffDate;
     }
-
+    
     public void setDropoffDate(Date dropoffDate) {
         this.dropoffDate = dropoffDate;
     }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
     
+    public BookingTO getSimpleData()
+    {
+        BookingTO bTO = new BookingTO();
+        bTO.setContactName(getContactName());
+        bTO.setCustomerName(getCustomerName());
+        bTO.setVehicle(getVehicle().getData());
+        
+        return bTO;
+    }    
 }
