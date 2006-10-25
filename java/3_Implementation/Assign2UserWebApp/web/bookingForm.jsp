@@ -48,7 +48,7 @@
                         <h:outputText value=" (dd/mm/yyyy hh:mm)"/>
                     </h:panelGroup>
                     <h:outputLabel for="type" value="Booking type"/>
-                    <h:selectOneMenu id="type" value="#{BookingBean.selectedBookingType}" 
+                    <h:selectOneMenu  id="type" value="#{BookingBean.selectedBookingType}" 
                         validator="#{BookingBean.validateBookingType}">
                         <f:selectItems value="#{BookingBean.bookingTypes}"/>
                     </h:selectOneMenu>
