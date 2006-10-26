@@ -26,7 +26,8 @@ public class listVehicles {
         
      private DataModel model;
     /** Creates a new instance of listVehicles */
-    public listVehicles() {
+    
+     public listVehicles() {
     }
     
     public DataModel getListAllVehicles()
@@ -45,7 +46,7 @@ public class listVehicles {
     
     //This method adds the selected vehicle to a session variable, and then uses JSF to got to an edit page.
     public String selectEditVehicle()
-    {
+    { 
         VehicleTO vto = (VehicleTO)model.getRowData();
         System.out.println("Adding Vehicle To Session. Variable editVehicleTO");
         //Add VTO TO session
@@ -53,6 +54,8 @@ public class listVehicles {
         System.out.println("Session Test");
         System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("VehicleEditSession"));
         return "vehicle_edit";
+        
+        
     }
     
 }

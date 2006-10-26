@@ -1,69 +1,86 @@
-<?xml version='1.0' encoding='UTF-8'?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- =========== FULL CONFIGURATION FILE ================================== -->
-
-<faces-config version="1.2" 
-              xmlns="http://java.sun.com/xml/ns/javaee" 
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
-    <managed-bean>
-        <managed-bean-name>createVehicle</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.createVehicle</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>listVehicles</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.listVehicles</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>editVehicle</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.editVehicle</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>UserManagedBean</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.UserManagedBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>listRequestedBookingsBean</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.listRequestedBookingsBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>processBookingBean</managed-bean-name>
-        <managed-bean-class>assign2.webapp.mbean.processBookingBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    
-    <!-- Navigation rules -->
-    <navigation-rule> 
-        <from-view-id>/createVehicle.jsp</from-view-id> 
-        <navigation-case> 
-            <from-outcome>success</from-outcome> 
-            <to-view-id>/createVehicle.jsp</to-view-id> 
-        </navigation-case> 
-        <navigation-case> 
-            <from-outcome>fail</from-outcome> 
-            <to-view-id>/error.jsp</to-view-id> 
-        </navigation-case>
-        <navigation-case>
-            <description>
-                Cancel create booking
-            </description>
-            <from-outcome>cancel</from-outcome>
-            <to-view-id>/listVehicles.jsp</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <description>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+  <managed-bean>
+    <managed-bean-name>createVehicle</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.createVehicle</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>listVehicles</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.listVehicles</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>editVehicle</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.editVehicle</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>CreateUserManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.CreateUserManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>listRequestedBookingsBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.listRequestedBookingsBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>processBookingBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.processBookingBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ListManagersManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.ListManagersManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ListDriversManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.ListDriversManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ListCustomersManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.ListCustomersManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>EditManagerManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.EditManagerManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>EditDriverManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.EditDriverManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>EditCustomerManagedBean</managed-bean-name>
+    <managed-bean-class>assign2.webapp.mbean.EditCustomerManagedBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <!-- Navigation rules -->
+  <navigation-rule>
+    <from-view-id>/createVehicle.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/createVehicle.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/error.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <description>
             Selecting a vehicle to edit
         </description>
-        <from-view-id>/listVehicles.jsp</from-view-id>
-        <navigation-case>
-            <description>
+    <from-view-id>/listVehicles.jsp</from-view-id>
+    <navigation-case>
+      <description>
                 Edit the selected vehicle.
             </description>
             <from-outcome>vehicle_edit</from-outcome>

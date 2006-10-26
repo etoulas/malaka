@@ -21,21 +21,23 @@ public class UsersDetailedTO
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private Boolean enabled;
     private AddressTO address;
     
     /** Creates a new instance of UsersDetailedTO */
 
     public UsersDetailedTO() {
-        
+       this.enabled = true; 
     }
     
-    public UsersDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber,AddressTO address)
+    public UsersDetailedTO(String username,String password,String firstName,String lastName,String phoneNumber, AddressTO address)
     {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.enabled = true;
         this.address = address;
     }
     

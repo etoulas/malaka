@@ -8,11 +8,11 @@
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <title>${title}</title> 
-        <jsp:include page="includes/headerFaces.html" />
+                <jsp:include page="includes/headerFaces.html" />
     </head> 
     <body>
         <jsp:include page="includes/topPageFaces.html" />
-        <h2>${title}</h2> 
+        <h1>${title}</h1> 
         <f:view>
             <h:messages showSummary="true" showDetail="false" 
                         style="color: red; 
@@ -25,81 +25,85 @@
                     <h:panelGroup>
                         <h:outputLabel for="company" value="Company: "/>
                         <h:inputText id="company" 
-                                     value="#{UserManagedBean.company}" 
+                                     value="#{CreateUserManagedBean.company}" 
                                      required="true" />
                     </h:panelGroup> 
                     <h:outputText value=""/>
                     <h:panelGroup>
                         <h:outputLabel for="firstName" value="First Name: "/>
                         <h:inputText id="firstName" 
-                                     value="#{UserManagedBean.firstName}" 
+                                     value="#{CreateUserManagedBean.firstName}" 
                                      required="true" />
                     </h:panelGroup>     
                     <h:panelGroup>    
                         <h:outputLabel for="lastName" value="Last Name: "/>
                         <h:inputText id="lastName" 
-                                     value="#{UserManagedBean.lastName}" 
+                                     value="#{CreateUserManagedBean.lastName}" 
                                      required="true" />
                     </h:panelGroup>
                     <h:outputText value="Address: "/>
                     <h:panelGrid columns="2">
                         <h:outputLabel for="street" value="Street: "/>
                         <h:inputText id="street" 
-                                     value="#{UserManagedBean.street}" 
+                                     value="#{CreateUserManagedBean.street}" 
                                      required="true" />
                         <h:outputLabel for="streetNumber" value="Number: "/>                
                         <h:inputText id="streetNumber" 
-                                     value="#{UserManagedBean.streetNumber}" 
+                                     value="#{CreateUserManagedBean.streetNumber}" 
                                      required="true" />
                         <h:outputLabel for="postCode" value="Postcode: "/>
                         <h:inputText id="postCode" 
-                                     value="#{UserManagedBean.postCode}" 
+                                     value="#{CreateUserManagedBean.postCode}" 
                                      required="true" />
                         <h:outputLabel for="suburb" value="Suburb: "/>
                         <h:inputText id="suburb" 
-                                     value="#{UserManagedBean.suburb}" 
+                                     value="#{CreateUserManagedBean.suburb}" 
                                      required="true" />
                         <h:outputLabel for="city" value="City: "/>
                         <h:inputText id="city" 
-                                     value="#{UserManagedBean.city}" 
+                                     value="#{CreateUserManagedBean.city}" 
                                      required="true" />
                         <h:outputLabel for="state" value="State: "/>
                         <h:inputText id="state" 
-                                     value="#{UserManagedBean.countryState}" 
+                                     value="#{CreateUserManagedBean.countryState}" 
                                      required="true" />
                         <h:outputLabel for="country" value="Country: "/>
                         <h:inputText id="country" 
-                                     value="#{UserManagedBean.country}" 
+                                     value="#{CreateUserManagedBean.country}" 
+                                     required="true" />
+                        <h:outputLabel for="phone" value="Phone Number: "/>
+                        <h:inputText id="phone" 
+                                     value="#{CreateUserManagedBean.phoneNumber}" 
                                      required="true" />
                     </h:panelGrid>
                     <h:panelGroup>
                         <h:outputLabel for="username" value="Username: "/>
                         <h:inputText id="username" 
-                                     value="#{UserManagedBean.username}" 
+                                     value="#{CreateUserManagedBean.username}" 
                                      required="true" />
                     </h:panelGroup>
                     <h:outputText value=""/>
                     <h:panelGroup>
                         <h:outputLabel for="password" value="Password: "/>                
                         <h:inputSecret id="password" 
-                                       value="#{UserManagedBean.password}" 
+                                       value="#{CreateUserManagedBean.password}" 
                                        required="true" />
                     </h:panelGroup>
                     <h:panelGroup>
                         <h:outputLabel for="repPassword" value="Repeat Password: "/>                
                         <h:inputSecret id="repPassword" 
-                                       value="#{UserManagedBean.repPassword}" 
+                                       value="#{CreateUserManagedBean.repPassword}" 
                                        required="true" />
                         
                     </h:panelGroup>
                     <h:commandButton id="submit" value="Continue" 
-                                     action="#{UserManagedBean.CreateCustomer}"/>
+                                     action="#{CreateUserManagedBean.CreateCustomer}"/>
                     
                 </h:panelGrid>
                 
             </h:form>
         </f:view>
-        <jsp:include page="includes/bottomPage.html" />
+          <jsp:include page="includes/bottomPage.html" />
         
         
         

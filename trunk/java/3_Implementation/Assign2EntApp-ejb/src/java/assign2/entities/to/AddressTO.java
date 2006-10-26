@@ -9,6 +9,8 @@
 
 package assign2.entities.to;
 
+import assign2.entities.Address;
+
 /**
  *
  * @author Gerard Gigliotti
@@ -29,6 +31,19 @@ public class AddressTO
     {
     }
 
+    public AddressTO(Address a) {
+        
+        this.id = a.getId();
+        this.postCode = a.getPostCode();
+        this.countryState = a.getCountryState();
+        this.city = a.getCity();
+        this.country = a.getCountry();
+        this.streetNumber = a.getStreetNumber();
+        this.street = a.getStreet();
+        this.suburb = a.getSuburb();
+        
+    }
+    
     public Long getId() {
         return id;
     }

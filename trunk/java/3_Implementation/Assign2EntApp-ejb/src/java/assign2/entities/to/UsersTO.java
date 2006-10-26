@@ -18,9 +18,10 @@ public class UsersTO implements Serializable {
     private String firstName;
     private String lastName;
     private String username;
+    private Boolean enabled;
     
     public UsersTO() {
-        
+
     }
     
     /** Creates a new instance of UsersTO */
