@@ -10,10 +10,13 @@
 package assign2.entities;
 
 import assign2.entities.to.CorporateDetailedTO;
+import assign2.entities.to.CorporateTO;
 import assign2.entities.to.UsersDetailedTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Entity class Corporate
@@ -21,6 +24,19 @@ import javax.persistence.Column;
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries(
+{    
+    @NamedQuery(
+    name="findAllCustomers",
+            query="SELECT c FROM Corporate c WHERE c.enabled = true"
+            ),
+
+    @NamedQuery(
+    name="findCustomerByUsername",
+            query="SELECT c FROM Corporate c WHERE c.username = :username"
+            )
+})
+
 public class Corporate extends Users implements Serializable
 {   
     @Column(length=100)
@@ -54,4 +70,10 @@ public class Corporate extends Users implements Serializable
     public UsersDetailedTO getDetailedData() {
         return null;
     }
+    
+    public CorporateTO getData() {
+        CorporateTO to = new CorporateTO(getUsername(),getFirstName(),getLastName());
+        return to;
+    }
+
 }

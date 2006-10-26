@@ -12,10 +12,13 @@ package assign2.entities;
 import assign2.entities.to.*;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,6 +27,14 @@ import javax.persistence.OneToOne;
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(
+    name="findUserByUsername",
+            query="SELECT u FROM Users u WHERE u.username = :username"
+            )
+            
+})
 public abstract class Users implements Serializable {
     
     @Id
@@ -38,20 +49,30 @@ public abstract class Users implements Serializable {
     protected String phoneNumber;
     @OneToOne(cascade=CascadeType.ALL)
     protected Address address;
+    @Column(name="Status")
+    private Boolean enabled;
+
     
     
     /** Creates a new instance of Users */
     public Users() {
+        this.enabled = true;
     }
     
     public Users(UsersDetailedTO to) {
         
+        this.enabled = true;
         this.setFirstName(to.getFirstName());
         this.setLastName(to.getLastName());
         this.setPassword(to.getPassword());
         this.setPhoneNumber(to.getPhoneNumber());
         this.setUsername(to.getUsername());
-        this.setAddress(new Address(to.getAddress()));
+        
+        Address a = new Address(to.getAddress());
+        
+        
+        this.setAddress(a);
+        
     }
     
     
@@ -147,14 +168,32 @@ public abstract class Users implements Serializable {
         return address;
     }
     
-    public void setAddress(Address address) {
-        this.address = address;
+ /*   public void setAddress(AddressTO ato) {
+        address.setCity(ato.getCity());
+        address.setCountry(ato.getCountry());
+        address.setCountryState(ato.getCountryState());
+        address.setPostCode(ato.getPostCode());
+        address.setStreet(ato.getStreet());
+        address.setStreetNumber(ato.getStreetNumber());
+        address.setSuburb(ato.getSuburb());
+    }*/
+    
+    public void setAddress(Address a) {
+        this.address = a;
     }
     
     public UsersTO getData() {
-        UsersTO to = new UsersTO(getUsername(),getPassword(),getFirstName() + " " + getLastName());
+        UsersTO to = new UsersTO(getUsername(),getFirstName(),getLastName());
         return to;
     }
     
     public abstract UsersDetailedTO getDetailedData();
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }
