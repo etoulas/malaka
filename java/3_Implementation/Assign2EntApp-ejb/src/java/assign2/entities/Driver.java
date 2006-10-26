@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import assign2.entities.to.*;
 import java.util.Collection;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -22,6 +24,17 @@ import javax.persistence.OneToMany;
  * @author Gerard Gigliotti
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+        name="getAllDrivers",
+        query="SELECT d FROM Driver d"),
+    @NamedQuery(
+        name="getAssignedDriversByPickupDate",
+        query="SELECT DISTINCT d FROM Driver d, IN (d.assignBookings) AS b WHERE b.dropoffDate < :pickupDate AND ORDER BY b.dropoffDate"),
+    @NamedQuery(
+        name="getAssignedDriversByDropoffDate",
+        query="SELECT DISTINCT d FROM Driver d, IN (d.assignBookings) AS b WHERE b.pickupDate >= :dropoffDate AND b.dropoffDate <= dropOffDate")
+})
 public class Driver extends Users implements Serializable
 {   
     @OneToMany(mappedBy="driver")
