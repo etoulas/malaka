@@ -15,12 +15,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Swinburne Swish Sedands and Limos</title>
-           <jsp:include page="includes/headerFaces.html" />
+           <jsp:include page="includes/header.html" />
     </head>
     <body>
-          <jsp:include page="includes/topPageFaces.html" />
+          <jsp:include page="includes/topPage.html" />
         <h2>Home</h2>
-        <img src="../images/home.gif" alt="Home Image" title="Home Image" />
+        <img src="images/home.gif" alt="Home Image" title="Home Image" />
 
         <%--
     This example uses JSTL, uncomment the taglib directive above.
