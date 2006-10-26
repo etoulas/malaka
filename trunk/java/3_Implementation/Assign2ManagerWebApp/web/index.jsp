@@ -20,8 +20,8 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <body>
           <jsp:include page="includes/topPageFaces.html" />
         <h2>Home</h2>
-        <a href="listVehicles.jsp">View a list ov Vehicles</a>
-        
+        <img src="../images/home.gif" alt="Home Image" title="Home Image" />
+
         <%--
     This example uses JSTL, uncomment the taglib directive above.
     To test, display the page like this: index.jsp?sayHello=true&name=Murphy
