@@ -44,10 +44,14 @@ INSERT INTO Address VALUES (3, 'Melbourne', 'Australia', 3122, '3', 'Park St', '
 INSERT INTO Address VALUES (4, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
 INSERT INTO Address VALUES (5, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
 
-INSERT INTO Users VALUES ('Peter', 'Driver', 'Peter', 'Parker', 'Peter', '123', 1, 1, null);
-INSERT INTO Users VALUES ('Bruce', 'Driver', 'Bruce', 'Wayne', 'Bruce', '123', 2, 2, null);
-INSERT INTO Users VALUES ('Clark', 'Driver', 'Clark', 'Kent', 'Clark', '123', 3, 1, null);
+INSERT INTO Users (username, dtype, firstname, lastname, password, phonenumber, address_id, license_id, companyname) 
+    VALUES ('Peter', 'Driver', 'Peter', 'Parker', 'Peter', '123', 1, 1, null);
+INSERT INTO Users (username, dtype, firstname, lastname, password, phonenumber, address_id, license_id, companyname) 
+    VALUES ('Bruce', 'Driver', 'Bruce', 'Wayne', 'Bruce', '123', 2, 2, null);
+INSERT INTO Users (username, dtype, firstname, lastname, password, phonenumber, address_id, license_id, companyname)
+    VALUES ('Clark', 'Driver', 'Clark', 'Kent', 'Clark', '123', 3, 1, null);
 
-INSERT INTO Booking VALUES (1, null, TIMESTAMP('20061101140000'), 0, TIMESTAMP('20061101120000'), null, 'Tim','Tim', 'Peter', null, 1, null, 4, 'SEDAN', 5);
+INSERT INTO Booking (id, freefield, dropoffdate, processed, pickupdate, specialrequirements, customername, contactname, driver_username, customer_username, bookingtype_id, vehicle_id, pickupAddress_id, vehicletype_code, dropoffaddress_id) 
+    VALUES (1, null, TIMESTAMP('20061101140000'), 0, TIMESTAMP('20061101120000'), null, 'Tim','Tim', 'Peter', null, 1, null, 4, 'SEDAN', 5);
 
 
