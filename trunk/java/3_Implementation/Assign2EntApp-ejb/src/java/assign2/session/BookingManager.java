@@ -9,12 +9,15 @@
 
 package assign2.session;
 
+import assign2.entities.Address;
 import assign2.entities.Booking;
 import assign2.entities.BookingType;
+import assign2.entities.EventType;
 import assign2.entities.Vehicle;
 import assign2.entities.to.BookingDetailsTO;
 import assign2.entities.to.BookingTO;
 import assign2.entities.to.BookingTypeTO;
+import assign2.entities.to.EventTypeTO;
 import assign2.entities.to.VehicleTO;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,15 +46,41 @@ public class BookingManager implements assign2.session.BookingManagerRemote, ass
     
     public void createNewBooking(BookingDetailsTO bookingTO) {
         bookingTO.setProcessed(false);
-        Booking booking = new Booking(bookingTO);
+        Booking booking = new Booking();
+        booking.setContactName(bookingTO.getContactName());
+        booking.setCustomerName(bookingTO.getCustomerName());
+        booking.setDropoffDate(bookingTO.getDropoffDate());
+        booking.setPickupDate(bookingTO.getPickupDate());
+        booking.setBookingType(getBookingTypeByIdEntity(bookingTO.getBookingType().getId()));
+        booking.setPickupAddress(new Address(bookingTO.getPickupAddress()));
+        booking.setDropoffAddress(new Address(bookingTO.getDropoffAddress()));
+        booking.setVehicleType(vm.getVehicleType(bookingTO.getVehicleType().getCode()));
+        booking.setEventType(getEventEntityById(bookingTO.getEventType().getId()));
+        booking.setFreeField(bookingTO.getFreeNotes());
+        booking.setContactName(bookingTO.getPhoneNumber());
         em.persist(booking);
     }
     
-    public BookingTypeTO getBookingTypeById(Long id) {
+    private BookingType getBookingTypeByIdEntity(Long id) {
         Query q = em.createNamedQuery("findBookingTypeByID");
         q.setParameter("id", id);
         BookingType bt = (BookingType) q.getSingleResult();
-        return bt.getData();
+        return bt;
+    }
+    
+    public BookingTypeTO getBookingTypeById(Long id) {
+        return getBookingTypeByIdEntity(id).getData();
+    }
+    
+    public EventTypeTO getEventTypeById(Long id) {
+        return getEventEntityById(id).getData();
+    }
+    
+    public EventType getEventEntityById(Long id) {
+        Query q = em.createNamedQuery("findEventTypeByID");
+        q.setParameter("id",id);
+        EventType to = (EventType)q.getSingleResult();
+                return to;
     }
     
     public List<BookingTypeTO> getAllBookingTypes() {
@@ -111,22 +140,46 @@ public class BookingManager implements assign2.session.BookingManagerRemote, ass
         ArrayList allVehicles = (ArrayList)vm.getAllVehicleTOs();
         ArrayList returnVehicles = new ArrayList();
         
-        for(int i = 0;i<bookings.size()-1;i++)
-        {
+        for(int i = 0;i<bookings.size()-1;i++) {
             Booking b =(Booking)bookings.get(i);
             BookingTO bt = b.getSimpleData();
             
-            for(int j=0;j<allVehicles.size()-1;i++)
-            {
+            for(int j=0;j<allVehicles.size()-1;i++) {
                 Vehicle vh = (Vehicle)allVehicles.get(j);
                 VehicleTO v = vh.getData();
                 
-                if (bt.getVehicle().equals(v))
-                {
+                if (bt.getVehicle().equals(v)) {
                     returnVehicles.add(v);
                 }
             }
         }
         return null;
     }
+    
+    //Get All Event
+    public List<EventTypeTO> getAllEventTypes() {
+        Query q = em.createNamedQuery("findEventType");
+        List eventType = q.getResultList();
+        List eTO = new ArrayList();
+        
+        for (Object item : eventType) {
+            eTO.add(((EventType)item).getData());
+        }
+        
+        return eTO;
+    }
+    
+    public List<EventTypeTO> getEventTypeFromBookingType(BookingTypeTO bt) {
+        Query q = em.createNamedQuery("findEventTypeByBookingID");
+        q.setParameter("type",getBookingTypeByIdEntity(bt.getId()));
+        List eventType = q.getResultList();
+        List eTO = new ArrayList();
+        
+        for (Object item : eventType) {
+            eTO.add(((EventType)item).getData());
+        }
+        
+        return eTO;
+    }
+    
 }

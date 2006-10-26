@@ -77,7 +77,11 @@ public class Booking implements Serializable {
     @ManyToOne
     private BookingType bookingType;
     @ManyToOne
+    private EventType eventType;
+    @ManyToOne
     private Vehicle vehicle;
+    @Column()
+    private String phoneNumber;
     
     /** Creates a new instance of Booking */
     public Booking() {
@@ -291,4 +295,20 @@ public class Booking implements Serializable {
         
         return bTO;
     }    
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

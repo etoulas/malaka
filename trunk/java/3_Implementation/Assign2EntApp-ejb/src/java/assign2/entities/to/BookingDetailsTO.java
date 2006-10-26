@@ -27,20 +27,23 @@ public class BookingDetailsTO {
     private AddressTO pickupAddress;
     private AddressTO dropoffAddress;
     private Boolean processed;
+    private VehicleTypeTO vehicleType;
+    private EventTypeTO eventType;
+    private String freeNotes;
+    private String phoneNumber;
     
     /** Creates a new instance of BookingDetailsTO */
     public BookingDetailsTO() {
     }
     
-    public BookingDetailsTO(Long id, 
-                            String contactName,
-                            String customerName,
-                            Date pickupDate,
-                            BookingTypeTO bookingType,
-                            AddressTO pickupAddress,
-                            AddressTO dropoffAddress,
-                            Boolean processed)
-    {
+    public BookingDetailsTO(Long id,
+            String contactName,
+            String customerName,
+            Date pickupDate,
+            BookingTypeTO bookingType,
+            AddressTO pickupAddress,
+            AddressTO dropoffAddress,
+            Boolean processed) {
         this.setId(id);
         this.setContactName(contactName);
         this.setCustomerName(customerName);
@@ -50,9 +53,10 @@ public class BookingDetailsTO {
         this.setDropoffAddress(dropoffAddress);
         this.setProcessed(processed);
     }
-
+    
     public String getContactName() {
         return contactName;
+        
     }
     
     public void setContactName(String contactName) {
@@ -114,12 +118,44 @@ public class BookingDetailsTO {
     public void setProcessed(Boolean processed) {
         this.processed = processed;
     }
-
+    
     public Date getDropoffDate() {
         return dropoffDate;
     }
-
+    
     public void setDropoffDate(Date dropoffDate) {
         this.dropoffDate = dropoffDate;
+    }
+
+    public VehicleTypeTO getVehicleType() {
+        return vehicleType;
+    }
+
+    public void setVehicleType(VehicleTypeTO vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+
+    public EventTypeTO getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventTypeTO eventType) {
+        this.eventType = eventType;
+    }
+
+    public String getFreeNotes() {
+        return freeNotes;
+    }
+
+    public void setFreeNotes(String freeNotes) {
+        this.freeNotes = freeNotes;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
