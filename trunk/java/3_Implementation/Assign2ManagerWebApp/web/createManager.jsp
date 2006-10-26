@@ -8,8 +8,10 @@
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <title>${title}</title> 
+        <jsp:include page="includes/headerFaces.html" />
     </head> 
     <body>
+        <jsp:include page="includes/topPageFaces.html" />
         <h1>${title}</h1> 
         <f:view>
             <h:messages showSummary="true" showDetail="false" 
@@ -73,14 +75,14 @@
                     <h:panelGroup>
                         <h:outputLabel for="password" value="Password: "/>                
                         <h:inputSecret id="password" 
-                                     value="#{UserManagedBean.password}" 
-                                     required="true" />
+                                       value="#{UserManagedBean.password}" 
+                                       required="true" />
                     </h:panelGroup>
                     <h:panelGroup>
                         <h:outputLabel for="repPassword" value="Repeat Password: "/>                
                         <h:inputSecret id="repPassword" 
-                                     value="#{UserManagedBean.repPassword}" 
-                                     required="true" />
+                                       value="#{UserManagedBean.repPassword}" 
+                                       required="true" />
                     </h:panelGroup>
                     <h:commandButton id="submit" value="Continue" 
                                      action="#{UserManagedBean.CreateManager}"/>
@@ -90,7 +92,7 @@
             </h:form>
         </f:view>
         
-        
+        <jsp:include page="includes/bottomPage.html" />
         
         
         

@@ -15,12 +15,12 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Swinburne Swish Sedands and Limos</title>
-        <jsp:include page="includes/header.html" />
+           <jsp:include page="includes/headerFaces.html" />
     </head>
     <body>
-        <jsp:include page="includes/topPage.html" />
+          <jsp:include page="includes/topPageFaces.html" />
         <h2>Home</h2>
-        <a href="./faces/listVehicles.jsp">View a list ov Vehicles</a>
+        <a href="listVehicles.jsp">View a list ov Vehicles</a>
         
         <%--
     This example uses JSTL, uncomment the taglib directive above.
@@ -32,6 +32,6 @@ on Libraries node in Projects view can be used to add the JSTL 1.1 library.
         Hello ${param.name}!
     </c:if>
     --%>
-      <jsp:include page="includes/bottomPage.html" />
+        <jsp:include page="includes/bottomPage.html" />
     </body>
 </html>
