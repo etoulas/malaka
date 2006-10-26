@@ -8,7 +8,7 @@
 <c:set var="title" value="Process Booking Form" scope="page"/>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -16,7 +16,7 @@
         <title>${title}</title>
     </head>
     <body>
-
+        
         <h1>${title}</h1>
         <f:view>
             <!-- Show error messages --> 
@@ -25,7 +25,7 @@
                         font-family: 'New Century Schoolbook', serif; 
                         font-style: oblique" 
                         id="errors"/> 
-
+            
             <h:form id="processBooking">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="contactName" value="Contact name: "/>
@@ -39,39 +39,42 @@
                                   value="#{processBookingBean.pickupDate}">
                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                     </h:outputText>
-                    <h:outputText id="pickupTime"
-                                  value="#{processBookingBean.pickupTime}">
-                        <f:convertDateTime type="time" pattern="HH:mm"/>
-                    </h:outputText>
                     <h:outputText value="Pickup address: "/>
                     <h:panelGroup>
                         <h:panelGrid columns="1">
                             <h:outputLabel for="pickupStreet" value="Pickup Street number and name: "/>
                             <h:panelGroup>
                                 <h:outputText id="pickupStreetNumber"
-                                             value="#{processBookingBean.pickupStreetNumber}"/>
+                                              value="#{processBookingBean.pickupStreetNumber}"/>
                                 &nbsp;&nbsp;
                                 <h:outputText id="pickupStreet"
-                                             value="#{processBookingBean.pickupStreet}"/>
+                                              value="#{processBookingBean.pickupStreet}"/>
                             </h:panelGroup>
                             <h:outputLabel for="pickupPostCode" value="Pickup Post code and suburb: "/>
                             <h:panelGroup>
                                 <h:outputText id="pickupPostCode"
-                                             value="#{processBookingBean.pickupPostCode}"/>
+                                              value="#{processBookingBean.pickupPostCode}"/>
                                 &nbsp;&nbsp;     
                                 <h:outputText id="pickupSuburb"
-                                             value="#{processBookingBean.pickupSuburb}"/>
+                                              value="#{processBookingBean.pickupSuburb}"/>
                             </h:panelGroup>
                             <h:outputLabel for="pickupCity" value="Pickup City:"/>
                             <h:outputText id="pickupCity"
-                                         value="#{processBookingBean.pickupCity}"/>
+                                          value="#{processBookingBean.pickupCity}"/>
                             <h:outputLabel for="pickupCountryState" value="Pickup State and Country:"/>
                             <h:panelGroup>
                                 <h:outputText id="pickupCountryState"
-                                             value="#{processBookingBean.pickupCountryState}"/>
+                                              value="#{processBookingBean.pickupCountryState}"/>
                                 &nbsp;&nbsp;
                                 <h:outputText id="pickupCountry"
-                                             value="#{processBookingBean.pickupCountry}"/>
+                                              value="#{processBookingBean.pickupCountry}"/>
+                            </h:panelGroup>
+                            <h:outputLabel for="assignVehicle" value="Assign Vehicle and Driver:"/>
+                            <h:panelGroup>
+                                <h:outputLabel for="assignVehicle" value="Assign Vehicle and Driver: "/>
+                                <h:selectOneMenu id="assignVehicle" value="#{processBookingBean.id}">
+                                    <f:selectItems value="#{processBookingBean.vehicles}"/>
+                                </h:selectOneMenu>
                             </h:panelGroup>
                         </h:panelGrid>
                     </h:panelGroup>
@@ -82,6 +85,6 @@
                 </h:panelGrid>
             </h:form>
         </f:view>
-
+        
     </body>
 </html>

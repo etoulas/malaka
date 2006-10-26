@@ -5,6 +5,11 @@
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
+                    <h:outputText id="pickupTime"
+                                  value="#{processBookingBean.pickupTime}">
+                        <f:convertDateTime type="time" pattern="HH:mm"/>
+                    </h:outputText>
+
  */
 
 package assign2.webapp.mbean;
@@ -12,11 +17,16 @@ package assign2.webapp.mbean;
 import assign2.entities.to.AddressTO;
 import assign2.entities.to.BookingDetailsTO;
 import assign2.entities.to.BookingTypeTO;
+import assign2.entities.to.VehicleTO;
 import assign2.session.BookingManagerRemote;
+import assign2.session.VehicleManagerRemote;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -26,6 +36,7 @@ public class processBookingBean {
     
     @EJB
     BookingManagerRemote bm;
+    VehicleManagerRemote vm;
     
     Long selectedBooking;
     
@@ -33,9 +44,9 @@ public class processBookingBean {
     private String contactName;
     private String customerName;
     private Date pickupDate;
-    private Time pickupTime;
+    //private Time pickupTime;
     private Date dropoffDate;
-    private Time dropoffTime;
+    //private Time dropoffTime;
     private String bookingType;
     
     private Integer pickupPostCode;
@@ -54,6 +65,8 @@ public class processBookingBean {
     private String dropoffStreet;
     private String dropoffSuburb;
     
+    private List<SelectItem> vehicles;
+    
     private Boolean processed;
     
     /**
@@ -65,9 +78,9 @@ public class processBookingBean {
         this.setContactName(bto.getContactName());
         this.setCustomerName(bto.getCustomerName());
         this.setPickupDate(bto.getPickupDate());
-        this.setPickupTime(bto.getPickupTime());
+        //this.setPickupTime(bto.getPickupTime());
         this.setDropoffDate(bto.getDropoffDate());
-        this.setDropoffTime(bto.getDropoffTime());
+        //this.setDropoffTime(bto.getDropoffTime());
         this.setBookingType(bto.getBookingType().getDescription());
         // pickup address
         if (bto.getPickupAddress() != null) {
@@ -94,6 +107,20 @@ public class processBookingBean {
 
     public String assignDriverVehicle() {
         return "success";
+    }
+    
+    public List getVehicles() {
+        BookingDetailsTO bto = (BookingDetailsTO) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ProcessBooking");
+        if (this.vehicles == null || this.vehicles.size() == 0) {
+            this.vehicles = new ArrayList<SelectItem>();
+            
+            List<VehicleTO> vtoList = vm.getVehiclesByBookingType(bto.getBookingType());
+            
+            for (VehicleTO vto : vtoList) {
+                this.vehicles.add(new SelectItem(vto.getId().toString(), vto.getName()));
+            }
+        }
+        return this.vehicles;
     }
 
     public Long getId() {
@@ -128,13 +155,13 @@ public class processBookingBean {
         this.pickupDate = pickupDate;
     }
 
-    public Time getPickupTime() {
-        return pickupTime;
-    }
+//    public Time getPickupTime() {
+//        return pickupTime;
+//    }
 
-    public void setPickupTime(Time pickupTime) {
-        this.pickupTime = pickupTime;
-    }
+//    public void setPickupTime(Time pickupTime) {
+//        this.pickupTime = pickupTime;
+//    }
 
     public Date getDropoffDate() {
         return dropoffDate;
@@ -144,13 +171,13 @@ public class processBookingBean {
         this.dropoffDate = dropoffDate;
     }
 
-    public Time getDropoffTime() {
-        return dropoffTime;
-    }
-
-    public void setDropoffTime(Time dropoffTime) {
-        this.dropoffTime = dropoffTime;
-    }
+//    public Time getDropoffTime() {
+//        return dropoffTime;
+//    }
+//
+//    public void setDropoffTime(Time dropoffTime) {
+//        this.dropoffTime = dropoffTime;
+//    }
 
     public String getBookingType() {
         return bookingType;

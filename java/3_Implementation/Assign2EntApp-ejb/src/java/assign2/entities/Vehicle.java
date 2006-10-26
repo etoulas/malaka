@@ -34,9 +34,13 @@ import javax.persistence.NamedQuery;
     name="findAllVehicles",
             query="SELECT v FROM Vehicle v WHERE v.enabled = true"
             ),
-            @NamedQuery(
+    @NamedQuery(
     name="findVehicleById",
             query="SELECT v FROM Vehicle v WHERE v.id = :vehicleID"
+            ),
+    @NamedQuery(
+    name="findVehiclesByBookingType",
+            query="SELECT v FROM Vehicle v WHERE v.vehiclelicense = :btype"
             )
 })
 public class Vehicle implements Serializable {
