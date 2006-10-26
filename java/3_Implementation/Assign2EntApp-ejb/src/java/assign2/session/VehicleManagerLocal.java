@@ -28,4 +28,6 @@ public interface VehicleManagerLocal
     
     java.util.List<VehicleTO> getVehiclesByBookingType(BookingTypeTO bto);
 
+    assign2.entities.VehicleType getVehicleType(String code);
+
 }
