@@ -1,11 +1,12 @@
 -- drop tables from sample db
-DROP TABLE Micro_Markets;
-DROP TABLE Orders;
-DROP TABLE Product;
-DROP TABLE Product_Code;
-DROP TABLE Customer;
-DROP TABLE Discount_Code;
-DROP TABLE Manufacture;
+--DROP TABLE Purchase_Order
+--DROP TABLE Micro_Market;
+--DROP TABLE Orders;
+--DROP TABLE Product;
+--DROP TABLE Product_Code;
+--DROP TABLE Customer;
+--DROP TABLE Discount_Code;
+--DROP TABLE Manufacture;
 
 -- delete all old Data
 DELETE FROM BookingType;
@@ -15,8 +16,8 @@ DELETE FROM VehicleLicense;
 DELETE FROM DriversLicense;
 
 -- insert booking types
-INSERT INTO BookingType VALUES (1, 'Transfer');
-INSERT INTO BookingType VALUES (2, 'Hourly');
+INSERT INTO BookingType VALUES (1, 'Hourly');
+INSERT INTO BookingType VALUES (2, 'Transfer');
 
 -- insert event types
 INSERT INTO EventType VALUES (1, 'Wedding/Party/Special event');
