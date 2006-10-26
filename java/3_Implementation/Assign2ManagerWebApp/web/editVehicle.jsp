@@ -8,11 +8,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Edit Vehicle</title>
+         <jsp:include page="includes/headerFaces.html" />
     </head>
     <body>
+         <jsp:include page="includes/topPageFaces.html" />
         <f:view>
             <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            <h1>Edit vehicle</h1>
+            <h2>Edit vehicle</h2>
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="Vehicle Id" />
@@ -36,5 +38,6 @@
                 <br>
             </h:form>
         </f:view>
+         <jsp:include page="includes/bottomPage.html" />
     </body>
 </html>

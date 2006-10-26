@@ -8,10 +8,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>New Vehicle</title>
-         <jsp:include page="includes/header.html" />
+         <jsp:include page="includes/headerFaces.html" />
     </head>
     <body>
-        <jsp:include page="includes/topPage.html" />
+        <jsp:include page="includes/topPageFaces.html" />
         <h2>List All Vehicles</h2>
         <f:view>
             <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
