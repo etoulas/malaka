@@ -20,8 +20,10 @@ INSERT INTO BookingType VALUES (1, 'Hourly');
 INSERT INTO BookingType VALUES (2, 'Transfer');
 
 -- insert event types
-INSERT INTO EventType VALUES (1, 'Wedding/Party/Special event');
-INSERT INTO EventType VALUES (2, 'Other (drop off/pick up)');
+INSERT INTO EventType VALUES (1, 'Wedding',1);
+INSERT INTO EventType VALUES (2, 'Party',1);
+INSERT INTO EventType VALUES (3, 'Special event',1);
+INSERT INTO EventType VALUES (4, 'Drop off/pick up)',2);
 
 -- insert vehicle types
 INSERT INTO VehicleType VALUES ('SEDAN', 'A standard luxury sedan', 4);
