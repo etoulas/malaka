@@ -109,7 +109,7 @@ public class processBookingBean {
         return "success";
     }
     
-    public List getVehicles() {
+    /* public List getVehicles() {
         BookingDetailsTO bto = (BookingDetailsTO) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ProcessBooking");
         if (this.vehicles == null || this.vehicles.size() == 0) {
             this.vehicles = new ArrayList<SelectItem>();
@@ -121,6 +121,22 @@ public class processBookingBean {
             }
         }
         return this.vehicles;
+    } */
+    
+    public List getVehicles() {
+        BookingDetailsTO bto = (BookingDetailsTO) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ProcessBooking");
+        if (this.vehicles == null || this.vehicles.size() == 0) {
+            this.vehicles = new ArrayList<SelectItem>();
+            
+            List<VehicleTO> vtoList = bm.getVehiclesAvailableInTimeFrame(bto.getPickupDate(), bto.getDropoffDate());
+            
+            for (VehicleTO vto : vtoList) {
+                this.vehicles.add(new SelectItem(vto.getId().toString(), vto.getName()));
+            }
+        }
+        
+        
+        return vehicles;
     }
 
     public Long getId() {
