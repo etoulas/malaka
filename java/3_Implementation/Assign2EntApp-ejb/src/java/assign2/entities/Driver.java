@@ -30,10 +30,10 @@ import javax.persistence.OneToMany;
         query="SELECT d FROM Driver d"),
     @NamedQuery(
         name="getAssignedDriversByPickupDate",
-        query="SELECT DISTINCT d FROM Driver d, IN (d.assignBookings) AS b WHERE b.dropoffDate < :pickupDate ORDER BY b.dropoffDate"),
+        query="SELECT DISTINCT d FROM Driver d, IN (d.assignedBookings) AS b WHERE b.dropoffDate < :pickupDate ORDER BY b.dropoffDate"),
     @NamedQuery(
         name="getAssignedDriversByDropoffDate",
-        query="SELECT DISTINCT d FROM Driver d, IN (d.assignBookings) AS b WHERE b.pickupDate >= :dropoffDate AND b.dropoffDate <= dropOffDate")
+        query="SELECT DISTINCT d FROM Driver d, IN (d.assignedBookings) AS b WHERE b.pickupDate >= :dropoffDate AND b.dropoffDate <= :dropOffDate")
 })
 public class Driver extends Users implements Serializable
 {   
