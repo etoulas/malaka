@@ -12,6 +12,7 @@ package assign2.session;
 import assign2.entities.Vehicle;
 import assign2.entities.VehicleLicense;
 import assign2.entities.VehicleType;
+import assign2.entities.to.BookingTypeTO;
 import assign2.entities.to.VehicleLicenseTO;
 import assign2.entities.to.VehicleTO;
 import assign2.entities.to.VehicleTypeTO;
@@ -143,5 +144,19 @@ public class VehicleManagerBean implements assign2.session.VehicleManagerRemote,
         v.setLicense(getVehicleLicense(to.getLicense().getId()));
         v.setEnabled(to.getEnabled());
         em.persist(v);
+    }
+
+    public List<VehicleTO> getVehiclesByBookingType(BookingTypeTO bto) {
+        List<VehicleTO> vtoList = new ArrayList<VehicleTO>();
+        
+        Query q = em.createNamedQuery("findVehiclesByBookingType");
+        q.setParameter("btype", bto.getId());
+        List results = q.getResultList();
+        
+        for (Object item : results) {
+            vtoList.add( ((Vehicle) item).getData() );
+        }
+        
+        return vtoList;
     }
 }

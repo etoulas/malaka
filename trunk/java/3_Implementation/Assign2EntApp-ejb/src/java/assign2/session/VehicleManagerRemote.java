@@ -1,6 +1,7 @@
 
 package assign2.session;
 
+import assign2.entities.to.BookingTypeTO;
 import assign2.entities.to.VehicleLicenseTO;
 import assign2.entities.to.VehicleTO;
 import assign2.entities.to.VehicleTypeTO;
@@ -27,4 +28,7 @@ public interface VehicleManagerRemote
     java.util.List<assign2.entities.to.VehicleTO> getAllVehicleTOs();
 
     void modifyVehicle(VehicleTO to);
+
+    List<VehicleTO> getVehiclesByBookingType(BookingTypeTO bto);
+
 }
