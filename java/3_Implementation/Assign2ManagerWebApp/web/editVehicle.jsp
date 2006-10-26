@@ -34,7 +34,8 @@
                         <f:selectItems value="#{editVehicle.licenseSelectItemList}"  />
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{editVehicle.saveVehicle}" value="save"/> - <h:commandLink action="#{editVehicle.deleteVehicle}" value="delete"/>
+                <h:commandButton action="#{editVehicle.saveVehicle}" value="save"/> - <h:commandButton action="#{editVehicle.deleteVehicle}" value="delete"/>
+                - <h:commandButton action="cancel" value="Cancel"/>
                 <br>
             </h:form>
         </f:view>

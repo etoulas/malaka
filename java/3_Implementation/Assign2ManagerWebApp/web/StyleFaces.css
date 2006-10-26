@@ -82,7 +82,7 @@ body
 	
 #menu li a:hover {
 	color: #FFF;
-	background-color:#4096EE;
+	background-color:#1c6efd;
 	}
 	
 	#menu li a {
@@ -92,3 +92,43 @@ body
 	font-size:16px;
 	
 	}	
+	
+.listTable
+{
+	width:100%;
+}
+
+.listTable th
+{
+	background-color:#b0cdfe;
+}
+
+.listTable tr td
+{
+	margin-left:20px;
+	margin-right:20px;
+	text-align:center;
+}
+
+h2
+{
+	font-family:Arial;
+	font-size:24px;
+	border-bottom: 1px solid gray;
+}
+
+#footer
+{
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	font-family:Arial;
+	font-size:9px;
+}
+
+#menuBar
+{
+	width:100%;
+	background-color:#dfdfdf;
+	text-align:right;
+}

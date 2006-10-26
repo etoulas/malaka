@@ -31,7 +31,8 @@
                         <f:selectItems value="#{createVehicle.licenseSelectItemList}" />
                     </h:selectOneMenu>
                 </h:panelGrid>
-                <h:commandLink action="#{createVehicle.addVehicle}" value="Create"/>
+                <h:commandButton action="#{createVehicle.addVehicle}" value="Create"/>
+                 - <h:commandButton action="cancel" value="Cancel"/>
                 <br>
             </h:form>
         </f:view>

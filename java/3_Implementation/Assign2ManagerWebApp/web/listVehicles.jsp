@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>New Vehicle</title>
-         <jsp:include page="includes/headerFaces.html" />
+        <jsp:include page="includes/headerFaces.html" />
     </head>
     <body>
         <jsp:include page="includes/topPageFaces.html" />
@@ -16,8 +16,13 @@
         <f:view>
             <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             <h:form>
-                <h:dataTable id="vehicleList" value="#{listVehicles.listAllVehicles}" var="rowItem">
-                     <h:column>
+                <div id="menuBar">
+                    <div id="internalBar">
+                        <h:commandButton action="newVehicle" value="Add New Vehicle"></h:commandButton>
+                    </div>
+                </div>
+                <h:dataTable id="vehicleList" value="#{listVehicles.listAllVehicles}" var="rowItem" styleClass="listTable">
+                    <h:column>
                         <f:facet name="header">
                             <h:outputText value="Name"/>
                         </f:facet>
@@ -25,10 +30,23 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Vehicle Type"/>
+                        </f:facet>
+                        <h:outputText value="#{rowItem.type.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="License"/>
+                        </f:facet>
+                        <h:outputText value="#{rowItem.license.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Edit"/>
                         </f:facet>
-                        <h:commandLink action="#{listVehicles.selectEditVehicle}" value="Edit"  ></h:commandLink>
+                        <h:commandButton action="#{listVehicles.selectEditVehicle}" value="Edit" ></h:commandButton>
                     </h:column>
+                    
                 </h:dataTable>
             </h:form>
         </f:view>
