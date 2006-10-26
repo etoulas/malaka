@@ -35,3 +35,17 @@ INSERT INTO VehicleLicense VALUES (2, 'VH License');
 -- insert drivers licenses
 INSERT INTO DriversLicense VALUES (1, 'HV License', '');
 INSERT INTO DriversLicense VALUES (2, 'Taxi License', '');
+
+INSERT INTO Address VALUES (1, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn'); 
+INSERT INTO Address VALUES (2, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
+INSERT INTO Address VALUES (3, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
+INSERT INTO Address VALUES (4, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
+INSERT INTO Address VALUES (5, 'Melbourne', 'Australia', 3122, '3', 'Park St', 'VIC', 'Hawthorn');
+
+INSERT INTO Users VALUES ('Peter', 'Driver', 'Peter', 'Parker', 'Peter', '123', 1, 1, null);
+INSERT INTO Users VALUES ('Bruce', 'Driver', 'Bruce', 'Wayne', 'Bruce', '123', 2, 2, null);
+INSERT INTO Users VALUES ('Clark', 'Driver', 'Clark', 'Kent', 'Clark', '123', 3, 1, null);
+
+INSERT INTO Booking VALUES (1, null, TIMESTAMP('20061101140000'), 0, TIMESTAMP('20061101120000'), null, 'Tim','Tim', 'Peter', null, 1, null, 4, 'SEDAN', 5);
+
+
