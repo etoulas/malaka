@@ -3,6 +3,7 @@
 /* Teillisten */
 p1(['Timmy','Tino']).
 p2(['Mischa','Max']).
+z([0,1,2,3,4,5]).
 
 /* Liste mittels append/3 */
 p(L) :- p1(X),p2(Y),append(X,Y,L), !.
@@ -41,12 +42,21 @@ runb :- p2(L),last(L,'Letzter',Erg),
  */
 pos([],_,_) :- write('Nichts gefunden.'),nl, fail.
 
+pos([Kopf|_], Stelle, Stelle) :-
+	write(Stelle),write(' '),write(Kopf),nl.
+
+pos([_|Rest], Stelle, Iter) :-
+	Next is Iter + 1,
+	pos(Rest,Stelle,Next), !.
+
+/* Implementierung mit IF
 pos([Kopf|Rest], Stelle, Iter) :-
 	(   Iter =:= Stelle,
 	    write(Iter),write(' '),write(Kopf),nl
 	  ; Next is Iter + 1,
 	    pos(Rest, Stelle, Next), !
 	).
+*/
 
 pos(Liste, Stelle) :-
 	pos(Liste, Stelle, 1).
@@ -75,4 +85,28 @@ rund :- p(L),
 	element2('Mischa',L),
 	isLast('Max',L).
 
+/* g) Zahlen einer Liste summieren ohne Akkumulator
+ * sum(Liste, Erg).
+ *
+ */
+/* dynamische Praedikate */
+:- dynamic summe/1.
+summe(0).
 
+sum([], Summe) :-
+	summe(S),
+	Summe is S.
+
+sum([Kopf|Rest], Summe) :-
+	summe(S),
+	Sneu is S + Kopf,
+	retract(summe(S)),
+	assert(summe(Sneu)),
+	sum(Rest, Summe).
+
+rung :- summe(X),
+	retract(summe(X)),
+	assert(summe(0)),
+	z(L),
+	sum(L,Erg),
+	write(Erg),nl.
