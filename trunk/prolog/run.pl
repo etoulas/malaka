@@ -1,7 +1,6 @@
-/* , Teamsport, Einzel sport, Partner ben�tigt, Ausdauer, Kraft, Ballsport, Verletzungsgef., Zeitfakt., Koordination, Sommer, Winter, Outdoor, Indoor, Zuhause, Finanzaufw. 1x, Finanz. Contin., Familientaugl., Sozialer Asp., Pr�zision, Wettkampfbereitsch., Schwimmen, [Equipment] */
-
 /* gewichtung('Teamsport', [0.5, 1, 1.5]). */
 
+/* Teamsport, Einzelsport, Partner, benötigt, Ausdauer, Kraft, Ballsport, Verletzungsgef., Zeitfakt., Koordination, Sommer, Winter, Outdoor, Indoor, Zuhause, Finanzaufw., 1x, Finanz., Contin., Familientaugl., Sozialer, Asp., Präzision, Wettkampfbereitsch., Schwimmen */
 merkmale("Radfahren",1,2,1,3,2,1,2,2,1,2,1,2,1,1,3,1,3,2,1,2,1).
 merkmale("Bowling/Kegeln",2,2,1,1,1,2,1,1,2,2,2,1,2,1,2,2,3,3,3,3,1).
 merkmale("Tauchen",1,1,2,1,1,1,2,2,2,2,1,2,2,1,4,3,3,2,1,1,2).
