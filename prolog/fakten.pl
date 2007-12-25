@@ -62,6 +62,7 @@ frageko(outdoor,     'Moechten Sie im Freien Sport treiben?').
 frageko(indoor,      'Moechten Sie in einem Gebaeude Sport betreiben?').
 frageko(zuhause,     'Moechten Sie zuhause Sport betreiben?').
 
+
 /* 11 Verfeinerungsfragen */
 frage(familientauglichkeit,'Wieviel Wert legen darauf die Sportart im Kreise der Familie betreiben zu koennen?').
 frage(verletzungsrisiko,'Inwieweit sind Sie bereit Verletzungen in Kauf zu nehmen?').
@@ -76,18 +77,60 @@ frage(koordination,'Wie ist es um ihr Koordinationsvermoegen bestellt?').
 frage(praezision,'Wie schaetzen Sie ihre Praezision ein?').
 
 /* Optionen fuer Verfeinerungsfragen */
-option(familientauglichkeit,'keinen','egal','viel').
-option(verletzungsrisiko,'gar nicht-wenig','ich kann damit leben','bring it on').
-option(zeitfaktor,'sporadisch','1x pro Woche','2x pro Woche','mehr als 2x pro Woche').
-option(wettkampfbereitschaft,'ungern','nur wenn es sein muss','ich mag Herausforderungen','ich zeig gern das ich der Beste bin').
-option(sozialer_aspekt,'Ich bin gern fuer mich alleine.','Ein bisschen Gesellschaft kann nicht schaden.','Ich fuehle mich wohl unter Menschen.','Ohne Gesellschaft fuehle ich mich nicht vollstaendig.').
-option(finanzieller_aspekt_einmalig,finanzieller_aufwand_einmalig(Z)).
-option(finanzieller_aspekt_laufend,finanzieller_aufwand_laufend(Z)).
-option(kraft,'Ich benoetige einen Nussknacker fuer Erdnuesse.','Ich trage meinen Einkauf selbst ins Haus.','Walnuesse knack ich mit der Hand.','Ich kann Telefonbuecher zerreissen.').
-option(audauer,'Treppensteigen macht mich fertig.','Kuerzere Strecken gehe ich zu Fuss.','Ich kann laengere Strecken laufen.','Ich bin ausdauernder Sportler.').
+option(familientauglichkeit,1,'keinen').
+option(familientauglichkeit,2,'egal').
+option(familientauglichkeit,3,'viel').
+
+option(verletzungsrisiko,1,'gar nicht').
+option(verletzungsrisiko,2,'wenig').
+option(verletzungsrisiko,3,'ich kann damit leben').
+option(verletzungsrisiko,4,'bring it on').
+
+option(zeitfaktor,1,'sporadisch').
+option(zeitfaktor,2,'1x pro Woche').
+option(zeitfaktor,3,'2x pro Woche').
+option(zeitfaktor,4,'mehr als 2x pro Woche').
+
+option(wettkampfbereitschaft,1,'ungern').
+option(wettkampfbereitschaft,2,'nur wenn es sein muss').
+option(wettkampfbereitschaft,3,'ich mag Herausforderungen').
+option(wettkampfbereitschaft,4,'ich zeig gern das ich der Beste bin').
+
+option(sozialer_aspekt,1,'Ich bin gern fuer mich alleine.').
+option(sozialer_aspekt,2,'Ein bisschen Gesellschaft kann nicht schaden.').
+option(sozialer_aspekt,3,'Ich fuehle mich wohl unter Menschen.').
+option(sozialer_aspekt,4,'Ohne Gesellschaft fuehle ich mich nicht vollstaendig.').
+
+option(finanzieller_aspekt_einmalig,1,'< 100').
+option(finanzieller_aspekt_einmalig,2,'< 500').
+option(finanzieller_aspekt_einmalig,3,'< 1000').
+option(finanzieller_aspekt_einmalig,4,'> 1000').
+
+option(finanzieller_aspekt_laufend,1,'0').
+option(finanzieller_aspekt_laufend,2,'< 10').
+option(finanzieller_aspekt_laufend,3,'< 30').
+option(finanzieller_aspekt_laufend,4,'> 30').
+
+option(kraft,1,'Ich benoetige einen Nussknacker fuer Erdnuesse.').
+option(kraft,2,'Ich trage meinen Einkauf selbst ins Haus.').
+option(kraft,3,'Walnuesse knack ich mit der Hand.').
+option(kraft,4,'Ich kann Telefonbuecher zerreissen.').
+
+option(audauer,1,'Treppensteigen macht mich fertig.').
+option(audauer,2,'Kuerzere Strecken gehe ich zu Fuss.').
+option(audauer,3,'Ich kann laengere Strecken laufen.').
+option(audauer,4,'Ich bin ausdauernder Sportler.').
+
 /* ab hier geht der Bullshit los */
-option(koordination,'Ich hab zwei linke Haende.','Ich binde meine Schnuersenkel selbst.','Ich habe ein gutes Koerpergefuehl.','Ich kann mich mit der linken Hand im Spiegel rasieren.').
-option(praezision,'Ich habe Schwierigkeiten das Schluesselloch zu treffen.','Ich tippe SMS mit zwei Haenden.','Ich benoetige kein Zielwasser.','Ich fange Fliegen mit Staebchen.').
+option(koordination,1,'Ich hab zwei linke Haende.').
+option(koordination,2,'Ich binde meine Schnuersenkel selbst.').
+option(koordination,3,'Ich habe ein gutes Koerpergefuehl.').
+option(koordination,4,'Ich kann mich mit der linken Hand im Spiegel rasieren.').
+
+option(praezision,1,'Ich habe Schwierigkeiten das Schluesselloch zu treffen.').
+option(praezision,2,'Ich tippe SMS mit zwei Haenden.').
+option(praezision,3,'Ich benoetige kein Zielwasser.').
+option(praezision,4,'Ich fange Fliegen mit Staebchen.').
 
 
 
