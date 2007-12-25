@@ -11,16 +11,33 @@ hintenran([Kopf|Rest],Elem,[Kopf|Ergebnis]) :-
 	hintenran(Rest,Elem,Ergebnis),!.
 
 
-/* ja_nein/2 fuer Teamsport */
+/* ja_nein/2 TEAMSPORT */
 ja_nein(Anfrage,Antwort) :-
 	Anfrage == 'Moechten Sie in einem Team Sport machen?',
 	/* write('Sport ja/nein'),nl, */
-	    nonvar(jaeinzelflag),
-	    nonvar(japartnerflag),
+	    jaeinzelflag(X),
+	    japartnerflag(Y),
+	    Antwort = ja, !,
+	    loesche_flags.
+
+/* ja_nein/2 WINTERSPORT */
+ja_nein(Anfrage,Antwort) :-
+	Anfrage == 'Moechten Sie im Winter Sport treiben?',
+	/* write('Sport ja/nein'),nl, */
+	    neinsommerflag(X),
+	    Antwort = ja, !,
+	    loesche_flags.
+
+/* ja_nein/2 INDOOR */
+ja_nein(Anfrage,Antwort) :-
+	Anfrage == 'Moechten Sie in einem Gebaeude Sport betreiben?',
+	/* write('Sport ja/nein'),nl, */
+	    neinoutdoorflag(X),
 	    Antwort = ja, !,
 	    loesche_flags.
 
 
+/* ja_nein/2 ALLGEMEIN */
 ja_nein(Anfrage,Antwort) :-
 	repeat,
 	    /* write('Antworten Sie mit "j." fuer JA oder mit "n." fuer NEIN: '), nl, */
@@ -34,7 +51,7 @@ ja_nein(Anfrage,Antwort) :-
 	    ).
 
 
-:- dynamic kokriterien/1.
+:- dynamic kokriterien/2.
 
 /* alle KO Antworten in kokriterien/2 loeschen */
 loesche_kokriterien :- retract(kokriterien(C,A)),fail.
@@ -43,6 +60,7 @@ loesche_kokriterien.
 merkeko(Context, Antwort) :- assertz(kokriterien(Context,Antwort)).
 
 /* Liste mit KO Antworten zuruecksetzen */
+/* :- dynamic kokriterien/1.
 loesche_kokriterien_liste :- retract(kokriterien(A)),fail.
 loesche_kokriterien_liste.
 
@@ -53,9 +71,19 @@ merkeko_in_liste(X) :-
 	retract(kokriterien(K)),
 	assert(kokriterien(Kneu)),
 	!.
+*/
 
 
-:- dynamic jaeinzelflag/0.
+:- dynamic verfeinerung/2.
+
+/* alle Verfeinerungen in verfeinerung/2 loeschen */
+loesche_verfeinerung :- retract(verfeinerung(C,A)),fail.
+loesche_verfeinerung.
+
+merke_verfeinerung(Context, Antwort) :- assertz(verfeinerung(Context,Antwort)).
+
+
+:- dynamic jaeinzelflag/1.
 
 loesche_jaeinzelflag :- retract(jaeinzelflag(1)),fail.
 loesche_jaeinzelflag.
@@ -63,7 +91,8 @@ loesche_jaeinzelflag.
 set_jaeinzelflag :- assert(jaeinzelflag(1)),!.
 
 
-:- dynamic japartnerflag/0.
+
+:- dynamic japartnerflag/1.
 
 loesche_japartnerflag :- retract(japartnerflag(1)),fail.
 loesche_japartnerflag.
@@ -71,8 +100,28 @@ loesche_japartnerflag.
 set_japartnerflag :- assert(japartnerflag(1)),!.
 
 
+:- dynamic neinsommerflag/1.
+
+loesche_neinsommerflag :- retract(neinsommerflag(1)),fail.
+loesche_neinsommerflag.
+
+set_neinsommerflag :- assert(neinsommerflag(1)),!.
+
+
+:- dynamic neinoutdoorflag/1.
+
+loesche_neinoutdoorflag :- retract(neinoutdoorflag(1)),fail.
+loesche_neinoutdoorflag.
+
+set_neinoutdoorflag :- assert(neinoutdoorflag(1)),!.
+
+
 /* japartnerflag und jaeinzelflag zuruecksetzen */
-loesche_flags :- loesche_jaeinzelflag,loesche_japartnerflag.
+loesche_flags :-
+	loesche_jaeinzelflag,
+	loesche_japartnerflag,
+	loesche_neinsommerflag,
+	loesche_neinoutdoorflag.
 
 
 /* KO Fragen abfragen */
@@ -85,22 +134,61 @@ interview :-
 	;
 	    Antwort == nein,
 	    merkeko(Context,1),
-	    Context == einzelsport, set_jaeinzelflag	
+	    (	Context == einzelsport, set_jaeinzelflag
+	    ;	Context == sommersport, set_neinsommerflag
+	    ;	Context == outdoor, set_neinoutdoorflag
+	    )
 	),
 	fail.
 interview.
 
 /* Ausgeben aller KO Antworten in kokriterien/2 */
-zeige_ko :- kokriterien(C,K),writeseq([C,': ',K]),nl,fail.
+zeige_ko :- kokriterien(C,A),writeseq([C,': ',A]),nl,fail.
 zeige_ko.
+
+/* Ausgeben aller Verfeinerungs-Antworten in verfeinerung/2 */
+zeige_rest :- verfeinerung(C,A),writeseq([C,': ',A]),nl,fail.
+zeige_rest.
+
+
+interview_rest :-
+	 frage(Context,Anfrage),
+	 eingabe_loop(Context,Anfrage,Antwort),
+	 merke_verfeinerung(Context,Antwort),
+	fail.
+interview_rest.
+
+eingabe_loop(Context,Anfrage,Antwort) :-
+	repeat,
+	 write(Anfrage),nl,
+	 auswahl(Context),
+	 write('Ihre Eingabe: '),
+	 read(Antwort),
+	 antwort(Context,Antwort),
+	!.
+
+
+auswahl(Context) :-
+	option(Context,Kuerzel,Text),
+	writeseq(['    ',Kuerzel,' - ', Text]),nl,
+	fail.
+auswahl(Context) :- nl.
+
+
+antwort(Context,Antwort) :- option(Context,Antwort,_),!.
+antwort(Context,_) :- write('=>  Antwort ungueltig.'),nl,nl,fail.
 
 run :-
 	loesche_kokriterien,
-	asserta(kokriterien([])),
-	/* Aufruf des Praedikats interview/0 */
+	loesche_verfeinerung,
 	interview,
-	zeige_ko.
-run.
+	zeige_ko,
+	interview_rest,
+	zeige_rest.
+
+run2 :-	loesche_verfeinerung,
+	interview_rest,
+	zeige_rest.
 
 
 
