@@ -1,54 +1,55 @@
 /*
+'Sportarten'
 KO:
-'Sportarten','Schwimmen','Einzelsport','Partner benoetigt','Teamsport','Ballsport','Sommer','Winter','Outdoor','Indoor','Zuhause',
+'Schwimmen','Einzelsport','Partner benoetigt','Teamsport','Ballsport','Sommer','Winter','Outdoor','Indoor','Zuhause',
 Rest:
 'Ausdauer','Kraft','Verletzungsgef.','Zeitfakt.','Koordination','Finanzaufw. 1x','Finanz. Contin.','Familientaugl.','Sozialer Asp.','Präzision','Wettkampfbereitsch.'
 */
 beschreibung('Sportart','Schwimmen','Einzelsport','Partner benoetigt','Teamsport','Ballsport','Sommer','Winter','Outdoor','Indoor','Zuhause',
 	     'Ausdauer','Kraft','Verletzungsgef.','Zeitfakt.','Koordination','Finanzaufw. 1x','Finanz. Contin.','Familientaugl.','Sozialer Asp.','Präzision','Wettkampfbereitsch.').
-merkmale('Schach',1,1,2,1,1,2,2,2,2,2,1,1,1,1,1,1,2,3,2,1,4).
-merkmale('Darten',1,2,1,1,1,2,2,1,2,2,1,1,1,1,1,1,2,3,3,4,3).
-merkmale('Schiessen',1,2,1,1,1,2,2,2,2,2,1,1,1,1,1,2,2,3,3,4,2).
-merkmale('Billard',1,1,1,2,1,2,2,1,2,2,1,1,1,1,1,2,2,3,3,4,3).
-merkmale('Reiten',1,2,1,1,1,2,2,2,2,1,2,2,3,2,1,3,4,3,2,1,1).
-merkmale('Laufen',1,2,1,1,1,2,2,2,2,2,3,2,2,2,1,2,1,3,1,1,2).
-merkmale('Radfahren',1,2,1,1,1,2,1,2,1,1,3,2,2,2,1,3,1,3,2,1,2).
-merkmale('Bowling/Kegeln',1,2,1,2,2,2,2,1,2,1,1,1,1,1,2,2,2,3,3,3,3).
-merkmale('Tauchen',2,1,2,1,1,2,1,2,2,1,1,1,2,2,2,4,3,3,2,1,1).
-merkmale('Golf',1,2,1,1,1,2,1,2,1,1,1,1,1,2,2,4,4,3,4,3,3).
-merkmale('Schwimmen',2,2,1,1,1,2,2,2,2,1,2,1,1,2,2,1,2,3,2,1,2).
-merkmale('Tischtennis',1,1,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,3,3,4,3).
-merkmale('Eisstockschiessen',1,1,1,2,1,1,2,2,1,1,2,1,1,1,2,2,1,3,4,2,2).
-merkmale('Gleitschirm/Fallschirm/Drachenfliegen',1,2,1,1,1,2,1,2,1,1,2,2,3,3,2,4,4,1,1,2,1).
-merkmale('Segeln',2,1,1,2,1,2,2,2,1,1,2,3,2,3,2,4,4,3,2,1,2).
-merkmale('Faustball',1,1,1,3,2,2,2,1,2,1,3,1,2,4,2,2,2,1,4,3,3).
-merkmale('Rudern',2,1,1,2,1,2,2,2,1,1,4,3,2,3,2,3,2,2,3,1,3).
-merkmale('Tanzen',1,1,2,1,1,2,2,1,2,2,2,1,1,1,3,2,3,2,4,1,2).
-merkmale('Yoga',1,2,1,1,1,2,2,2,2,2,2,2,1,2,3,1,2,3,2,1,1).
-merkmale('Schlittschufahren',1,2,1,1,1,1,2,2,2,1,2,2,2,1,3,2,2,3,2,1,1).
-merkmale('Taekwondo/Aikido',1,1,2,1,1,2,2,1,2,1,2,2,2,2,3,2,2,2,2,2,3).
-merkmale('Volleyball',1,1,2,3,2,2,2,2,2,1,2,2,2,4,3,2,2,2,4,3,3).
-merkmale('Windsurfen',2,2,1,1,1,2,1,2,1,1,2,2,2,3,3,3,2,2,1,1,1).
-merkmale('Aerobic',1,2,1,1,1,2,2,2,2,2,3,1,1,2,3,1,2,1,2,1,1).
-merkmale('Badminton',1,1,2,2,2,2,2,2,2,1,3,1,2,2,3,2,2,2,3,3,3).
-merkmale('Inline',1,2,1,1,1,2,1,2,2,1,3,2,3,2,3,2,1,3,2,1,1).
-merkmale('Tennis',1,1,2,2,2,2,2,2,2,1,3,2,2,2,3,2,2,2,3,3,3).
-merkmale('Fussball',1,1,1,3,2,2,2,2,2,1,3,2,3,4,3,2,2,1,4,3,3).
-merkmale('Streethockey',1,1,1,3,2,2,2,2,2,1,3,2,3,2,3,3,2,2,3,3,3).
-merkmale('Judo/Ju-Jutsu/Karate',1,1,2,1,1,2,2,1,2,2,3,3,3,2,3,2,2,2,2,1,3).
-merkmale('Squash',1,1,2,1,2,2,2,1,2,1,3,3,3,2,3,2,2,1,2,3,3).
-merkmale('Rugby',1,1,2,3,2,2,2,2,1,1,3,3,4,2,3,2,2,1,3,3,3).
-merkmale('Klettern',1,2,2,1,1,2,2,2,2,1,3,4,3,3,3,2,3,3,2,1,1).
-merkmale('Boxen',1,1,2,1,1,2,2,1,2,1,4,4,4,4,3,2,2,1,2,2,4).
-merkmale('Wasserball',2,1,2,3,2,2,2,2,2,1,4,3,2,2,3,1,2,1,4,3,3).
-merkmale('Tai Ji',1,2,1,1,1,2,2,2,2,2,2,1,1,2,4,2,2,1,2,1,1).
-merkmale('Skateboard',1,2,1,1,1,2,1,2,2,1,2,1,3,2,4,2,1,1,4,1,2).
-merkmale('Turnen',1,2,1,1,1,2,2,1,2,1,2,2,3,2,4,2,2,2,2,3,2).
-merkmale('Ballet',1,2,2,1,1,2,2,1,2,1,3,2,1,4,4,1,4,1,2,3,1).
-merkmale('Leichtathletik',1,2,1,1,1,2,2,2,2,1,3,2,2,2,4,2,2,2,2,2,3).
-merkmale('Basketball',1,1,2,3,2,2,2,2,2,2,3,2,3,4,4,2,2,2,4,4,3).
-merkmale('Icehockey',1,1,2,3,2,1,2,2,2,1,3,2,3,4,4,3,2,2,3,4,3).
-merkmale('Handball',1,1,2,3,2,2,2,1,2,1,3,3,3,4,4,2,2,1,4,3,3).
+merkmale('Schach',[1,1,2,1,1,2,2,2,2,2],[1,1,1,1,1,1,2,3,2,1,4]).
+merkmale('Darten',[1,2,1,1,1,2,2,1,2,2],[1,1,1,1,1,1,2,3,3,4,3]).
+merkmale('Schiessen',[1,2,1,1,1,2,2,2,2,2],[1,1,1,1,1,2,2,3,3,4,2]).
+merkmale('Billard',[1,1,1,2,1,2,2,1,2,2],[1,1,1,1,1,2,2,3,3,4,3]).
+merkmale('Reiten',[1,2,1,1,1,2,2,2,2,1],[2,2,3,2,1,3,4,3,2,1,1]).
+merkmale('Laufen',[1,2,1,1,1,2,2,2,2,2],[3,2,2,2,1,2,1,3,1,1,2]).
+merkmale('Radfahren',[1,2,1,1,1,2,1,2,1,1],[3,2,2,2,1,3,1,3,2,1,2]).
+merkmale('Bowling/Kegeln',[1,2,1,2,2,2,2,1,2,1],[1,1,1,1,2,2,2,3,3,3,3]).
+merkmale('Tauchen',[2,1,2,1,1,2,1,2,2,1],[1,1,2,2,2,4,3,3,2,1,1]).
+merkmale('Golf',[1,2,1,1,1,2,1,2,1,1],[1,1,1,2,2,4,4,3,4,3,3]).
+merkmale('Schwimmen',[2,2,1,1,1,2,2,2,2,1],[2,1,1,2,2,1,2,3,2,1,2]).
+merkmale('Tischtennis',[1,1,2,2,2,2,2,2,2,2],[2,1,1,2,2,2,2,3,3,4,3]).
+merkmale('Eisstockschiessen',[1,1,1,2,1,1,2,2,1,1],[2,1,1,1,2,2,1,3,4,2,2]).
+merkmale('Gleitschirm/Fallschirm/Drachenfliegen',[1,2,1,1,1,2,1,2,1,1],[2,2,3,3,2,4,4,1,1,2,1]).
+merkmale('Segeln',[2,1,1,2,1,2,2,2,1,1],[2,3,2,3,2,4,4,3,2,1,2]).
+merkmale('Faustball',[1,1,1,3,2,2,2,1,2,1],[3,1,2,4,2,2,2,1,4,3,3]).
+merkmale('Rudern',[2,1,1,2,1,2,2,2,1,1],[4,3,2,3,2,3,2,2,3,1,3]).
+merkmale('Tanzen',[1,1,2,1,1,2,2,1,2,2],[2,1,1,1,3,2,3,2,4,1,2]).
+merkmale('Yoga',[1,2,1,1,1,2,2,2,2,2],[2,2,1,2,3,1,2,3,2,1,1]).
+merkmale('Schlittschufahren',[1,2,1,1,1,1,2,2,2,1],[2,2,2,1,3,2,2,3,2,1,1]).
+merkmale('Taekwondo/Aikido',[1,1,2,1,1,2,2,1,2,1],[2,2,2,2,3,2,2,2,2,2,3]).
+merkmale('Volleyball',[1,1,2,3,2,2,2,2,2,1],[2,2,2,4,3,2,2,2,4,3,3]).
+merkmale('Windsurfen',[2,2,1,1,1,2,1,2,1,1],[2,2,2,3,3,3,2,2,1,1,1]).
+merkmale('Aerobic',[1,2,1,1,1,2,2,2,2,2],[3,1,1,2,3,1,2,1,2,1,1]).
+merkmale('Badminton',[1,1,2,2,2,2,2,2,2,1],[3,1,2,2,3,2,2,2,3,3,3]).
+merkmale('Inline',[1,2,1,1,1,2,1,2,2,1],[3,2,3,2,3,2,1,3,2,1,1]).
+merkmale('Tennis',[1,1,2,2,2,2,2,2,2,1],[3,2,2,2,3,2,2,2,3,3,3]).
+merkmale('Fussball',[1,1,2,3,2,2,2,2,2,1],[3,2,3,4,3,2,2,1,4,3,3]).
+merkmale('Streethockey',[1,1,1,3,2,2,2,2,2,1],[3,2,3,2,3,3,2,2,3,3,3]).
+merkmale('Judo/Ju-Jutsu/Karate',[1,1,2,1,1,2,2,1,2,2],[3,3,3,2,3,2,2,2,2,1,3]).
+merkmale('Squash',[1,1,2,1,2,2,2,1,2,1],[3,3,3,2,3,2,2,1,2,3,3]).
+merkmale('Rugby',[1,1,2,3,2,2,2,2,1,1],[3,3,4,2,3,2,2,1,3,3,3]).
+merkmale('Klettern',[1,2,2,1,1,2,2,2,2,1],[3,4,3,3,3,2,3,3,2,1,1]).
+merkmale('Boxen',[1,1,2,1,1,2,2,1,2,1],[4,4,4,4,3,2,2,1,2,2,4]).
+merkmale('Wasserball',[2,1,2,3,2,2,2,2,2,1],[4,3,2,2,3,1,2,1,4,3,3]).
+merkmale('Tai Ji',[1,2,1,1,1,2,2,2,2,2],[2,1,1,2,4,2,2,1,2,1,1]).
+merkmale('Skateboard',[1,2,1,1,1,2,1,2,2,1],[2,1,3,2,4,2,1,1,4,1,2]).
+merkmale('Turnen',[1,2,1,1,1,2,2,1,2,1],[2,2,3,2,4,2,2,2,2,3,2]).
+merkmale('Ballet',[1,2,2,1,1,2,2,1,2,1],[3,2,1,4,4,1,4,1,2,3,1]).
+merkmale('Leichtathletik',[1,2,1,1,1,2,2,2,2,1],[3,2,2,2,4,2,2,2,2,2,3]).
+merkmale('Basketball',[1,1,2,3,2,2,2,2,2,2],[3,2,3,4,4,2,2,2,4,4,3]).
+merkmale('Icehockey',[1,1,2,3,2,1,2,2,2,1],[3,2,3,4,4,3,2,2,3,4,3]).
+merkmale('Handball',[1,1,2,3,2,2,2,1,2,1],[3,3,3,4,4,2,2,1,4,3,3]).
 
 /* 10 KO-Fragen */
 frageko(schwimmen,   'Wollen Sie einen Wassersport betreiben?').
@@ -60,11 +61,22 @@ frageko(sommersport, 'Moechten Sie im Sommer Sport treiben?').
 frageko(wintersport, 'Moechten Sie im Winter Sport treiben?').
 frageko(outdoor,     'Moechten Sie im Freien Sport treiben?').
 frageko(indoor,      'Moechten Sie in einem Gebaeude Sport betreiben?').
-frageko(zuhause,     'Moechten Sie zuhause Sport betreiben?').
+frageko(zuhause,     'Moechten Sie ausschliesslich zuhause Sport betreiben?').
+
+positionen_ko(schwimmen,   1).
+positionen_ko(einzelsport, 2).
+positionen_ko(partnersport,3).
+positionen_ko(teamsport,   4).
+positionen_ko(ballsport,   5).
+positionen_ko(sommersport, 6).
+positionen_ko(wintersport, 7).
+positionen_ko(outdoor,     8).
+positionen_ko(indoor,      9).
+positionen_ko(zuhause,    10).
 
 
 /* 11 Verfeinerungsfragen */
-frage(familientauglichkeit,'Wieviel Wert legen darauf die Sportart im Kreise der Familie betreiben zu koennen?').
+frage(familientauglichkeit,'Wieviel Wert legen Sie darauf die Sportart im Kreise der Familie betreiben zu koennen?').
 frage(verletzungsrisiko,'Inwieweit sind Sie bereit Verletzungen in Kauf zu nehmen?').
 frage(zeitfaktor,'Wieviel Zeit wollen Sie in Ihre sportliche Aktivitaet investieren?').
 frage(wettkampfbereitschaft,'Wie gerne messen Sie sich mit anderen?').
@@ -131,10 +143,3 @@ option(praezision,1,'Ich habe Schwierigkeiten das Schluesselloch zu treffen.').
 option(praezision,2,'Ich tippe SMS mit zwei Haenden.').
 option(praezision,3,'Ich benoetige kein Zielwasser.').
 option(praezision,4,'Ich fange Fliegen mit Staebchen.').
-
-
-
-
-
-
-
