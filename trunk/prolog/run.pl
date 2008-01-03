@@ -217,7 +217,7 @@ interview_verfeinerung :- zeige_verfeinerung.
 
 eingabe_loop(Context,Anfrage,Antwort) :-
 	repeat,
-	 write(Anfrage),nl,
+	 nl,write(Anfrage),nl,
 	 auswahl(Context),
 	 write('Ihre Eingabe: '),
 	 read(Antwort),
