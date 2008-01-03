@@ -1,9 +1,14 @@
+wissensbasis('Beratung zur Wahl eines Freizeitsports').
+
+auszugebende_antworten(3).
+debug_aktiv(ja).
+
 /*
 'Sportarten'
 KO:
 'Schwimmen','Einzelsport','Partner benoetigt','Teamsport','Ballsport','Sommer','Winter','Outdoor','Indoor','Zuhause',
 Rest:
-'Ausdauer','Kraft','Verletzungsgef.','Zeitfakt.','Koordination','Finanzaufw. 1x','Finanz. Contin.','Familientaugl.','Sozialer Asp.','Präzision','Wettkampfbereitsch.'
+'1-Ausdauer','2-Kraft','3-Verletzungsgef.','4-Zeitfakt.','5-Koordination','6-Finanzaufw. 1x','7-Finanz. Contin.','8-Familientaugl.','9-Sozialer Asp.','10-Präzision','11-Wettkampfbereitsch.'
 */
 beschreibung('Sportart','Schwimmen','Einzelsport','Partner benoetigt','Teamsport','Ballsport','Sommer','Winter','Outdoor','Indoor','Zuhause',
 	     'Ausdauer','Kraft','Verletzungsgef.','Zeitfakt.','Koordination','Finanzaufw. 1x','Finanz. Contin.','Familientaugl.','Sozialer Asp.','Präzision','Wettkampfbereitsch.').
@@ -51,6 +56,33 @@ merkmale('Basketball',[1,1,2,3,2,2,2,2,2,2],[3,2,3,4,4,2,2,2,4,4,3]).
 merkmale('Icehockey',[1,1,2,3,2,1,2,2,2,1],[3,2,3,4,4,3,2,2,3,4,3]).
 merkmale('Handball',[1,1,2,3,2,2,2,1,2,1],[3,3,3,4,4,2,2,1,4,3,3]).
 
+
+/* Zuordnung der KO-Fragen Kontexte zu Listenpositionen */
+positionen_ko(schwimmen,   1).
+positionen_ko(einzelsport, 2).
+positionen_ko(partnersport,3).
+positionen_ko(teamsport,   4).
+positionen_ko(ballsport,   5).
+positionen_ko(sommersport, 6).
+positionen_ko(wintersport, 7).
+positionen_ko(outdoor,     8).
+positionen_ko(indoor,      9).
+positionen_ko(zuhause,    10).
+
+/* Zuordnung der Verfeirungsfragen Kontexte zu Listenpositionen */
+positionen_verfeinerung(familientauglichkeit,8).
+positionen_verfeinerung(verletzungsrisiko,3).
+positionen_verfeinerung(zeitfaktor,4).
+positionen_verfeinerung(wettkampfbereitschaft,11).
+positionen_verfeinerung(sozialer_aspekt,9).
+positionen_verfeinerung(finanzieller_aspekt_einmalig,6).
+positionen_verfeinerung(finanzieller_aspekt_laufend,7).
+positionen_verfeinerung(kraft,2).
+positionen_verfeinerung(ausdauer,1).
+positionen_verfeinerung(koordination,5).
+positionen_verfeinerung(praezision,10).
+
+
 /* 10 KO-Fragen */
 frageko(schwimmen,   'Wollen Sie einen Wassersport betreiben?').
 frageko(einzelsport, 'Moechten Sie alleine Sport machen?').
@@ -63,17 +95,6 @@ frageko(outdoor,     'Moechten Sie im Freien Sport treiben?').
 frageko(indoor,      'Moechten Sie in einem Gebaeude Sport betreiben?').
 frageko(zuhause,     'Moechten Sie ausschliesslich zuhause Sport betreiben?').
 
-positionen_ko(schwimmen,   1).
-positionen_ko(einzelsport, 2).
-positionen_ko(partnersport,3).
-positionen_ko(teamsport,   4).
-positionen_ko(ballsport,   5).
-positionen_ko(sommersport, 6).
-positionen_ko(wintersport, 7).
-positionen_ko(outdoor,     8).
-positionen_ko(indoor,      9).
-positionen_ko(zuhause,    10).
-
 
 /* 11 Verfeinerungsfragen */
 frage(familientauglichkeit,'Wieviel Wert legen Sie darauf die Sportart im Kreise der Familie betreiben zu koennen?').
@@ -84,7 +105,7 @@ frage(sozialer_aspekt,'Was beschreibt Sie am Besten?').
 frage(finanzieller_aspekt_einmalig,'Wieviel moechten Sie für die Ausruestung maximal ausgeben?').
 frage(finanzieller_aspekt_laufend,'Wie hoch duerfen die laufenden Kosten pro Monat maximal sein?').
 frage(kraft,'Wie schaetzen Sie ihre Kraft ein?').
-frage(audauer,'Wie schaetzen Sie ihre Ausdauer ein?').
+frage(ausdauer,'Wie schaetzen Sie ihre Ausdauer ein?').
 frage(koordination,'Wie ist es um ihr Koordinationsvermoegen bestellt?').
 frage(praezision,'Wie schaetzen Sie ihre Praezision ein?').
 
@@ -128,10 +149,10 @@ option(kraft,2,'Ich trage meinen Einkauf selbst ins Haus.').
 option(kraft,3,'Walnuesse knack ich mit der Hand.').
 option(kraft,4,'Ich kann Telefonbuecher zerreissen.').
 
-option(audauer,1,'Treppensteigen macht mich fertig.').
-option(audauer,2,'Kuerzere Strecken gehe ich zu Fuss.').
-option(audauer,3,'Ich kann laengere Strecken laufen.').
-option(audauer,4,'Ich bin ausdauernder Sportler.').
+option(ausdauer,1,'Treppensteigen macht mich fertig.').
+option(ausdauer,2,'Kuerzere Strecken gehe ich zu Fuss.').
+option(ausdauer,3,'Ich kann laengere Strecken laufen.').
+option(ausdauer,4,'Ich bin ausdauernder Sportler.').
 
 /* ab hier geht der Bullshit los */
 option(koordination,1,'Ich hab zwei linke Haende.').
@@ -143,3 +164,5 @@ option(praezision,1,'Ich habe Schwierigkeiten das Schluesselloch zu treffen.').
 option(praezision,2,'Ich tippe SMS mit zwei Haenden.').
 option(praezision,3,'Ich benoetige kein Zielwasser.').
 option(praezision,4,'Ich fange Fliegen mit Staebchen.').
+
+
