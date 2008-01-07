@@ -71,7 +71,7 @@ zeige_bewertungen :-
 
 /* ja_nein/2 TEAMSPORT */
 ja_nein(Anfrage,Antwort) :-
-	Anfrage == 'Moechten Sie in einem Team Sport machen?',
+	frageko(teamsport,Anfrage),
 	    jaeinzelflag(_),
 	    japartnerflag(_),
 	    Antwort = ja, !,
@@ -79,14 +79,16 @@ ja_nein(Anfrage,Antwort) :-
 
 /* ja_nein/2 WINTERSPORT */
 ja_nein(Anfrage,Antwort) :-
-	Anfrage == 'Moechten Sie im Winter Sport treiben?',
+	frageko(wintersport,Anfrage),
+	%Anfrage == 'Moechten Sie im Winter Sport treiben?',
 	    neinsommerflag(_),
 	    Antwort = ja, !,
 	    loesche_flags.
 
 /* ja_nein/2 INDOOR */
 ja_nein(Anfrage,Antwort) :-
-	Anfrage == 'Moechten Sie in einem Gebaeude Sport betreiben?',
+	frageko(indoor,Anfrage),
+	%Anfrage == 'Moechten Sie in einem Gebaeude Sport betreiben?',
 	    neinoutdoorflag(_),
 	    Antwort = ja, !,
 	    loesche_flags.
@@ -325,12 +327,23 @@ auswertung_verfeinerung :-
 	% holen der relevanten Daten
 	moegl_sportarten(Sportart),
 	merkmale(Sportart,_,Verfeinerungsmerkmale),
-	positionen_verfeinerung(Context,Pos),
+	positionen_verfeinerung(Context,Pos,Gewichtung),
+	
 	pos_in_liste(Verfeinerungsmerkmale,Pos,Element),
 	verfeinerung(Context,Antwort),
 	
-	% absolute Differenz zwischen Eigenschaft und Antwort berechnen
-	Differenz is Element - Antwort,
+	(   Gewichtung == abweichung,
+	    %absolute Differenz zwischen Eigenschaft und Antwort berechnen
+	    Differenz is Element - Antwort
+	
+	;   Gewichtung == maximum,
+	    (	Element > Antwort,
+		Differenz is Element - Antwort
+	    ;	Element =< Antwort,
+		Differenz = 0
+	    )
+	),
+	
 	Differenz_abs is abs(Differenz),
 	
 	% aktuelle Gesamtabweichung abfragen und neue Differenz addieren
@@ -347,8 +360,8 @@ auswertung_verfeinerung :-
 auswertung_verfeinerung.
 
 
+% Abbruch, falls bereits genug Antworten ausgegeben wurden
 anzeige_bewertung :-
-	% Abbruch, falls bereits genug Antworten ausgegeben wurden
 	aktueller_zaehler(X),
 	auszugebende_antworten(Y),
 	X >= Y,
@@ -362,11 +375,15 @@ anzeige_bewertung :-
 dekrement_ausgabe :-
 	% Bewertung aller auszuwertenden Sportarten dekrementieren
 	% und falls 0 erreicht wurde ausgeben und Zaehler erhoehen
+	aktueller_zaehler(Rangbasis),
+	Rang is Rangbasis + 1,
+
 	bewertung(Sportart,Wert),
 	
 	(   Wert == 0,
-	    writeseq([' * ',Sportart]),nl,
 	    
+	    writeseq([' * ','Rang ',Rang,': ',Sportart]),nl,
+	    	    
 	    aktueller_zaehler(X1),
 	    X2 is X1 + 1,
 	    
@@ -420,8 +437,8 @@ run :-
 	
 	test_generierung.
 
-
 test_generierung :-
+	debug_aktiv(ja),!,
 	ja_nein('Soll auf Basis der Eingaben ein Test generiert werden?',Antwort),
 	Antwort == ja,!,
 	write('Symbolischen Name des Tests: '),
@@ -469,7 +486,6 @@ test(Typ) :-
 	anzeige_bewertung,nl,
 	
 	zeige_bewertungen.
-	
 
 test_ko(Typ) :-
 	ko_test(Typ,Context,Antwort),
@@ -485,3 +501,693 @@ test_verfeinerung(Typ) :-
 	fail
 	;
 	true.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+analyse :-
+	debug_aktiv(ja),!,
+	analyse_koantworten,
+	write(' '),
+	analyse_verfantworten,
+	analyse_sportarten
+	;
+	true.
+
+analyse_koantworten :-
+	kokriterien(_,A),
+	write(A),
+	fail
+	;
+	true.
+
+analyse_verfantworten :-
+	positionen_verfeinerung(C,_,_),
+	verfeinerung(C,A),
+	write(A),
+	fail
+	;
+	true.
+
+analyse_sportarten :-
+	nl,writeseq(['----------',' ','a--aa------']),nl,
+	moegl_sportarten(S),
+	merkmale(S,K,V),
+	writeseq(K),write(' '),writeseq(V),writeseq(['   ',S]),nl,
+	fail
+	;
+	true.
+
